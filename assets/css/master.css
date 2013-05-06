@@ -63,7 +63,7 @@ p {
 }
 
 header {
-  border-bottom: 3px solid #000000;
+  /*border-bottom: 3px solid #000000;*/
   margin: 0;
   padding: 10px 0;
 }
@@ -136,8 +136,24 @@ header .logo a:visited {
 }
 
 
-#topimage {
+#topimage, img.portfolio {
   height: 100%;
   width: 100%;
+
+}
+
+img.port-thumb{
+  width: 100px;
+  height: 100px;
+  float: right;
+
+}
+
+.sidebar{
+  position: fixed;
+}
+
+.li-container{
+  overflow: hidden;
 
 }

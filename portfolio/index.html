@@ -11,13 +11,16 @@ title: Portfolio
 
   <ul class="entries">
     {% for post in site.categories.portfolio %}
-
+    <div class="li-container">
     <li>
+
       <a href="{{ post.url }}">
         
         <h3>{{ post.title }}</h3>
+        <img class="port-thumb" src="{{ post.image }}"></img>
       </a>
     </li>
+    </div>
 
     {% endfor %}
   </ul>
