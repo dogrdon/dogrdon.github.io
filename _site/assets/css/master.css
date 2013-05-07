@@ -17,6 +17,7 @@ body {
   line-height: 1;
   margin: 0;
   padding: 0;
+  background-image: url("/assets/images/site/012-subtle-light-patterns.jpg");
 }
 
 a:link,
@@ -52,6 +53,11 @@ pre code {
   font-size: .95em;
   margin: 0 auto;
   width: 850px;
+
+}
+
+.container{
+  background-color: #fff;
 }
 
 #content {
