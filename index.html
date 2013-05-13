@@ -1,15 +1,31 @@
 ---
-layout: default
+layout: home
 title: subtxt.in
 ---
 
-<section id="main" class="group">
-  <h2>Posts</h2>
-  <ul class="posts">
-    {% for post in site.categories.front %}
-      <li>
-        <span class="post-date">{{ post.date | date_to_string }}</span> <a href="{{ post.url }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul> 
+<section id="home-screen">
+
+	<div id="frontispiece">
+		<img class="nfleft" src="/assets/images/site/nonfiction-left.png"/>
+		<div id="content">
+		
+			<p class="author"> Drew Gordon	</p>
+			<p class="title"> My Web Page </p>
+			<p> _______________ </p>
+			<br>
+			<a class="home-button" href="/portfolio">porfolio</a>
+			<a class="home-button" href="/projects">projects</a>
+			<a class="home-button" href="/about">about</a>
+			<!-- <br>
+			<br>
+			<br>
+			<p class="nada"> NONFICTION </p> -->
+
+		</div>
+		<img class="nfright" src="/assets/images/site/nonfiction-right.png"/>
+	</div>
+	<div id="duck-icon">
+		<img src="/assets/images/site/isthataduck.png"/>
+	</div>
+  
 </section> 

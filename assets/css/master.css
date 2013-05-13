@@ -10,6 +10,9 @@ h1, h2, h3, h4, h5, div, p, ul, li, section {
 }
 
 /* main styles */
+html, body{
+  height: 100%;
+}
 
 body {
   font-size: 100%;
@@ -17,21 +20,22 @@ body {
   line-height: 1;
   margin: 0;
   padding: 0;
-  background-image: url("/assets/images/site/012-subtle-light-patterns.jpg");
+  /*background-image: url("/assets/images/site/012-subtle-light-patterns.jpg");*/
   color: #333;
+
 }
 
 a:link,
 a:visited {
-  color: #F33;
+  /*color: #F33;*/
   font-weight: bold;
   text-decoration: none;
 }
 
 a:hover {
-  color: #F33;
+  /
   font-weight: bold;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 em {
@@ -49,21 +53,14 @@ pre code {
   overflow: auto;
 }
 
-#container {
-  /* bump down global font size. */
-  font-size: .95em;
-  margin: 0 auto;
-  width: 960px;
-
-}
-
 .container{
   background-color: #fff;
   
 }
 
 .container.center{
-  min-height: 800px;
+  min-height: 650px;
+
   
 }
 
@@ -94,6 +91,25 @@ header .logo a:visited {
   color: #000000;
   text-decoration: none;
 }
+
+#logo-after{
+  width:100%;
+  height: 10px;
+  clear: both;
+  margin-bottom: 9px;
+}
+
+#logo-after span{
+  display: inline-block;
+  width: 20%;
+  height: inherit;
+}
+
+#la-1{background-color: #664466;}
+#la-2{background-color: #aa5566;}
+#la-3{background-color: #77aa99;}
+#la-4{background-color: #ffeebb;}
+#la-5{background-color: #dd9988;}
 
 #main {
   line-height: 1.5;
@@ -155,19 +171,40 @@ header .logo a:visited {
 
 }
 
-img.port-thumb{
-  width: 40%;
-  height: 80%;
-  float: right;
-  margin-top: 20px;
+div.port-thumb{
+  
+  width: 100%;
+  overflow: hidden;
 
+
+}
+
+img.port-thumb{
+  width: inherit;
+  height: auto; 
+  opacity: 0.8;
+
+}
+
+.port-teaser-title{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #aa5566;
+  color: #fff;
+  font-weight: bold;
+  z-index: 2;
+  border-left: 1px #333 solid;
+  border-top: 1px #333 solid;
 }
 
 img.portfolio{
   width: 100%;
-  height: 100%;
+  height: auto;
 
 }
+
+
 
 /*.sidebar{
   position: fixed;
@@ -184,6 +221,7 @@ img.portfolio{
   -moz-border-radius: 3px;
   border-radius: 3px;
   background-color: #f8fcf4;
+  position: relative;
 
 }
 
@@ -213,16 +251,22 @@ nav ul li{
 
   border: solid #999 0.08em;
   margin-bottom: 2px;
-  background-color: #f8f2d0;
+  background-color: #889999;
+  color: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  padding: 5px;
 }
 
 nav ul li:hover{
   opacity: 0.7;
   margin-left: 5px;
+  
+}
 
+nav ul li a:hover{
+  text-decoration: none;
 
 }
 
@@ -235,7 +279,11 @@ footer
 *************/
 
 #footer{
+  position:relative;
   margin-top: 20px;
-  height: 50px;
+  height: 200px;
+  background-color: #333;
+  bottom: 0;
+  width: 100%;
 
 }

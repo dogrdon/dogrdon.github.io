@@ -8,7 +8,7 @@
 	<!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>Subtxtin</title>
+	<title>Subtxt/in</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -18,11 +18,12 @@
 
 	<!-- CSS
   ================================================== -->
-  	<link rel="stylesheet" media="screen" href="/assets/css/master.css"/>
+  	
 	<link rel="stylesheet" href="/assets/css/base.css">
 	<link rel="stylesheet" href="/assets/css/skeleton.css">
 	<link rel="stylesheet" href="/assets/css/layout.css">
-
+	<link rel="stylesheet" href="/assets/css/master.css"/>
+	
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -38,6 +39,99 @@
 	=================================================== -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
+
+	<style>
+	#totalrecallwasawesome{
+		border: 10px solid #FAF7E6;
+		height: 100%;
+		padding-top: 15px;
+	}
+
+	.container, body{
+		height: 100%;
+		background-image: url("/assets/images/site/012-subtle-light-patterns.jpg");
+	}
+
+	#frontispiece{
+		margin: 0 auto;
+		background-color: #FAF7E6;
+		width: 100%;
+		margin-top: 50px;
+		padding: 10px;
+		position: relative;
+
+
+	}
+
+	#frontispiece #content{
+		padding: 30px;
+		text-align: center;
+	}
+
+	#home-top{
+		margin-top: 35px;
+		width: 150px;
+		margin: 0 auto;
+		background-color: #FAF7E6;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		padding: 15px;
+		border: solid #1a1a1a 1px;
+	}
+
+	#duck-icon{
+		padding-top: 75px;
+		text-align: center;
+	}
+
+	p.author{
+		font-size: 175%;
+
+	}
+
+	p.title{ 
+		font-size: 200%;
+		font-weight: bold;
+	}
+
+	p.nada{
+		font-family:"Helvetica Neue", Arial, sans-serif;
+      	font-weight:100;
+		font-size: 120%;
+	}
+
+	.home-button{
+
+		margin: 15px;
+		padding: 5px;
+		background-color: #ffeebb;
+		border: 1px solid #1a1a1a;
+
+	}
+
+	.home-button:hover{
+		opacity: 0.7;
+	}
+
+	.nfleft{
+		float:left;
+		position: absolute;
+		left: 0;
+		bottom: 30%;
+	}
+
+	.nfright{
+		float: right;
+		position: absolute;
+		right: 20px;
+		top: 30%;
+	}
+
+
+	</style>
+
+
 </head>
 <body>
 
@@ -47,52 +141,59 @@
 	================================================== -->
 
 	<!-- Delete everything in this .container and get started on your own site! -->
+	<div id="totalrecallwasawesome">
 
-	<div class="container">
-		<div class="container center">
-				<div class="three columns sidebar">
-					<nav><link rel="stylesheet" media="screen" href="/assets/css/master.css"/>
-						<h3 id="logo">Menu</h3>
-						<ul>
-							<a href="/portfolio"><li>Portfolio</li></a>
-							<a href="/projects"><li>Projects</li></a>
-							<a href="/about"><li>About</li></a>
 
-						</ul>
-				
+				<div id="home-top">
+					<nav>
+						<a href="/"><h3 id="logo">subtxt.in</h3></a>
+						<div id="logo-after">
+ 							<span id="la-1"></span><span id="la-2"></span><span id="la-3"></span><span id="la-4"></span><span id="la-5"></span> 
+						</div>
+										
 					</nav>
 					&nbsp;
 				</div>
-				<div class="twelve columns offset-by-one content">
-					<header>
-						<h1>Subtxt</h1>
+				<div class="">
+
 						
-					</header>
-					<hr class="large">
-					<div class="doc-section">
-						<!--<div id="frontispiece"><img id="topimage" src="/assets/images/site/backimage_home.jpg"></img>
-					    </div>-->
-						<img sr
 						<div id="content">
-							<section id="main" class="group">
-  <h2>Posts</h2>
-  <ul class="posts">
-    
-  </ul> 
+							<section id="home-screen">
+
+	<div id="frontispiece">
+		<img class="nfleft" src="/assets/images/site/nonfiction-left.png"/>
+		<div id="content">
+		
+			<p class="author"> Drew Gordon	</p>
+			<p class="title"> My Web Page </p>
+			<p> _______________ </p>
+			<br>
+			<a class="home-button" href="/portfolio">porfolio</a>
+			<a class="home-button" href="/projects">projects</a>
+			<a class="home-button" href="/about">about</a>
+			<!-- <br>
+			<br>
+			<br>
+			<p class="nada"> NONFICTION </p> -->
+
+		</div>
+		<img class="nfright" src="/assets/images/site/nonfiction-right.png"/>
+	</div>
+	<div id="duck-icon">
+		<img src="/assets/images/site/isthataduck.png"/>
+	</div>
+  
 </section> 
 
 						</div>
 					</div><!--section-->
-					<hr>
+					<!-- <hr> -->
 					
-				</div><!-- content -->
+	</div> <!-- totalrecallwasawesome -->
 
-			</div>
-			<div class="container" id="footer">the footer</div>
+			
 
-	</div><!-- container -->
-
-
+	
 <!-- End Document
 ================================================== -->
 </body>
