@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Subtxt/in</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+  	
+	<link rel="stylesheet" href="/assets/css/base.css">
+	<link rel="stylesheet" href="/assets/css/skeleton.css">
+	<link rel="stylesheet" href="/assets/css/layout.css">
+	<link rel="stylesheet" href="/assets/css/master.css"/>
+	<link rel="stylesheet" href="/assets/css/syntax.css"/>
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- JQUERY
+	================================================= -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="/assets/images/favicon.ico">
+	<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/images/apple-touch-icon-114x114.png">
+
+	<!--Fonts 
+	=================================================== -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+	<div class="container" id="maincontainer">
+		<div class="container center">
+				<div class="three columns sidebar">
+					<nav>
+						<a href="/"><h3 id="logo">subtxt.in</h3></a>
+						<div id="logo-after">
+ 							<span id="la-1"></span><span id="la-2"></span><span id="la-3"></span><span id="la-4"></span><span id="la-5"></span> 
+						</div>
+						<ul>
+							<a href="/portfolio"><li>Portfolio</li></a>
+							<a href="/projects"><li>Projects</li></a>
+							<a href="/about"><li>About</li></a>
+
+						</ul>
+				
+					</nav>
+					&nbsp;
+				</div>
+				<div class="twelve columns offset-by-one content">
+<!-- 					<header>
+						<h1>Subtxt</h1>
+						
+					</header> -->
+					<!-- <hr class="large"> -->
+					<div class="doc-section">
+						<!--<div id="frontispiece"><img id="topimage" src="/assets/images/site/backimage_home.jpg"></img>
+					    </div>-->
+						
+						<div id="content">
+							<script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>
+
+<div id="entry-details">
+	<h2 class="content">Prison Data Analysis</h2>
+
+	<img class="project" src="" />
+
+	<h3>A Look at the US Prison System: Inmate Demographics circa 2004</h3>
+
+<p>The data we looked at below was pulled from the United States Department of Justice’s National Corrections Reporting Program, 2004, a survey that “gathers data on prisoners entering and leaving the custody or supervision of state and federal authorities.” [source: Department of Justice. National Corrections Reporting Program, 2004 [United States] Codebook. Inter-University Consortium for Political and Social Research, Ann Arbor, MI]</p>
+
+<p>The full data set contains 100 variables and ~1.3 million records. For this exploration, we pulled the following variables: Year of birth, Race, Gender, Hispanic Origin, Education (last year of school completed), prior jail time (in months), and prior prison time (also in months). Through this process, we wanted to get a better idea of the demographics of the US Prison system (as of 2004. Since they only do this survey once every 7 years, this is the most recent).</p>
+
+<a href="https://explore.data.gov/Law-Enforcement-Courts-and-Prisons/National-Corrections-Reporting-Program-2004-United/v26k-cyk8">Get the dataset</a>
+
+<!-- TABBED CONTENT BELOW -->
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Exploration</a></li>
+    <li><a href="#tabs-2">Two States</a></li>
+    <li><a href="#tabs-3">Scale</a></li>
+    <li><a href="#tabs-3">Final Pass</a></li>
+  </ul>
+  <div id="tabs-1">
+
+  '''
+def foo
+  puts 'foo'
+end
+'''
+  			# HW 2 R Commands
+<div class="highlight"><pre><code class="r">library<span class="p">(</span>ggplot2<span class="p">)</span>
+
+<span class="c1">#connect to the data</span>
+data <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&quot;http://www-personal.umich.edu/~asgor/prison.txt&quot;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+attach<span class="p">(</span>data<span class="p">)</span>
+
+<span class="c1">#open our car library because we&#39;ll need to recode some columns</span>
+library<span class="p">(</span>car<span class="p">)</span>
+
+<span class="c1">#columns like race and gender are encoded as numbers and we want to also have a nominal encoding for them</span>
+
+nomgender <span class="o">=</span> recode<span class="p">(</span>gender<span class="p">,</span> <span class="s">&quot;c(1) = &#39;Male&#39;; c(2) = &#39;Female&#39;; else = NA&quot;</span><span class="p">)</span>
+nomrace <span class="o">=</span> recode<span class="p">(</span>race<span class="p">,</span> <span class="s">&quot;c(1) = &#39;White&#39;; c(2) = &#39;Black&#39;; c(3) = &#39;American Indian&#39;; c(4) = &#39;Asian&#39;; c(5) = &#39;Pacific Islander&#39;; c(6) = &#39;Other&#39;; else = NA&quot;</span><span class="p">)</span>
+
+<span class="c1">#and we want to recode the education column to replace their numerical encoding or NA to &#39;NA&#39; so as not to through the charting off.</span>
+
+newedu <span class="o">=</span> recode<span class="p">(</span>education<span class="p">,</span> <span class="s">&#39;c(98,99) = NA&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># 1 Highest grade completed and gender</span>
+qplot<span class="p">(</span>newedu<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> fill <span class="o">=</span> nomgender<span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Highest Grade of Completion in School&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2 Race and Gender</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> fill <span class="o">=</span> nomgender<span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Race of Inmate&quot;</span><span class="p">)</span>
+
+<span class="c1">#3 boxplot of race and birthyear</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span>  ylim <span class="o">=</span> c<span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">),</span> geom <span class="o">=</span> <span class="s">&quot;boxplot&quot;</span><span class="p">)</span>
+
+<span class="c1">#4   </span>
+qplot<span class="p">(</span>nomgender<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">)</span>
+
+<span class="c1">#some problematic input that got poor results</span>
+<span class="c1"># Would really like to lose the NA</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span>  ylim <span class="o">=</span> c<span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">),</span> fill <span class="o">=</span> nomgender<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;boxplot&quot;</span><span class="p">)</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span>  ylim <span class="o">=</span> c<span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">),</span> fill <span class="o">=</span> na.omit<span class="p">(</span>nomgender<span class="p">),</span> geom <span class="o">=</span> <span class="s">&quot;boxplot&quot;</span><span class="p">)</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span>  ylim <span class="o">=</span> c<span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">),</span> fill <span class="o">=</span> nomgender<span class="p">,</span> na.rm<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;boxplot&quot;</span><span class="p">)</span>
+
+<span class="c1"># previous jail time/prison time - R really complained about all of this, usually no product</span>
+priors_prison <span class="o">&lt;-</span> recode<span class="p">(</span>prior_prison_months<span class="p">,</span> <span class="s">&#39;c(9999.9, 9999.8, 9999.5)=NA&#39;</span><span class="p">)</span>
+priors_jail <span class="o">&lt;-</span> recode<span class="p">(</span>prior_jail_months<span class="p">,</span> <span class="s">&#39;c(9999.9, 9999.8, 9999.5)=NA&#39;</span><span class="p">)</span>
+priors_p <span class="o">&lt;-</span> na.omit<span class="p">(</span>priors_prison<span class="p">)</span>
+priors_j <span class="o">&lt;-</span> na.omit<span class="p">(</span>priors_jail<span class="p">)</span>
+priors_prison_less <span class="o">&lt;-</span> ddply<span class="p">(</span>data<span class="p">,</span> .<span class="p">(</span>nomgender<span class="p">),</span> subset<span class="p">,</span> priors_prison <span class="o">&lt;</span> mean<span class="p">(</span>priors_prison<span class="p">))</span>
+qplot<span class="p">(</span>priors_prison<span class="p">,</span> nomgender<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1200</span><span class="p">))</span>
+qplot<span class="p">(</span>birthyear<span class="p">,</span> priors_prison<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">))</span>
+</code></pre></div>
+
+    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+  </div>
+  <div id="tabs-2">
+    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+  </div>
+  <div id="tabs-3">
+    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+  </div>
+</div>
+</div>
+						</div>
+					</div><!--section-->
+					<!-- <hr> -->
+					
+				</div><!-- content -->
+
+			</div>
+			
+
+	</div><!-- container -->
+	<div  id="footer">the footer</div>
+
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

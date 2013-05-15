@@ -1,0 +1,86 @@
+---
+layout: project_entry 
+category: project
+title: Prison Data Analysis
+---
+
+<h3>A Look at the US Prison System: Inmate Demographics circa 2004</h3>
+
+<p>The data we looked at below was pulled from the United States Department of Justice’s National Corrections Reporting Program, 2004, a survey that “gathers data on prisoners entering and leaving the custody or supervision of state and federal authorities.” [source: Department of Justice. National Corrections Reporting Program, 2004 [United States] Codebook. Inter-University Consortium for Political and Social Research, Ann Arbor, MI]</p>
+
+<p>The full data set contains 100 variables and ~1.3 million records. For this exploration, we pulled the following variables: Year of birth, Race, Gender, Hispanic Origin, Education (last year of school completed), prior jail time (in months), and prior prison time (also in months). Through this process, we wanted to get a better idea of the demographics of the US Prison system (as of 2004. Since they only do this survey once every 7 years, this is the most recent).</p>
+
+<a href="https://explore.data.gov/Law-Enforcement-Courts-and-Prisons/National-Corrections-Reporting-Program-2004-United/v26k-cyk8">Get the dataset</a>
+
+<!-- TABBED CONTENT BELOW -->
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Exploration</a></li>
+    <li><a href="#tabs-2">Two States</a></li>
+    <li><a href="#tabs-3">Scale</a></li>
+    <li><a href="#tabs-3">Final Pass</a></li>
+  </ul>
+  <div id="tabs-1">
+
+
+{% highlight %}
+
+library(ggplot2)
+
+#connect to the data
+data <- read.table("http://www-personal.umich.edu/~asgor/prison.txt", header=TRUE, sep="\t")
+attach(data)
+
+#open our car library because we'll need to recode some columns
+library(car)
+
+#columns like race and gender are encoded as numbers and we want to also have a nominal encoding for them
+
+nomgender = recode(gender, "c(1) = 'Male'; c(2) = 'Female'; else = NA")
+nomrace = recode(race, "c(1) = 'White'; c(2) = 'Black'; c(3) = 'American Indian'; c(4) = 'Asian'; c(5) = 'Pacific Islander'; c(6) = 'Other'; else = NA")
+
+#and we want to recode the education column to replace their numerical encoding or NA to 'NA' so as not to through the charting off.
+
+newedu = recode(education, 'c(98,99) = NA')
+
+
+# 1 Highest grade completed and gender
+qplot(newedu, data = data, fill = nomgender, xlab = "Highest Grade of Completion in School")
+
+# 2 Race and Gender
+qplot(nomrace, data = data, fill = nomgender, xlab = "Race of Inmate")
+
+#3 boxplot of race and birthyear
+qplot(nomrace, birthyear, data = data,  ylim = c(1900,2000), geom = "boxplot")
+
+#4   
+qplot(nomgender, birthyear, data = data)
+
+#some problematic input that got poor results
+# Would really like to lose the NA
+qplot(nomrace, birthyear, data = data,  ylim = c(1900,2000), fill = nomgender, geom = "boxplot")
+qplot(nomrace, birthyear, data = data,  ylim = c(1900,2000), fill = na.omit(nomgender), geom = "boxplot")
+qplot(nomrace, birthyear, data = data,  ylim = c(1900,2000), fill = nomgender, na.rm=TRUE, geom = "boxplot")
+
+# previous jail time/prison time - R really complained about all of this, usually no product
+priors_prison <- recode(prior_prison_months, 'c(9999.9, 9999.8, 9999.5)=NA')
+priors_jail <- recode(prior_jail_months, 'c(9999.9, 9999.8, 9999.5)=NA')
+priors_p <- na.omit(priors_prison)
+priors_j <- na.omit(priors_jail)
+priors_prison_less <- ddply(data, .(nomgender), subset, priors_prison < mean(priors_prison))
+qplot(priors_prison, nomgender, data = data, xlim=c(0,1200))
+qplot(birthyear, priors_prison, data = data, xlim=c(1900,2000))
+
+{% endhighlight %}
+
+    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+  </div>
+  <div id="tabs-2">
+    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+  </div>
+  <div id="tabs-3">
+    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+  </div>
+</div>
