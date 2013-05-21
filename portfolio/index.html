@@ -11,15 +11,15 @@ title: Portfolio
   <div class="entries">
     {% for post in site.categories.portfolio %}
     <a href="{{ post.url }}" title="{{ post.title }}">
-      <div class="entry-container">
+      <!-- <div class="entry-container"> -->
       
 
           <!-- <h4 class="port-teaser-title">{{ post.title }}</h4> -->
           <!-- <div class="port-thumb"> -->
-            <img class="port-thumb" src="{{ post.image }}"></img>
+             <img class="port-thumb" src="{{ post.image }}"></img> 
           <!-- </div> -->       
       
-      </div>
+      <!-- </div> -->
     </a>
 
     {% endfor %}

@@ -203,25 +203,27 @@ header .logo a:visited {
   height: auto;
   border: solid 1px #333;
 
+
 }
 
-/*div.port-thumb{
-  
-  width: 100%;
-  overflow: hidden;
-
-
-}*/
 
 img.port-thumb{
  
   height:auto;
-  width: 98%; 
+  max-width:100%; 
   opacity: 0.8;
-  vertical-align: middle;
-
+  margin-bottom: 20px;
+  border: 3px #0a0a0a solid;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  
 }
 
+img.port-thumb:hover{
+  opacity: 1;
+  border: 3px #AA5566 solid;
+}
 .port-teaser-title{
   position: absolute;
   bottom: 0;
@@ -238,9 +240,7 @@ img.port-thumb{
 }
 
 
-/*.sidebar{
-  position: fixed;
-}*/
+/*
 
 .entry-container{
   overflow: hidden;
@@ -249,16 +249,13 @@ img.port-thumb{
   padding: 8px;
   border: solid #999 2px;
   margin-bottom: 25px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  
   background-color: #f8fcf4;
   position: relative;
 
+}*/
 
-}
-
-.entry-container:hover{
+/*.entry-container:hover{
   cursor: pointer;
   opacity: .7;
 }
@@ -267,7 +264,7 @@ img.port-thumb{
   width: 45%;
   float: left;
 
-}
+}*/
 
 #entry-details{
   margin-bottom: 20px;
