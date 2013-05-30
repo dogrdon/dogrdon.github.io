@@ -210,7 +210,8 @@ header .logo a:visited {
 img.port-thumb{
  
   height:auto;
-  max-width:100%; 
+  max-width:98%;
+  margin-left: 0.3%; 
   opacity: 0.8;
   margin-bottom: 20px;
   border: 3px #0a0a0a solid;
@@ -219,6 +220,7 @@ img.port-thumb{
   border-radius: 3px;
   
 }
+
 
 img.port-thumb:hover{
   opacity: 1;
