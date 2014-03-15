@@ -16,8 +16,5 @@ category: home
   {% endfor %}
 </ul>
 
-## To-Do
-
-This page is a work in progress. Don't look at it. Please, it's hideous. 
 
 
