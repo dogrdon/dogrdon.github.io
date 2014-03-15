@@ -1,0 +1,59 @@
+/* custom styles for my blog, across all themes */
+
+/* HEADER NAV */
+.the-header .nav-global ul li a{
+  border: solid 1px #777;
+  padding: 3px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+
+img.project-image{
+	width: 100%;
+}
+
+img.port-thumb{
+  width:100%; 
+  opacity: 0.8;
+  border: 3px #0a0a0a solid;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  
+}
+
+
+img.port-thumb:hover{
+  opacity: 1;
+  border: 3px #AA5566 solid;
+}
+
+
+img.port-thumb{
+	width: 100%;
+}
+
+img.home_icon{
+	display: inline;
+	height: 50px;
+	width: 50px;
+	margin-bottom: 0px;
+}
+
+
+/* POSTS */
+div.figure{
+	margin: 20px;
+}
+
+div.figcaption{
+	text-align: center;
+	background-color: #eee;
+	padding: 2px;
+	
+}
+
+a[rel="license"] img{
+	margin-bottom: 3px;
+}
