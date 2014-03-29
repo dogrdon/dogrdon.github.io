@@ -9,7 +9,7 @@
 }
 
 
-img.project-image{
+img.project-image, img.port-thumb, img.blog-post{
 	width: 100%;
 }
 
@@ -29,10 +29,6 @@ img.port-thumb:hover{
   border: 3px #AA5566 solid;
 }
 
-
-img.port-thumb{
-	width: 100%;
-}
 
 img.home_icon{
 	display: inline;

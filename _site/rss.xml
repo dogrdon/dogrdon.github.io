@@ -5,10 +5,59 @@
         <description>subtxt/in - drew gordon</description>
         <link>http://subtxt.in</link>
         <link>http://subtxt.in</link>
-        <lastBuildDate>2014-03-15T15:17:22-04:00</lastBuildDate>
-        <pubDate>2014-03-15T15:17:22-04:00</pubDate>
+        <lastBuildDate>2014-03-29T01:35:28-04:00</lastBuildDate>
+        <pubDate>2014-03-29T01:35:28-04:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>The Database Novel</title>
+                <description>&lt;p&gt;Before picking up Georges Perec’s &lt;a href=&#39;http://en.wikipedia.org/wiki/Life_A_User&amp;apos;s_Manual&#39; target=&#39;_blank&#39;&gt;Life A User&amp;#39;s Manual&lt;/a&gt;, it had not occurred to me that a novel could be, in essense, structured data.&lt;/p&gt;
+
+&lt;p&gt;Or rather, it might have occurred to me in the sense that books comprise a few predictable units, situated together: words make paragraphs, paragraphs make chapters, chapters comprise sections or parts (optional) and parts align to make an entire book. But it had not occurred to me that the elements of a novel, its content, the situations and items that inspire the plot or narrative might assemble as if a relational database or a conventional data structure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#39;novel or story visualized as a data tree&#39; class=&#39;blog-post&#39; src=&#39;http://longstreet.typepad.com/.a/6a00d83542d51e69e20128760d40a1970c-pi&#39; title=&#39;story as structured data, borrowed from stackoverflow&#39; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Or such is the sense I get when reviewing the wikipedia &lt;a href=&#39;http://en.wikipedia.org/wiki/Life_A_User&amp;apos;s_Manual#The_constraints&#39;&gt; section &lt;/a&gt; for this novel describing the constraints Perec used to craft his work.&lt;/p&gt;
+&lt;blockquote&gt;&lt;b&gt;The constraints&lt;/b&gt;
+These elements come together with Perec&#39;s constraints for the book (in keeping with Oulipo objectives): he created a complex system which would generate for each chapter a list of items, references or objects which that chapter should then contain or allude to. He described this system as a &quot;machine for inspiring stories&quot;.
+
+There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the last two lists a special &quot;Couples&quot; list. Some examples:
+
+&lt;ul&gt;
+&lt;li&gt;number of people involved&lt;/li&gt;
+&lt;li&gt;length of the chapter in pages&lt;/li&gt;
+&lt;li&gt;an activity&lt;/li&gt;
+&lt;li&gt;a position of the body&lt;/li&gt;
+&lt;li&gt;emotions&lt;/li&gt;
+&lt;li&gt;an animal&lt;/li&gt;
+&lt;li&gt;reading material&lt;/li&gt;
+&lt;li&gt;countries&lt;/li&gt;
+&lt;li&gt;2 lists of novelists, from whom a literary quotation is required&lt;/li&gt;
+&lt;li&gt;&quot;Couples&quot;, e.g. Pride and Prejudice, Laurel and Hardy.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As I read this book, I am reminded how modular it is. It is the story of a Paris building on one day. And each chapter explores a single apartment in the building at a time, taking in the history of it’s owners and their own personal relation, somehow, to the main character, Bartleby, an explorer and puzzle maker.&lt;/p&gt;
+
+&lt;p&gt;Throughtout these stories, I often find it hard to follow a plot as each chapter seems to fixate more on the details of objects and objects are overwhelming the focus of attention and the glue that pulls together quick snaps of history and the interactions between residents: a list, a recipe, a sign on a door, a section of a catalog.&lt;/p&gt;
+
+&lt;p&gt;The question creeps up to me: is it possible to write a novel first as if filling out a spreadsheet or set of form fields? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and &lt;em&gt; then &lt;/em&gt; write the book?&lt;/p&gt;
+
+&lt;p&gt;I am imagining a relational database:&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#39;image of a relational database model&#39; class=&#39;blog-post&#39; src=&#39;https://wiki.duraspace.org/download/attachments/32473993/DSpace-1.8-Database-Schema.png?version=1&amp;amp;modificationDate=1366279060281&amp;amp;api=v2&#39; title=&#39;relational database model&#39; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I am imagining that one might ‘query’ for the plot, or the interaction between characters, or some plot arc:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;sql&#39;&gt;&lt;span class=&#39;k&#39;&gt;SELECT&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;dialogue&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;action&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;conflict&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;p&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;scenario&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;p&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;context&lt;/span&gt; 
+&lt;span class=&#39;k&#39;&gt;FROM&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;characters&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;plot&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;p&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;LEFT&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;JOIN&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;observations&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;ON&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;observations&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;author_influence&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;author_influence&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;WHERE&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;status&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;NOT DEAD&amp;#39;&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;OR&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;status&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;MYSTERIOUS&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do &lt;a href=&#39;http://en.wikipedia.org/wiki/Finnegans_Wake&#39;&gt;Finnegan&amp;#39;s Wake&lt;/a&gt;? Trying to locate somekind of meaning in the incidental writing?&lt;/p&gt;</description>
+                <link>http://subtxt.in/project/2014/03/29/database-novel</link>
+                <guid>http://subtxt.in/project/2014/03/29/database-novel</guid>
+                <pubDate>2014-03-29T01:34:03-04:00</pubDate>
+        </item>
 
         <item>
                 <title>The Special Collection in the Age of Digital Reproduction</title>
