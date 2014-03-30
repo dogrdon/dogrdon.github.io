@@ -3,7 +3,7 @@ layout: project_post
 title: "The Database Novel"
 description: "A post detailing the novel as relational model"
 category: project
-tags: [writing, literature, georges perec, novel, puzzle]
+tags: [writing, literature, georges perec, novel, puzzle, Oulipo, natural language processing, database]
 image: 
 ---
 {% include JB/setup %}
@@ -35,9 +35,9 @@ There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the las
 </ul>
 </blockquote>
 
-As I read this book, I am reminded how modular it is. It is the story of am apartment building in Paris on one day, June 23, 1975. Each chapter explores a single apartment or part of the building, taking in the history of its owners and their relation, somehow, to the main character, Bartlebooth, a wealthy englishman who contrives a scheme for puzzle making that sends him around the world. As an object oriented work of literature, I am not surprised that eminent computer scientist Donald Knuth as [regarded](http://www-cs-faculty.stanford.edu/~uno/retd.html "Link to Donald Knuth's Retirement page") this book as "perhaps the greatest 20th century novel".
+As I read this book, I am reminded how modular it is. It is the story of an apartment building in Paris on one day, June 23, 1975. Each chapter explores a single apartment or part of the building, taking in the history of its owners and their relation, somehow, to the main character, Bartlebooth, a wealthy englishman who contrives a scheme for puzzle making that sends him around the world. As an object oriented work of literature, I am not surprised that eminent computer scientist Donald Knuth as [regarded](http://www-cs-faculty.stanford.edu/~uno/retd.html "Link to Donald Knuth's Retirement page") this book as "perhaps the greatest 20th century novel".
 
-If this were a book review (which it is not), I would note that throughtout these stories, I often find it hard to follow a plot as each chapter seems to fixate more on the details of objects and objects are overwhelmingly the focus of attention, the glue that pulls together quick snaps of history and the interactions between residents: a list, a recipe, a sign on a door, a section of a catalog. In all of this clutter, I am routinely brought back to the images of the recently discovered [Paris apartment locked in time](http://www.telegraph.co.uk/news/worldnews/europe/france/8042281/Parisian-flat-containing-2.1-million-painting-lay-untouched-for-70-years.html "Link to story about paris apartment locked in time").  
+If this were a book review (which it is not), I would note that throughtout these stories, I often find it hard to follow the "plot" as each chapter seems to fixate more on the details of objects and these objects are overwhelmingly the focus of attention, the glue that pulls together quick snaps of history and the interactions between residents and their predecessors: a list, a recipe, a painting, a sign on a door, a section of a catalog. In all of this clutter, I am routinely brought back to the images of the recently discovered [Paris apartment locked in time](http://www.telegraph.co.uk/news/worldnews/europe/france/8042281/Parisian-flat-containing-2.1-million-painting-lay-untouched-for-70-years.html "Link to story about paris apartment locked in time"). But it is this interesting mosaic of objects and detailed descriptions of them that shores up its unique method of composition.
 
 <div class="figure">
 <img class="blog-post" src="http://cdn.thedailybeast.com/content/dailybeast/articles/2014/02/05/the-parisian-belle-epoque-time-capsule/jcr:content/image.crop.800.500.jpg/1393204098245.cached.jpg" alt="picture of cluttered parisian apartment that has not been inhabited or touched since 1942, looks dusty and the furniture is rather baroque."/>
@@ -45,7 +45,7 @@ If this were a book review (which it is not), I would note that throughtout thes
 
 The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields that feed into a database? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and <em> then </em> write the book? Or better (or worse, perhaps) have an algorithm write the book?
 
-I am imagining that one might 'query' for the plot, or the interaction between characters, or some plot arc:
+I am imagining that one might 'query' for the story, or the interaction between characters, or some plot arc:
 
 {%highlight sql%}
 
@@ -57,6 +57,5 @@ WHERE c.status = 'NOT DEAD' AND c.status = 'MYSTERIOUS'
 {%endhighlight%}
 
 Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href="http://en.wikipedia.org/wiki/Finnegans_Wake">Finnegan's Wake</a>, trying to locate meaning and structure in the incidental language of the one as they would the incidental plot and interactions of the other? 
-
 
 
