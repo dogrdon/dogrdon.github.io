@@ -9,12 +9,20 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : subtxt/in
-tagline: culture is free, copyright is an illusion
+tagline:
+description: personal website for drew gordon. writings about technology in libraries and archives, culture, literature, language, and data 
+keywords: language, culture, data, libraries, archives, history, NLP
 author :
   name : drew gordon
   email : drew@subtxt.in
   github : droquo
   twitter : droquo
+  
+#Additional meta tags for connecting to services
+twittercard:
+  summary: summary
+  site: droquo
+  creator: droquo
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
