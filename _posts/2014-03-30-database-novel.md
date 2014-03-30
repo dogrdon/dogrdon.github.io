@@ -2,7 +2,7 @@
 layout: project_post
 title: "The Database Novel"
 description: "A post detailing the novel as relational model"
-category: project
+category: thoughts
 tags: [writing, literature, georges perec, novel, puzzle, Oulipo, natural language processing, database]
 image: 
 ---
