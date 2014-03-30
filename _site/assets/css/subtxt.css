@@ -41,6 +41,7 @@ img.home_icon{
 /* POSTS */
 div.figure{
 	margin: 20px;
+	width: 100%;
 }
 
 div.figcaption{
@@ -52,4 +53,8 @@ div.figcaption{
 
 a[rel="license"] img{
 	margin-bottom: 3px;
+}
+
+blockquote ul{
+	margin-left: 25px;
 }

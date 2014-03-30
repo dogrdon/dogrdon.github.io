@@ -50,13 +50,13 @@
 
 			<div class="bd">
 				<div class="entry-content">
-					<p>Before picking up Georges Perec’s <a href='http://en.wikipedia.org/wiki/Life_A_User&apos;s_Manual' target='_blank'>Life A User&#39;s Manual</a>, it had not occurred to me that a novel could be, in essense, structured data.</p>
+					<p>Before picking up Georges Perec’s <a href='http://en.wikipedia.org/wiki/Life_A_User&apos;s_Manual' target='_blank'>Life A User&#39;s Manual</a>, it had not occurred to me much that a novel could be, in essense, structured data.</p>
 
-<p>Or rather, it might have occurred to me in the sense that books comprise a few predictable units, situated together: words make paragraphs, paragraphs make chapters, chapters comprise sections or parts (optional) and parts align to make an entire book. But it had not occurred to me that the elements of a novel, its content, the situations and items that inspire the plot or narrative might assemble as if a relational database or a conventional data structure.</p>
+<p>Or rather, it might have occurred to me as books bring together predictable units: words make paragraphs, paragraphs make chapters, chapters comprise sections or parts (optional) and parts align to make an entire book. Though it interested me to consider that the elements of a novel, its content, the situations and items that inspire the plot or narrative might assemble as if the components of a relational database.</p>
 
-<p><img alt='novel or story visualized as a data tree' class='blog-post' src='http://longstreet.typepad.com/.a/6a00d83542d51e69e20128760d40a1970c-pi' title='story as structured data, borrowed from stackoverflow' /></p>
+<p><img alt='image of a relational database model' class='blog-post' src='https://wiki.duraspace.org/download/attachments/32473993/DSpace-1.8-Database-Schema.png?version=1&amp;modificationDate=1366279060281&amp;api=v2' title='relational database model' /></p>
 
-<p>Or such is the sense I get when reviewing the wikipedia <a href='http://en.wikipedia.org/wiki/Life_A_User&apos;s_Manual#The_constraints'> section </a> for this novel describing the constraints Perec used to craft his work.</p>
+<p>Or this is what comes to mind as I review the wikipedia <a href='http://en.wikipedia.org/wiki/Life_A_User&apos;s_Manual#The_constraints'> section </a> for this novel describing the constraints Perec used to craft his novel.</p>
 <blockquote><b>The constraints</b>
 These elements come together with Perec's constraints for the book (in keeping with Oulipo objectives): he created a complex system which would generate for each chapter a list of items, references or objects which that chapter should then contain or allude to. He described this system as a "machine for inspiring stories".
 
@@ -75,15 +75,13 @@ There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the las
 <li>"Couples", e.g. Pride and Prejudice, Laurel and Hardy.</li>
 </ul>
 </blockquote>
-<p>As I read this book, I am reminded how modular it is. It is the story of a Paris building on one day. And each chapter explores a single apartment in the building at a time, taking in the history of it’s owners and their own personal relation, somehow, to the main character, Bartleby, an explorer and puzzle maker.</p>
+<p>As I read this book, I am reminded how modular it is. It is the story of am apartment building in Paris on one day, June 23, 1975. Each chapter explores a single apartment or part of the building, taking in the history of its owners and their relation, somehow, to the main character, Bartlebooth, a wealthy englishman who contrives a scheme for puzzle making that sends him around the world. As an object oriented work of literature, I am not surprised that eminent computer scientist Donald Knuth as <a href="http://www-cs-faculty.stanford.edu/~uno/retd.html" title="Link to Donald Knuth's Retirement page">regarded</a> this book as “perhaps the greatest 20th century novel”.</p>
 
-<p>Throughtout these stories, I often find it hard to follow a plot as each chapter seems to fixate more on the details of objects and objects are overwhelming the focus of attention and the glue that pulls together quick snaps of history and the interactions between residents: a list, a recipe, a sign on a door, a section of a catalog.</p>
-
-<p>The question creeps up to me: is it possible to write a novel first as if filling out a spreadsheet or set of form fields? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and <em> then </em> write the book?</p>
-
-<p>I am imagining a relational database:</p>
-
-<p><img alt='image of a relational database model' class='blog-post' src='https://wiki.duraspace.org/download/attachments/32473993/DSpace-1.8-Database-Schema.png?version=1&amp;modificationDate=1366279060281&amp;api=v2' title='relational database model' /></p>
+<p>If this were a book review (which it is not), I would note that throughtout these stories, I often find it hard to follow a plot as each chapter seems to fixate more on the details of objects and objects are overwhelmingly the focus of attention, the glue that pulls together quick snaps of history and the interactions between residents: a list, a recipe, a sign on a door, a section of a catalog. In all of this clutter, I am routinely brought back to the images of the recently discovered <a href="http://www.telegraph.co.uk/news/worldnews/europe/france/8042281/Parisian-flat-containing-2.1-million-painting-lay-untouched-for-70-years.html" title="Link to story about paris apartment locked in time">Paris apartment locked in time</a>.</p>
+<div class='figure'>
+<img alt='picture of cluttered parisian apartment that has not been inhabited or touched since 1942, looks dusty and the furniture is rather baroque.' class='blog-post' src='http://cdn.thedailybeast.com/content/dailybeast/articles/2014/02/05/the-parisian-belle-epoque-time-capsule/jcr:content/image.crop.800.500.jpg/1393204098245.cached.jpg' />
+<div class='figcaption'> Image via Getty via The Telegraph</div></div>
+<p>The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and <em> then </em> write the book?</p>
 
 <p>I am imagining that one might ‘query’ for the plot, or the interaction between characters, or some plot arc:</p>
 <div class='highlight'><pre><code class='sql'><span class='k'>SELECT</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>dialogue</span><span class='p'>,</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>action</span><span class='p'>,</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>conflict</span><span class='p'>,</span> <span class='n'>p</span><span class='p'>.</span><span class='n'>scenario</span><span class='p'>,</span> <span class='n'>p</span><span class='p'>.</span><span class='n'>context</span> 
@@ -91,13 +89,13 @@ There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the las
 <span class='k'>LEFT</span> <span class='k'>JOIN</span> <span class='n'>observations</span> <span class='k'>ON</span> <span class='n'>observations</span><span class='p'>.</span><span class='n'>author_influence</span> <span class='o'>=</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>author_influence</span>
 <span class='k'>WHERE</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>status</span> <span class='o'>=</span> <span class='s1'>&#39;NOT DEAD&#39;</span> <span class='k'>OR</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>status</span> <span class='o'>=</span> <span class='s1'>&#39;MYSTERIOUS&#39;</span>
 </code></pre></div>
-<p>Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href='http://en.wikipedia.org/wiki/Finnegans_Wake'>Finnegan&#39;s Wake</a>? Trying to locate somekind of meaning in the incidental writing?</p>
+<p>Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href='http://en.wikipedia.org/wiki/Finnegans_Wake'>Finnegan&#39;s Wake</a>? Trying to locate meaning and structure in incidental language?</p>
 					<div class="meta">
 						<p class="date-publish">
 							Published: 
-							<date class="date-pub" title="2014-03-29T01:34:03-04:00" datetime="2014-03-29T01:34:03-04:00" pubdate>
+							<date class="date-pub" title="2014-03-30T06:24:57-04:00" datetime="2014-03-30T06:24:57-04:00" pubdate>
 							<span class="month"><abbr>March</abbr></span>
-							<span class="day">29</span>
+							<span class="day">30</span>
 							<span class="year">2014</span>
 							</date>
 						</p>
@@ -229,7 +227,7 @@ There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the las
 		};
 	load('//platform.twitter.com/widgets.js', 'tweetjs');
 	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
-	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/project/2014/03/29/database-novel" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/project/2014/03/30/database-novel" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
 	}(document, 'script'));
 </script>
 <script>

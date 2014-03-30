@@ -11,7 +11,7 @@ http://subtxt.in/sitemap.txt
 http://subtxt.in/tags.html
 http://subtxt.in/windindex.html
 
-http://subtxt.in/project/2014/03/29/database-novel
+http://subtxt.in/project/2014/03/30/database-novel
 http://subtxt.in/information%20design/2014/03/13/digital-books-prelim
 http://subtxt.in/project/2014/01/24/artdealer
 http://subtxt.in/project/2012/06/15/wikisewer_project
