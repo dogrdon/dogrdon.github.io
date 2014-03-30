@@ -43,8 +43,7 @@ If this were a book review (which it is not), I would note that throughtout thes
 <img class="blog-post" src="http://cdn.thedailybeast.com/content/dailybeast/articles/2014/02/05/the-parisian-belle-epoque-time-capsule/jcr:content/image.crop.800.500.jpg/1393204098245.cached.jpg" alt="picture of cluttered parisian apartment that has not been inhabited or touched since 1942, looks dusty and the furniture is rather baroque."/>
 <div class="figcaption"> Image via Getty via The Telegraph</div></div>
 
-
-The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and <em> then </em> write the book?
+The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields that feed into a database? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and <em> then </em> write the book? Or better (or worse, perhaps) have an algorithm write the book?
 
 I am imagining that one might 'query' for the plot, or the interaction between characters, or some plot arc:
 
@@ -53,11 +52,11 @@ I am imagining that one might 'query' for the plot, or the interaction between c
 SELECT c.dialogue, c.action, c.conflict, p.scenario, p.context 
 FROM characters c, plot p
 LEFT JOIN observations ON observations.author_influence = c.author_influence
-WHERE c.status = 'NOT DEAD' OR c.status = 'MYSTERIOUS'
+WHERE c.status = 'NOT DEAD' AND c.status = 'MYSTERIOUS'
 
 {%endhighlight%}
 
-Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href="http://en.wikipedia.org/wiki/Finnegans_Wake">Finnegan's Wake</a>? Trying to locate meaning and structure in incidental language? 
+Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href="http://en.wikipedia.org/wiki/Finnegans_Wake">Finnegan's Wake</a>, trying to locate meaning and structure in the incidental language of the one as they would the incidental plot and interactions of the other? 
 
 
 

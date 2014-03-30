@@ -5,8 +5,8 @@
         <description>subtxt/in - drew gordon</description>
         <link>http://subtxt.in</link>
         <link>http://subtxt.in</link>
-        <lastBuildDate>2014-03-30T06:27:39-04:00</lastBuildDate>
-        <pubDate>2014-03-30T06:27:39-04:00</pubDate>
+        <lastBuildDate>2014-03-30T06:34:18-04:00</lastBuildDate>
+        <pubDate>2014-03-30T06:34:18-04:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -43,18 +43,18 @@ There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the las
 &lt;div class=&#39;figure&#39;&gt;
 &lt;img alt=&#39;picture of cluttered parisian apartment that has not been inhabited or touched since 1942, looks dusty and the furniture is rather baroque.&#39; class=&#39;blog-post&#39; src=&#39;http://cdn.thedailybeast.com/content/dailybeast/articles/2014/02/05/the-parisian-belle-epoque-time-capsule/jcr:content/image.crop.800.500.jpg/1393204098245.cached.jpg&#39; /&gt;
 &lt;div class=&#39;figcaption&#39;&gt; Image via Getty via The Telegraph&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and &lt;em&gt; then &lt;/em&gt; write the book?&lt;/p&gt;
+&lt;p&gt;The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields that feed into a database? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and &lt;em&gt; then &lt;/em&gt; write the book? Or better (or worse, perhaps) have an algorithm write the book?&lt;/p&gt;
 
 &lt;p&gt;I am imagining that one might ‘query’ for the plot, or the interaction between characters, or some plot arc:&lt;/p&gt;
 &lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;sql&#39;&gt;&lt;span class=&#39;k&#39;&gt;SELECT&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;dialogue&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;action&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;conflict&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;p&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;scenario&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;p&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;context&lt;/span&gt; 
 &lt;span class=&#39;k&#39;&gt;FROM&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;characters&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;plot&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;p&lt;/span&gt;
 &lt;span class=&#39;k&#39;&gt;LEFT&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;JOIN&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;observations&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;ON&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;observations&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;author_influence&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;author_influence&lt;/span&gt;
-&lt;span class=&#39;k&#39;&gt;WHERE&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;status&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;NOT DEAD&amp;#39;&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;OR&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;status&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;MYSTERIOUS&amp;#39;&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;WHERE&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;status&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;NOT DEAD&amp;#39;&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;AND&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;c&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;status&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;MYSTERIOUS&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do &lt;a href=&#39;http://en.wikipedia.org/wiki/Finnegans_Wake&#39;&gt;Finnegan&amp;#39;s Wake&lt;/a&gt;? Trying to locate meaning and structure in incidental language?&lt;/p&gt;</description>
+&lt;p&gt;Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do &lt;a href=&#39;http://en.wikipedia.org/wiki/Finnegans_Wake&#39;&gt;Finnegan&amp;#39;s Wake&lt;/a&gt;, trying to locate meaning and structure in the incidental language of the one as they would the incidental plot and interactions of the other?&lt;/p&gt;</description>
                 <link>http://subtxt.in/project/2014/03/30/database-novel</link>
                 <guid>http://subtxt.in/project/2014/03/30/database-novel</guid>
-                <pubDate>2014-03-30T06:24:57-04:00</pubDate>
+                <pubDate>2014-03-30T00:00:00-04:00</pubDate>
         </item>
 
         <item>

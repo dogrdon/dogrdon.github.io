@@ -81,19 +81,19 @@ There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the las
 <div class='figure'>
 <img alt='picture of cluttered parisian apartment that has not been inhabited or touched since 1942, looks dusty and the furniture is rather baroque.' class='blog-post' src='http://cdn.thedailybeast.com/content/dailybeast/articles/2014/02/05/the-parisian-belle-epoque-time-capsule/jcr:content/image.crop.800.500.jpg/1393204098245.cached.jpg' />
 <div class='figcaption'> Image via Getty via The Telegraph</div></div>
-<p>The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and <em> then </em> write the book?</p>
+<p>The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields that feed into a database? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and <em> then </em> write the book? Or better (or worse, perhaps) have an algorithm write the book?</p>
 
 <p>I am imagining that one might ‘query’ for the plot, or the interaction between characters, or some plot arc:</p>
 <div class='highlight'><pre><code class='sql'><span class='k'>SELECT</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>dialogue</span><span class='p'>,</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>action</span><span class='p'>,</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>conflict</span><span class='p'>,</span> <span class='n'>p</span><span class='p'>.</span><span class='n'>scenario</span><span class='p'>,</span> <span class='n'>p</span><span class='p'>.</span><span class='n'>context</span> 
 <span class='k'>FROM</span> <span class='n'>characters</span> <span class='k'>c</span><span class='p'>,</span> <span class='n'>plot</span> <span class='n'>p</span>
 <span class='k'>LEFT</span> <span class='k'>JOIN</span> <span class='n'>observations</span> <span class='k'>ON</span> <span class='n'>observations</span><span class='p'>.</span><span class='n'>author_influence</span> <span class='o'>=</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>author_influence</span>
-<span class='k'>WHERE</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>status</span> <span class='o'>=</span> <span class='s1'>&#39;NOT DEAD&#39;</span> <span class='k'>OR</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>status</span> <span class='o'>=</span> <span class='s1'>&#39;MYSTERIOUS&#39;</span>
+<span class='k'>WHERE</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>status</span> <span class='o'>=</span> <span class='s1'>&#39;NOT DEAD&#39;</span> <span class='k'>AND</span> <span class='k'>c</span><span class='p'>.</span><span class='n'>status</span> <span class='o'>=</span> <span class='s1'>&#39;MYSTERIOUS&#39;</span>
 </code></pre></div>
-<p>Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href='http://en.wikipedia.org/wiki/Finnegans_Wake'>Finnegan&#39;s Wake</a>? Trying to locate meaning and structure in incidental language?</p>
+<p>Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href='http://en.wikipedia.org/wiki/Finnegans_Wake'>Finnegan&#39;s Wake</a>, trying to locate meaning and structure in the incidental language of the one as they would the incidental plot and interactions of the other?</p>
 					<div class="meta">
 						<p class="date-publish">
 							Published: 
-							<date class="date-pub" title="2014-03-30T06:24:57-04:00" datetime="2014-03-30T06:24:57-04:00" pubdate>
+							<date class="date-pub" title="2014-03-30T00:00:00-04:00" datetime="2014-03-30T00:00:00-04:00" pubdate>
 							<span class="month"><abbr>March</abbr></span>
 							<span class="day">30</span>
 							<span class="year">2014</span>
