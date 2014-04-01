@@ -8,9 +8,9 @@ image:
 ---
 {% include JB/setup %}
 
-Before picking up Georges Perec's <a href="http://en.wikipedia.org/wiki/Life_A_User's_Manual" target="_blank">Life A User's Manual</a>, it had not occurred to me much that a novel could be, in essense, structured data. 
+Before picking up Georges Perec's <a href="http://en.wikipedia.org/wiki/Life_A_User's_Manual" target="_blank"><em>Life: A User's Manual</em></a>, it had not occurred to me much that a novel could be, in essense, structured data. 
 
-Or rather, it might have occurred to me as books bring together predictable units: words make paragraphs, paragraphs make chapters, chapters comprise sections or parts (optional) and parts align to make an entire book. Though it interested me to consider that the elements of a novel, its content, the situations and items that inspire the plot or narrative might assemble as if the components of a relational database. 
+Or rather, it might have occurred to me insofar as books bring together predictable units: words make paragraphs, paragraphs make chapters, chapters comprise sections or parts (optional) and parts align to make an entire book. Though it interested me to consider that the elements of a novel, its content, the situations and items that inspire the plot or narrative might assemble as if the components of a relational database. 
 
 <img class='blog-post'  src='https://wiki.duraspace.org/download/attachments/32473993/DSpace-1.8-Database-Schema.png?version=1&amp;modificationDate=1366279060281&amp;api=v2' alt='image of a relational database model' title='relational database model'>
 
@@ -35,7 +35,7 @@ There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the las
 </ul>
 </blockquote>
 
-As I read this book, I am reminded how modular it is. It is the story of an apartment building in Paris on one day, June 23, 1975. Each chapter explores a single apartment or part of the building, taking in the history of its owners and their relation, somehow, to the main character, Bartlebooth, a wealthy englishman who contrives a scheme for puzzle making that sends him around the world. As an object oriented work of literature, I am not surprised that eminent computer scientist Donald Knuth as [regarded](http://www-cs-faculty.stanford.edu/~uno/retd.html "Link to Donald Knuth's Retirement page") this book as "perhaps the greatest 20th century novel".
+As I read this book, I notice how modular it is. It is the story of an apartment building in Paris on one day, June 23, 1975. Each chapter explores a single apartment or part of the building, taking in the history of its owners and their relation, somehow, to the main character, Bartlebooth, a wealthy englishman who contrives a scheme for puzzle making that sends him around the world. As an object-oriented work of literature, I am not surprised that eminent computer scientist Donald Knuth has [regarded](http://www-cs-faculty.stanford.edu/~uno/retd.html "Link to Donald Knuth's Retirement page") this book as "perhaps the greatest 20th century novel".
 
 If this were a book review (which it is not), I would note that throughtout these stories, I often find it hard to follow the "plot" as each chapter seems to fixate more on the details of objects and these objects are overwhelmingly the focus of attention, the glue that pulls together quick snaps of history and the interactions between residents and their predecessors: a list, a recipe, a painting, a sign on a door, a section of a catalog. In all of this clutter, I am routinely brought back to the images of the recently discovered [Paris apartment locked in time](http://www.telegraph.co.uk/news/worldnews/europe/france/8042281/Parisian-flat-containing-2.1-million-painting-lay-untouched-for-70-years.html "Link to story about paris apartment locked in time"). But it is this interesting mosaic of objects and detailed descriptions of them that shores up its unique method of composition.
 
