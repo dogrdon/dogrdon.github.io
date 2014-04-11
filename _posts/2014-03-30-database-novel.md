@@ -8,7 +8,7 @@ image:
 ---
 {% include JB/setup %}
 
-Before picking up Georges Perec's <a href="http://en.wikipedia.org/wiki/Life_A_User's_Manual" target="_blank"><em>Life: A User's Manual</em></a>, it had not occurred to me much that a novel could be, in essense, structured data.
+Before picking up Georges Perec's <a href="http://en.wikipedia.org/wiki/Life_A_User's_Manual" target="_blank"><em>Life: A User's Manual</em></a>, it had not occurred to me much that a novel could be, in essence, structured data.
 
 Or rather, it might have occurred to me insofar as books bring together predictable units: words make paragraphs, paragraphs make chapters, chapters comprise sections or parts (optional) and parts align to make an entire book. Though it interested me to consider that the elements of a novel, its content, the situations and items that inspire the plot or narrative might assemble as if the components of a relational database.
 
@@ -56,4 +56,4 @@ WHERE c.status = 'NOT DEAD' AND c.status = 'MYSTERIOUS'
 
 {%endhighlight%}
 
-Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href="http://en.wikipedia.org/wiki/Finnegans_Wake">Finnegan's Wake</a>, trying to locate meaning and structure in the incidental language of the one as they would the incidental plot and interactions of the other?
+Silly as it sounds, it might make for an interesting project in language processing. Would anyone read it as they do <a href="http://en.wikipedia.org/wiki/Finnegans_Wake">Finnegans Wake</a>, trying to locate meaning and structure in the incidental language of the one as they would the incidental plot and interactions of the other?
