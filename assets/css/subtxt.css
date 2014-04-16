@@ -14,13 +14,13 @@ img.project-image, img.port-thumb, img.blog-post{
 }
 
 img.port-thumb{
-  width:100%; 
+  width:100%;
   opacity: 0.8;
   border: 3px #0a0a0a solid;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  
+
 }
 
 
@@ -37,6 +37,34 @@ img.home_icon{
 	margin-bottom: 0px;
 }
 
+/* ABOUT PAGE */
+
+#about-section{
+
+  padding: 35px 0 100px 0;
+
+}
+
+div#about-section div.soc-med{
+  color: #aa5566;
+  background-color: #ffeebb;
+  padding: 10px;
+  border: 1px solid #665555;
+  font-weight: bold;
+  display: inline-block;
+  margin: 5px;
+  min-width: 50px;
+  font-size: 1.3em;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+div#about-section div.soc-med:hover{
+  color: #ffeebb;
+  background-color: #aa5566;
+}
+
 
 /* POSTS */
 div.figure{
@@ -48,7 +76,7 @@ div.figcaption{
 	text-align: center;
 	background-color: #eee;
 	padding: 2px;
-	
+
 }
 
 a[rel="license"] img{

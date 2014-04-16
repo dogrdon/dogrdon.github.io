@@ -16,7 +16,7 @@ Or rather, it might have occurred to me insofar as books bring together predicta
 
 Or this is what comes to mind as I review the wikipedia <a href="http://en.wikipedia.org/wiki/Life_A_User's_Manual#The_constraints"> section </a> for this novel describing the constraints Perec used to craft his novel.
 
-<blockquote><b>The constraints</b>
+<blockquote><b>The constraints: </b>
 These elements come together with Perec's constraints for the book (in keeping with Oulipo objectives): he created a complex system which would generate for each chapter a list of items, references or objects which that chapter should then contain or allude to. He described this system as a "machine for inspiring stories".
 
 There are 42 lists of 10 objects each, gathered into 10 groups of 4 with the last two lists a special "Couples" list. Some examples:
