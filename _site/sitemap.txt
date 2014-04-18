@@ -11,8 +11,10 @@ http://subtxt.in/sitemap.txt
 http://subtxt.in/tags.html
 http://subtxt.in/windindex.html
 
+http://subtxt.in/museums/2014/04/18/capturing_artistic_process_in_digital_age
+http://subtxt.in/digital-libraries/2014/04/18/preservation_and_access
 http://subtxt.in/thoughts/2014/03/30/database-novel
-http://subtxt.in/information%20design/2014/03/13/digital-books-prelim
+http://subtxt.in/digital-libraries/2014/03/13/digital-books-prelim
 http://subtxt.in/project/2014/01/24/artdealer
 http://subtxt.in/project/2012/06/15/wikisewer_project
 http://subtxt.in/project/2011/03/22/prison-project
