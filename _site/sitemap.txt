@@ -9,9 +9,8 @@ http://subtxt.in/projects.html
 http://subtxt.in/rss.xml
 http://subtxt.in/sitemap.txt
 http://subtxt.in/tags.html
-http://subtxt.in/windindex.html
 
-http://subtxt.in/museums/2014/04/18/capturing_artistic_process_in_digital_age
+http://subtxt.in/museums/2014/04/19/archive_as_art
 http://subtxt.in/digital-libraries/2014/04/18/preservation_and_access
 http://subtxt.in/thoughts/2014/03/30/database-novel
 http://subtxt.in/digital-libraries/2014/03/13/digital-books-prelim
