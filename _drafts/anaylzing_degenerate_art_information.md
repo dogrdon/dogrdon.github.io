@@ -16,6 +16,13 @@ tags: [degenerate art, entartete kunst, data analysis, Neue Galerie]
 *Summary of the database
   -EK Inventory corresponds to the Nazi Inventory number, the primary key.
 
+*Notes about data processing:
+  -Scraping the database
+  -Cleaning the data
+  -Adding Information to the artists table
+  -Paltry attempt at Geocoding that didn't go so well
+  -Visualizing some basic stats
+
 *This post only goes so deep in its visualization. This is a pretty massive topic and really getting at the core of it would require a deep understanding of this point in history, this point in art history, much more information of the biographies of these artists and other such details that are not at my disposal as a hobbyist of degenarate art databases.
 
 *Also, I apologize if collecting this data was somehow problematic. I do not claim to own it and do not have intent to use this data for commercial gain. It is my hope that wrangling this data for this blog post is, if anything, a good promotion for the database itself and welcome any inquiries, notes of admonishment or cease and desist to the e-mail below.
