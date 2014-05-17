@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Analysis of the Entartete Kunst Datenbank"
-description: "The Nazi's attempt to control and or destroy the art they found to be degenarte resulted in a very meticulous documentation of that artwork. The Freie Universität Berlin has undertaken the process of turning the Nazi bookkeeping into a publically accessible database. I took a pass at collecting that data into a workable form and visualizing it. This is in edition to having visited the Neue Galeries exhibitio n of some of those recovered works."
+title: "Light Analysis of the Entartete Kunst Datenbank"
+description: "The Nazi's attempt to control and or destroy the art they found to be degenarte resulted in a very meticulous documentation of that artwork. The Freie Universität Berlin has undertaken the process of turning the Nazi bookkeeping into a publically accessible database. I took a pass at collecting that data into a workable form and visualizing it. There are extreme gaps in this data and it is not fit for deep research, but I think a surface report of some of its attributes is worth a short treatment. This is in addition to having visited the Neue Galeries exhibition of some of those recovered works."
 category: museums
 tags: [degenerate art, entartete kunst, data analysis, Neue Galerie]
 ---
@@ -27,10 +27,16 @@ tags: [degenerate art, entartete kunst, data analysis, Neue Galerie]
 
 *Also, I apologize if collecting this data was somehow problematic. I do not claim to own it and do not have intent to use this data for commercial gain. It is my hope that wrangling this data for this blog post is, if anything, a good promotion for the database itself and welcome any inquiries, notes of admonishment or cease and desist to the e-mail below.
 
-*Some preliminary numbers:
+*Some preliminary numbers on the artworks:
+
+Locations, Status, Some details of the Artists
 
 *A deeper dive (scraping wikipedia for relationships):
 
+This really didn't work out, many of these artists are not fully represented on Wikipedia. Some details of the movements, nationalities and birth and deaths of these artists.
+
 *Discussion:
+
+One of the problems is it's reasonable to hypothesize that many of these artists careers were cut short by this suppression by the Nazis (though it's arguable that some artists were brought more attention by this and it stands to be explored what makes an artist stand out from their milieu).
 
 *Conclusion:
