@@ -4,7 +4,7 @@
  <title>subtxt/in</title>
  <link href="http://subtxt.in/" rel="self"/>
  <link href="http://subtxt.in"/>
- <updated>2014-04-21T21:36:48-04:00</updated>
+ <updated>2014-05-18T16:41:00-04:00</updated>
  <id>http://subtxt.in</id>
  <author>
    <name>drew gordon</name>
@@ -13,10 +13,144 @@
 
  
  <entry>
+   <title>Light Data Analysis of the Entartete Kunst Datenbank (Degenarate Art Database)</title>
+   <link href="http://subtxt.in/museums/2014/05/18/anaylzing_degenerate_art"/>
+   <updated>2014-05-18T16:34:46-04:00</updated>
+   <id>http://subtxt.in/museums/2014/05/18/anaylzing_degenerate_art</id>
+   <content type="html">
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img class=&quot;blog-post&quot; src=&quot;/assets/images/posts/2014/05/degenerate_art_may_2014.png&quot; alt=&quot;author&#39;s picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenarate art exhibit in 1937.&quot; /&gt;
+&lt;div class=&quot;figcaption&quot;&gt; Large image of photograph from original Entartete Kunst Exhibition in 1937 displayed at the entrance to the Degenerate Art Exhibit at the Neue Galerie, May 2014.&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A while ago I came across &lt;a href=&quot;http://www.vam.ac.uk/content/articles/e/entartete-kunst/&quot;&gt;this&lt;/a&gt; announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in their program to annihilate European works of art they considered to be ‘degenarate’. I hate to give any credit to the Nazis, but in their bookkeeping, they were meticulous. Would it be possible to get this information into a database for further analysis of what’s there? Without access to some pretty heavy duty OCR or a lot of money to throw at something like Amazon Mechanical Turk, the answer was most likely no, for now.&lt;/p&gt;
+
+&lt;p&gt;I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an &lt;a href=&quot;http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html&quot;&gt;online, searchable database&lt;/a&gt;, complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only ~10,300 records of a total ~16,000 works of art in the original bookkeeping.&lt;/p&gt;
+
+&lt;p&gt;*Summary of the database
+  -EK Inventory corresponds to the Nazi Inventory number, the primary key.&lt;/p&gt;
+
+&lt;p&gt;*Notes about data processing:
+  -Scraping the database
+  -Cleaning the data
+  -Adding Information to the artists table
+  -Paltry attempt at Geocoding that didn’t go so well
+  -Visualizing some basic stats&lt;/p&gt;
+
+&lt;p&gt;*This post only goes so deep in its analysis. This is a pretty massive topic and really getting at the core of it would require a deep understanding of this point in history, this point in art history, much more information of the biographies of these artists and other such details that are not at my disposal as a hobbyist of degenarate art databases.&lt;/p&gt;
+
+&lt;p&gt;*Also, I apologize if collecting this data was somehow problematic. I do not claim to own it and do not have intent to use this data for commercial gain. It is my hope that wrangling this data for this blog post is, if anything, a good promotion for the database itself and welcome any inquiries, notes of admonishment or cease and desist to the e-mail below.&lt;/p&gt;
+
+&lt;p&gt;*Some preliminary numbers on the artworks:&lt;/p&gt;
+
+&lt;p&gt;Locations, Status, Some details of the Artists&lt;/p&gt;
+
+&lt;p&gt;*A deeper dive (scraping wikipedia for relationships):&lt;/p&gt;
+
+&lt;p&gt;This really didn’t work out, many of these artists are not fully represented on Wikipedia. Some details of the movements, nationalities and birth and deaths of these artists.&lt;/p&gt;
+
+&lt;p&gt;*Discussion:&lt;/p&gt;
+
+&lt;p&gt;One of the problems is it’s reasonable to hypothesize that many of these artists careers were cut short by this suppression by the Nazis (though it’s arguable that some artists were brought more attention by this and it stands to be explored what makes an artist stand out from their milieu).&lt;/p&gt;
+
+&lt;p&gt;Mistaken identity - the case of http://dbpedia.org/page/Robert_Michel_(K%C3%BCnstler), (vs. http://dbpedia.org/page/Robert_Michel) - having noticed the improbability of the artist being 14 at the time.&lt;/p&gt;
+
+&lt;p&gt;(also others with - ages)&lt;/p&gt;
+
+&lt;p&gt;Some questions for further research:
+*Why was printmaking the most predominant art form in the database? (possibly because could be done in quicker succession)
+*Age of artists at the time of this program (1937 - dob).&lt;/p&gt;
+
+&lt;p&gt;*Conclusion:&lt;/p&gt;
+
+&lt;p&gt;The use of databases in the research of art history.&lt;/p&gt;
+
+&lt;p&gt;*Notes
+Find the dataset here
+Biggest problem working with this dataset: incompleteness, character encoding (ensure unicode where possible)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>I Have and RDF file. Now What?</title>
+   <link href="http://subtxt.in/linked-data/2014/05/06/i_have_rdf_now_what"/>
+   <updated>2014-05-06T20:32:49-04:00</updated>
+   <id>http://subtxt.in/linked-data/2014/05/06/i_have_rdf_now_what</id>
+   <content type="html">
+&lt;p&gt;Sample Data Example: Gathering extended data for entities from DBPedia. You have a file of names, places, or events and you want to fill our your data with facts about that individual.&lt;/p&gt;
+
+&lt;p&gt;Creating the data: Use rdflib and fetch the info from DBPedia with python.&lt;/p&gt;
+
+&lt;p&gt;Now you have your RDF file, what does it look like?&lt;/p&gt;
+
+&lt;p&gt;What are we going to do with it?&lt;/p&gt;
+
+&lt;p&gt;Caveat: I am clear that this may not be the general use case for RDF. To me, it appears that that now that you have your sparkling clean RDF graph, now you connect it to other RDF graphs, and sit happily as your data is now linked. I don’t know about any of that. I just want to do a little data analysis.&lt;/p&gt;
+
+&lt;p&gt;How do we get data out of the Graph: We query it.&lt;/p&gt;
+
+&lt;p&gt;What if I want to create a database for it? There are options for that, but I am not exploring any of them. I really just want to get data out and this is a way to acces wikipedia in a structured way. I am open to alternatives.&lt;/p&gt;
+
+&lt;p&gt;Get your data out and append it to a csv file. &lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>The Archive as Artistic Spectacle</title>
    <link href="http://subtxt.in/museums/2014/04/22/archive-as-art"/>
    <updated>2014-04-22T00:00:00-04:00</updated>
    <id>http://subtxt.in/museums/2014/04/22/archive-as-art</id>
+   <content type="html">
+&lt;h3 id=&quot;encountering-an-archive-in-a-museum&quot;&gt;Encountering An Archive in a Museum&lt;/h3&gt;
+
+&lt;p&gt;Recently taking a trip to the 2014 Whitney Biennial, I was drawn in by &lt;a href=&quot;http://whitney.org/Exhibitions/2014Biennial/JosephGrigely&quot; title=&quot;Whitney Biennial 2014 Joseph Grigely, The Gregory Battcock Archive, 2009-2014&quot;&gt;a piece&lt;/a&gt; prepared by Joseph Grigely and Rebecca Morris, which consists of archival materials from the Painter turned Art Critic and Historian &lt;a href=&quot;http://www.dictionaryofarthistorians.org/battcockg.htm&quot;&gt;Gregory Battcock&lt;/a&gt;. Battcock, it is not trivial to mention, was found abruptly and insolvably &lt;a href=&quot;http://news.google.com/newspapers?nid=2506&amp;amp;dat=19801227&amp;amp;id=FVRJAAAAIBAJ&amp;amp;sjid=8wkNAAAAIBAJ&amp;amp;pg=3185,7689250&quot;&gt;murdered&lt;/a&gt; on Christmas day, 1980.&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img class=&quot;blog-post&quot; src=&quot;/assets/images/posts/2014/04/Biennial_2014_battcock_1.jpg&quot; alt=&quot;photograph by Sheldan C. Collins of Installation view The Gregory Battcock Archive, 2009-14 by Joseph Grigley and Rebecca Morris
+Installation view Whitney Biennial 2014 ( March 7 – May 25, 2014), 2nd floor.
+Whitney Museum of American Art, New York. Archival materials inside of wood cases.&quot; /&gt;
+&lt;div class=&quot;figcaption&quot;&gt;  Installation view The Gregory Battcock Archive, 2009-14 by Joseph Grigley and Rebecca Morris
+Installation view Whitney Biennial 2014 ( March 7 – May 25, 2014), 2nd floor.
+Whitney Museum of American Art, New York. Photograph by Sheldan C. Collins &lt;a href=&quot;http://artbooks.yupnet.org/2014/03/28/whitney-biennial-hoopla-david-ebony-interviews-the-curators-stuart-comer-anthony-elms-and-michelle-grabner/&quot;&gt;from&lt;/a&gt; &lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.thevisualist.org/2009/12/joseph-grigley-the-gregory-battcock-archive/&quot; target=&quot;_blank&quot;&gt;Here&lt;/a&gt; is a little more background and rumination on the narrative intent of exhibiting this archive, though my focus is more on the broader scope of archives embedded as public displays in museums. While this is not a new or rare approach, I think it is an interesting tactic in museum curation.&lt;/p&gt;
+
+&lt;h3 id=&quot;encountering-the-archive&quot;&gt;Encountering the Archive&lt;/h3&gt;
+
+&lt;p&gt;I am skeptical of contemporary-art for reasons that are beyond this post. That said, I found that this piece accomplished what I think is an important function of a work of art: it compelled me to see something differently (“what are &lt;a href=&quot;http://hyperallergic.com/117621/art-in-the-1980s-the-forgotten-history-of-padd/&quot; title=&quot;link to history of padd archive exhibit&quot;&gt;other&lt;/a&gt; instances of archival materials in the museum as such and not as evidence for a larger exhibit?”); it brought attention to something I was not aware of (namely, Gregory Battcock); and it dialed in a channel I was not tuned into previously (namely, that the Archive could be out in the open, in the wild, for more than just the researcher and the enthusiast to view).&lt;/p&gt;
+
+&lt;p&gt;Beyond these impressions, the encounter brought with it questions of meta-art (or whatever you might call art about art or artists), who is the artist (or rather what is the agent conveying the most significance in this instance: Grigley’s selection? Battcock’s oeuvre? the latter’s tragic end?)?, and, as I’ll consider below, what might be preserved and what preserved objects are interesting to a public audience?&lt;/p&gt;
+
+&lt;h3 id=&quot;the-archive-as-evidence-in-a-mystery&quot;&gt;The Archive as Evidence in a Mystery&lt;/h3&gt;
+
+&lt;p&gt;The Archival space is process and thought laid bare and rough. It is where we find objects like the written notes or quick sketches that beget the final product, the photographs and private communications that accompany ideas or document the context of those ideas. They give background to respected cultural works, allow us to plumb the depths of an artist’s work and philosophy.&lt;/p&gt;
+
+&lt;p&gt;Archives are also, in the same sense, a work of archaeology. They are the uncovered artifacts that shore up a hypothesis about how the subject lived and worked, the detrita of an artistic practice that, at times, attempts to cover up its own biographical tracks back to its creator.&lt;/p&gt;
+
+&lt;p&gt;Put in yet another way, Archives are a crucial view into the creative process of an artist (or anyone who is important enough to have an archive) that transcends the production and machinations of artistic representation. Aside from what is said of narrative and storytelling, it strikes me more like a natural formation, like water smoothing and carving channels in stone over a long period of time. There is a great deal of potency in the slow, guileless accumulation of personal artifacts never intended to touch the public in the same way that the final work of art is intended to.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-archive-as-art-and-preservation-concerns&quot;&gt;The Archive as Art and Preservation Concerns&lt;/h3&gt;
+
+&lt;p&gt;Though what struck me while viewing this exhibit is the fear that more and more, where work is done digitally - on less reliable storage media than paper, artistic process might become more ephemeral and less telling, less revealing. And I began to wonder how we might capture artistic process as work becomes more digital. With digital tools at hand, we can capture more and we can also produce more. But as the barrier to documentation lowers, it’s easier for us as creators to water down the process of selection. The qualities of discernment and deliberation in the development of art or an idea might become less apparent or obvious.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-future-of-the-archive-as-public-spectacle&quot;&gt;The Future of The Archive as Public Spectacle&lt;/h3&gt;
+
+&lt;p&gt;So the original thought that brought me to write this and meander through the above is: What does the public exhibition of the Archive look like in the future (which is a question, at this point, not entirely separated from what the archive, in general, looks like in the future). We are now at a point where &lt;a href=&quot;http://www.moleskine.com/&quot;&gt;notebooks are a bit of an affectation&lt;/a&gt;, in a world of &lt;a href=&quot;https://evernote.com&quot;&gt;Evernote&lt;/a&gt; and &lt;a href=&quot;https://drive.google.com/keep&quot;&gt;Google Keep&lt;/a&gt; (in addition to any number of other apps with their own particular data structures and policies for export).&lt;/p&gt;
+
+&lt;p&gt;So how might we display the digital sketches and notes left by an artist such that it communicates the impressions and opinions we have of their work? Do we exhibit personal harddrives connected to monitors with an interactive display? Do we allow museum patrons to browse diffs for edits in seminal works of an author (I am reminded of &lt;a href=&quot;http://benfry.com/traces/&quot;&gt;this&lt;/a&gt; amazing visualization of edits to Charles Darwin’s Origin of the Species by Ben Fry)? Establish a flickr stream of all an artist’s archival photographs? Create an interactive display for browsing the structured data pulled from any number of productivity apps that have come and gone through the course of an artist’s working life?&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+&lt;a href=&quot;/assets/images/posts/2014/04/darwin-ben-fry.png&quot;&gt;&lt;img class=&quot;blog-post&quot; title=&quot;image of ben fry visualization of origin of the species edition visualization&quot; src=&quot;/assets/images/posts/2014/04/darwin-ben-fry.png&quot; /&gt;&lt;/a&gt;&lt;div class=&quot;figcaption&quot;&gt;Screen capture of a visualization of changes to editions of Charles Darwin&#39;s Origin of the Species. Which can be found &lt;a href=&quot;http://benfry.com/traces/&quot;&gt;here&lt;/a&gt; &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Some of this leads me then to suggest a need for more data science at the point where the archive meets the museum. Though I am not recommending a complete replacement of Archival and Museum professionals with data scientists. However, it seems that being able to manipulate and communicate large sets of digital information will be a crucial skill set for those attempting to narrate in this space in the future (and currently, it doesn’t hurt to have some of these skills currently). In the meantime, I’ll be keeping an eye out for more and more interesting embeds of archives in the public art space.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The Archive as Artistic Spectacle</title>
+   <link href="http://subtxt.in/museums/2014/04/21/archive_as_art"/>
+   <updated>2014-04-21T21:35:10-04:00</updated>
+   <id>http://subtxt.in/museums/2014/04/21/archive_as_art</id>
    <content type="html">
 &lt;h3 id=&quot;encountering-an-archive-in-a-museum&quot;&gt;Encountering An Archive in a Museum&lt;/h3&gt;
 
@@ -61,6 +195,15 @@ Whitney Museum of American Art, New York. Photograph by Sheldan C. Collins &lt;a
 &lt;/div&gt;
 
 &lt;p&gt;Some of this leads me then to suggest a need for more data science at the point where the the archive meets the museum. Though I am not recommending a complete replacement of Archival and Museum professionals with data scientists. However, it seems that being able to manipulate and communicate large sets of digital information will be a crucial skill set for those attempting to narrate in this space in the future (and currently, it doesn’t hurt to have some of these skills currently). In the meantime, I’ll be keeping an eye out for more and more interesting embeds of archives in the public art space.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Preservation and Access - Digital Libraries Part II</title>
+   <link href="http://subtxt.in/digital-libraries/2014/04/18/preservation_and_access"/>
+   <updated>2014-04-18T01:01:31-04:00</updated>
+   <id>http://subtxt.in/digital-libraries/2014/04/18/preservation_and_access</id>
+   <content type="html">
 </content>
  </entry>
  

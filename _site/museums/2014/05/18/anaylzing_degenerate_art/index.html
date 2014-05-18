@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Light Data Analysis of the Entartete Kunst Datenbank (Degenarate Art Database)</title>
+	<meta name="author" content="drew gordon">
+	<meta name="description" content="personal website for drew gordon. writings about technology in libraries and archives, culture, literature, language, and data">
+	<meta name="keywords" content="language, culture, data, libraries, archives, history, NLP">
+	<!--twitter card metadata -->
+	<meta name="twitter:card" value="summary">
+	<meta name="twitter:site" value="@droquo">
+	<meta name="twitter:creator" value="@droquo">
+	<meta name="twitter:title" value="Light Data Analysis of the Entartete Kunst Datenbank (Degenarate Art Database)">
+    <meta name="twitter:description" value="The Nazi's attempt to control and or destroy the art they found to be degenarate resulted in a meticulous documentation of that artwork. The Freie Universität Berlin has undertaken the process of turning the Nazi bookkeeping into a publically accessible database. I took a pass at collecting that data into a sqlite database and going over some of the readily available summary statistics. There are extreme gaps in this data due to incompleteness of the online database itself as well as a lack of information for its artists currently available on a service like dbpedia. As such it is not fit for deep analysis, but I think a surface report of some of its attributes is worth a short treatment. In conclusion the statistical accumulation of artistic works within a particular context could offer a interesting launch pad for art history researchers.">
+
+
+	<link href='/assets/themes/the-minimum/css/style.css' rel="stylesheet" media="all">
+
+	<!--subtxt.css-->
+	<link rel="stylesheet" href="/assets/css/subtxt.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<p class="logo"><a href="/">subtxt/in</a></p>
+				<nav class="nav-global">
+					<ul>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/projects.html">projects</a></li>
+						<li class="about"><a href="/about.html">whois subtxtin?</a></li>
+						<li class="rss"><a href="/rss">rss <span class="glyphicon glyphicon-bullhorn"></span></a></li>
+
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">Light Data Analysis of the Entartete Kunst Datenbank (Degenarate Art Database)</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					
+<div class="figure">
+<img class="blog-post" src="/assets/images/posts/2014/05/degenerate_art_may_2014.png" alt="author's picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenarate art exhibit in 1937." />
+<div class="figcaption"> Large image of photograph from original Entartete Kunst Exhibition in 1937 displayed at the entrance to the Degenerate Art Exhibit at the Neue Galerie, May 2014.</div></div>
+
+<p>A while ago I came across <a href="http://www.vam.ac.uk/content/articles/e/entartete-kunst/">this</a> announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in their program to annihilate European works of art they considered to be ‘degenarate’. I hate to give any credit to the Nazis, but in their bookkeeping, they were meticulous. Would it be possible to get this information into a database for further analysis of what’s there? Without access to some pretty heavy duty OCR or a lot of money to throw at something like Amazon Mechanical Turk, the answer was most likely no, for now.</p>
+
+<p>I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an <a href="http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html">online, searchable database</a>, complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only ~10,300 records of a total ~16,000 works of art in the original bookkeeping.</p>
+
+<p>*Summary of the database
+  -EK Inventory corresponds to the Nazi Inventory number, the primary key.</p>
+
+<p>*Notes about data processing:
+  -Scraping the database
+  -Cleaning the data
+  -Adding Information to the artists table
+  -Paltry attempt at Geocoding that didn’t go so well
+  -Visualizing some basic stats</p>
+
+<p>*This post only goes so deep in its analysis. This is a pretty massive topic and really getting at the core of it would require a deep understanding of this point in history, this point in art history, much more information of the biographies of these artists and other such details that are not at my disposal as a hobbyist of degenarate art databases.</p>
+
+<p>*Also, I apologize if collecting this data was somehow problematic. I do not claim to own it and do not have intent to use this data for commercial gain. It is my hope that wrangling this data for this blog post is, if anything, a good promotion for the database itself and welcome any inquiries, notes of admonishment or cease and desist to the e-mail below.</p>
+
+<p>*Some preliminary numbers on the artworks:</p>
+
+<p>Locations, Status, Some details of the Artists</p>
+
+<p>*A deeper dive (scraping wikipedia for relationships):</p>
+
+<p>This really didn’t work out, many of these artists are not fully represented on Wikipedia. Some details of the movements, nationalities and birth and deaths of these artists.</p>
+
+<p>*Discussion:</p>
+
+<p>One of the problems is it’s reasonable to hypothesize that many of these artists careers were cut short by this suppression by the Nazis (though it’s arguable that some artists were brought more attention by this and it stands to be explored what makes an artist stand out from their milieu).</p>
+
+<p>Mistaken identity - the case of http://dbpedia.org/page/Robert_Michel_(K%C3%BCnstler), (vs. http://dbpedia.org/page/Robert_Michel) - having noticed the improbability of the artist being 14 at the time.</p>
+
+<p>(also others with - ages)</p>
+
+<p>Some questions for further research:
+*Why was printmaking the most predominant art form in the database? (possibly because could be done in quicker succession)
+*Age of artists at the time of this program (1937 - dob).</p>
+
+<p>*Conclusion:</p>
+
+<p>The use of databases in the research of art history.</p>
+
+<p>*Notes
+Find the dataset here
+Biggest problem working with this dataset: incompleteness, character encoding (ensure unicode where possible)</p>
+
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2014-05-18T16:34:46-04:00" datetime="2014-05-18T16:34:46-04:00" pubdate>
+							<span class="month"><abbr>May</abbr></span>
+							<span class="day">18</span>
+							<span class="year">2014</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#museums-ref">
+    		museums <span>3</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/tags.html#degenerate art-ref">degenerate art <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#entartete kunst-ref">entartete kunst <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#data analysis-ref">data analysis <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Neue Galerie-ref">Neue Galerie <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#art history-ref">art history <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#python-ref">python <span>2</span></a></li>
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="droquo" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/droquo" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li>
+						</ul>
+					</div>
+					
+					
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'subtxt'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+				</div><!-- misc-content -->
+				
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/linked-data/2014/05/06/i_have_rdf_now_what" title="View I Have and RDF file. Now What?">&laquo; I Have and RDF file. Now What?</a></li>
+							
+							
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n">drew gordon</span> - <span class="fn email">drew@subtxt.in</span></address></li>
+						<li class="github"><a href="http://github.com/droquo/" rel="me">github.com/droquo</a></li>
+						<li class="twitter"><a href="http://twitter.com/droquo/" rel="me">twitter.com/droquo</a></li>
+
+					</ul>
+				</div><!-- misc -->
+				<p class="licence">
+					Theme: <a href="http://layouts-the.me">the_minimum</a> based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+	(function(d, s) {
+		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.src = url; js.id = id;
+		fjs.parentNode.insertBefore(js, fjs);
+		};
+	load('//platform.twitter.com/widgets.js', 'tweetjs');
+	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/museums/2014/05/18/anaylzing_degenerate_art" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	}(document, 'script'));
+</script>
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+<!-- Jquery from CDN -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  
+</body>
+</html>
+
