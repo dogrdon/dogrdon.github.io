@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Light Analysis of the Entartete Kunst Datenbank"
-description: "The Nazi's attempt to control and or destroy the art they found to be degenarte resulted in a very meticulous documentation of that artwork. The Freie Universität Berlin has undertaken the process of turning the Nazi bookkeeping into a publically accessible database. I took a pass at collecting that data into a workable form and visualizing it. There are extreme gaps in this data and it is not fit for deep research, but I think a surface report of some of its attributes is worth a short treatment. This is in addition to having visited the Neue Galeries exhibition of some of those recovered works."
+description: "The Nazi's attempt to control and or destroy the art they found to be degenarte resulted in a very meticulous documentation of that artwork. The Freie Universität Berlin has undertaken the process of turning the Nazi bookkeeping into a publically accessible database. I took a pass at collecting that data into a workable form and visualizing it. There are extreme gaps in this data and it is not fit for deep research, but I think a surface report of some of its attributes is worth a short treatment. This is in addition to having visited the Neue Galeries exhibition of some of those recovered works. Concluded that the statistical accumulation of artistic works within a particular context could offer a interesting launch pad for art history researchers, were such databases proliferate."
 category: museums
 tags: [degenerate art, entartete kunst, data analysis, Neue Galerie]
 ---
@@ -39,4 +39,18 @@ This really didn't work out, many of these artists are not fully represented on 
 
 One of the problems is it's reasonable to hypothesize that many of these artists careers were cut short by this suppression by the Nazis (though it's arguable that some artists were brought more attention by this and it stands to be explored what makes an artist stand out from their milieu).
 
+Mistaken identity - the case of http://dbpedia.org/page/Robert_Michel_(K%C3%BCnstler), (vs. http://dbpedia.org/page/Robert_Michel) - having noticed the improbability of the artist being 14 at the time.
+
+(also others with - ages)
+
+Some questions for further research:
+*Why was printmaking the most predominant art form in the database? (possibly because could be done in quicker succession)
+*Age of artists at the time of this program (1937 - dob).
+
 *Conclusion:
+
+The use of databases in the research of art history.
+
+*Notes
+Find the dataset here
+Biggest problem working with this dataset: incompleteness, character encoding (ensure unicode where possible)
