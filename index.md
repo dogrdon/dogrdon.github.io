@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ![title](http://www.dan-dare.org/FreeFun/Images/CartoonsMoviesTV/ShrekWallpaper800.jpg)
+title: ![title](http://www.example.com)
 tagline: 
 category: home
 ---
