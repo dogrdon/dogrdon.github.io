@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Light Data Analysis of the Entartete Kunst Datenbank (Degenarate Art Database)"
+title: "Scraping and Analyzing the Entartete Kunst Datenbank (Degenarate Art Database)"
 description: "The Nazi's attempt to control and or destroy the art they found to be degenerate resulted in a meticulous documentation of that artwork. The Freie Universität Berlin has undertaken the process of turning the Nazi bookkeeping into a publically accessible database. I took a pass at collecting that data into a sqlite database and going over some of the readily available summary statistics. There are extreme gaps in this data due to incompleteness of the online database itself as well as a lack of information for its artists currently available on a service like dbpedia. As such it is not fit for deep analysis, but I think a surface report of some of its attributes is worth a short treatment. In conclusion the statistical accumulation of artistic works within a particular context could offer a interesting launch pad for art history researchers."
 category: museums
-tags: [degenerate art, entartete kunst, data analysis, Neue Galerie, art history, python]
+tags: [degenerate art, entartete kunst, data analysis, Neue Galerie, art history, python, linked data]
 ---
 {% include JB/setup %}
 
@@ -50,10 +50,13 @@ Some questions for further research:
 *Why was printmaking the most predominant art form in the database? (possibly because could be done in quicker succession)
 *Age of artists at the time of this program (1937 - dob).
 
-*Conclusion:
+*Conclusion / *Notes:
 
 The use of databases in the research of art history.
+Problems with making this data:
+*unicode, obviously
+*NER was done extremely naively, hence a good number of names probably resolved to someone more famous who reserved the canonical spot for the dbpedia resource (ex. the Robert Michel we were looking for would have been at Robert_Michel_(Künstler) and not http://dbpedai.org/page/Robert_Michel - an American politician. A mistake dbpedia spotlight NER would have also made.)
+*
 
-*Notes
 Find the dataset here
 Biggest problem working with this dataset: incompleteness, character encoding (ensure unicode where possible)
