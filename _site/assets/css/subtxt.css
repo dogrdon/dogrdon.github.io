@@ -6,6 +6,10 @@ body{
 }
 
 /* HEADER NAV */
+.the-header .nav-global {
+    width: 29em;
+}
+
 .the-header .nav-global ul li a{
   border: solid 1px #777;
   padding: 10px;
