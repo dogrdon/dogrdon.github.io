@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Scraping and Analyzing the Entartete Kunst Datenbank (Degenarate Art Database)"
+title: "Scraping and Analyzing the Datenbank Entartete Kunst (Degenarate Art Database)"
 description: "The Nazi's attempt to control and or destroy the art they found to be degenerate resulted in a meticulous documentation of that artwork. The Freie Universität Berlin has undertaken the process of turning the Nazi bookkeeping into a publically accessible database. I took a pass at collecting that data into a sqlite database and going over some of the readily available summary statistics. There are extreme gaps in this data due to incompleteness of the online database itself as well as a lack of information for its artists currently available on a service like dbpedia. As such it is not fit for deep analysis, but I think a surface report of some of its attributes is worth a short treatment. In conclusion the statistical accumulation of artistic works within a particular context could offer a interesting launch pad for art history researchers."
 category: museums
 tags: [degenerate art, entartete kunst, data analysis, Neue Galerie, art history, python, linked data]
@@ -30,11 +30,11 @@ I was pleased to find, however, that the Freie Universität Berlin had undertake
 
 *Also, I apologize if collecting this data was somehow problematic. I do not claim to own it and do not have intent to use this data for commercial gain. It is my hope that wrangling this data for this blog post is, if anything, a good promotion for the database itself and welcome any inquiries, notes of admonishment or cease and desist to the e-mail below.
 
-*Some preliminary numbers on the artworks:
+* Some preliminary numbers on the artworks:
 
 Locations, Status, Some details of the Artists
 
-*A deeper dive (scraping wikipedia for relationships):
+* A deeper dive (scraping wikipedia for relationships):
 
 This really didn't work out, many of these artists are not fully represented on Wikipedia. Some details of the movements, nationalities and birth and deaths of these artists.
 
@@ -42,7 +42,7 @@ Map:
 
 <iframe width='100%' height='600' frameborder='0' src='//droquo.cartodb.com/viz/e8e4e4a8-e228-11e3-ae87-0e73339ffa50/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&zoom=2&center_lat=22.59372606392931&center_lon=368.43749999999994' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
-*Discussion:
+* Discussion:
 
 One of the problems is it's reasonable to hypothesize that many of these artists careers were cut short by this suppression by the Nazis (though it's arguable that some artists were brought more attention by this and it stands to be explored what makes an artist stand out from their milieu).
 
@@ -51,16 +51,16 @@ Mistaken identity - the case of http://dbpedia.org/page/Robert_Michel_(K%C3%BCns
 (also others with - ages)
 
 Some questions for further research:
-*Why was printmaking the most predominant art form in the database? (possibly because could be done in quicker succession)
-*Age of artists at the time of this program (1937 - dob).
+* Why was printmaking the most predominant art form in the database? (possibly because could be done in quicker succession)
+* Age of artists at the time of this program (1937 - dob).
 
-*Conclusion / *Notes:
+* Conclusion / * Notes:
 
 The use of databases in the research of art history.
 Problems with making this data:
 *unicode, obviously
 *NER was done extremely naively, hence a good number of names probably resolved to someone more famous who reserved the canonical spot for the dbpedia resource (ex. the Robert Michel we were looking for would have been at Robert_Michel_(Künstler) and not http://dbpedai.org/page/Robert_Michel - an American politician. A mistake dbpedia spotlight NER would have also made.)
-*
+
 
 Find the dataset here
 Biggest problem working with this dataset: incompleteness, character encoding (ensure unicode where possible)
