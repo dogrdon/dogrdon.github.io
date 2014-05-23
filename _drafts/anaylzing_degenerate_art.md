@@ -12,19 +12,21 @@ tags: [degenerate art, entartete kunst, data analysis, Neue Galerie, art history
 <div class="figcaption"> Large image of photograph from original Entartete Kunst Exhibition in 1937 displayed at the entrance to the Degenerate Art Exhibit at the Neue Galerie, May 2014.</div></div>
 
 
-A while ago I came across [this](http://www.vam.ac.uk/content/articles/e/entartete-kunst/) announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in their program to annihilate European works of art they considered to be 'degenerate'. I hate to give any credit to the Nazis, but in their bookkeeping, they were meticulous. Would it be possible to get this information into a database for further analysis of what's there? Without access to some pretty heavy duty OCR or a lot of money to throw at something like Amazon Mechanical Turk, the answer was most likely no, for now.
+A while ago I came across [this](http://www.vam.ac.uk/content/articles/e/entartete-kunst/) announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in their program to round up and annihilate European works of art they considered to be 'degenerate'. I hate to give any credit to the Nazis, but in their bookkeeping, they were meticulous. 
+
+My immediate thought was: Would it be possible to get this information into a database for further analysis of what's there? Without access to some pretty heavy duty OCR or a lot of money to throw at something like Amazon Mechanical Turk, the answer was most likely no, for now.
 
 I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an [online, searchable database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html), complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only ~10,300 records of a total ~16,000 works of art in the original bookkeeping.
 
-*Summary of the database
-  -EK Inventory corresponds to the Nazi Inventory number, the primary key.
+The related scripts and data can be found (here)[http://github.com/droquo/entartete_scraper, "link to repository containing scraper and data files for the degenerate art database"] in a fairly unkempt repository.
 
 *Notes about data processing:
   -Scraping the database
   -Cleaning the data
-  -Adding Information to the artists table
+  -Adding Information to the artists table - dbpedia
   -Paltry attempt at Geocoding that didn't go so well
-  -Visualizing some basic stats
+  
+Some take aways
 
 *This post only goes so deep in its analysis. This is a pretty massive topic and really getting at the core of it would require a deep understanding of this point in history, this point in art history, much more information of the biographies of these artists and other such details that are not at my disposal as a hobbyist of degenerate art databases.
 
