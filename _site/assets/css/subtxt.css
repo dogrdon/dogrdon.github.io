@@ -80,6 +80,11 @@ div#about-section a{
 
 
 /* POSTS */
+
+div.entry-content{
+	width: 60em;
+}
+
 div.figure{
 	margin: 20px 0 20px 0;
 	width: 100%;
