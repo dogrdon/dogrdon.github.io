@@ -93,29 +93,30 @@ The related scripts and data can be found [here](http://github.com/droquo/entart
 	Chalk | 74
 	Pencil | 72	
 	
-	=== Artists with most work in the database ===
-	
-	ARTIST | COUNT
-	Nolde, Emil | 878
-	Kirchner, Ernst Ludwig | 622
-	Barlach, Ernst | 590
-	Heckel, Erich | 587
-	Kokoschka, Oskar | 509
-	Mueller , Otto | 312
-	Pechstein, Max | 268
-	Schmidt- Rottluff , Karl | 174
-	Beckmann, Max | 159
-	Feininger, Lyonel | 138
-	Grosz , George | 134
-	Jansen, Franz Maria | 126
-	Kandinsky, Wassily | 113
-	Grossmann, Rudolf | 104
-	Marc, Franz | 99
-	Dix, Otto | 79
-	Klee, Paul | 73
-	Corinth, Lovis | 68
-	Seewald , Richard | 67
-	Ehmsen , Heinrich | 66
+=== Artists with most work in the database ===
+
+| ARTIST | COUNT |
+|--------|------:|
+|Nolde, Emil | 878 |
+|Kirchner, Ernst Ludwig | 622 |
+|Barlach, Ernst | 590 |
+|Heckel, Erich | 587 |
+|Kokoschka, Oskar | 509 |
+|Mueller , Otto | 312 |
+|Pechstein, Max | 268 |
+|Schmidt- Rottluff , Karl | 174 |
+|Beckmann, Max | 159 |
+|Feininger, Lyonel | 138 |
+|Grosz , George | 134 |
+|Jansen, Franz Maria | 126 |
+|Kandinsky, Wassily | 113 |
+|Grossmann, Rudolf | 104 |
+|Marc, Franz | 99 |
+|Dix, Otto | 79 |
+|Klee, Paul | 73 |
+|Corinth, Lovis | 68 |
+|Seewald , Richard | 67 |
+|Ehmsen , Heinrich | 66 |
 		
 	=== Artist with most works under Printmaking ===
 	

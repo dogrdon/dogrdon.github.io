@@ -5,8 +5,8 @@
         <description>subtxt/in - drew gordon</description>
         <link>http://subtxt.in</link>
         <link>http://subtxt.in</link>
-        <lastBuildDate>2014-05-24T14:37:29-04:00</lastBuildDate>
-        <pubDate>2014-05-24T14:37:29-04:00</pubDate>
+        <lastBuildDate>2014-05-24T15:11:55-04:00</lastBuildDate>
+        <pubDate>2014-05-24T15:11:55-04:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -105,32 +105,102 @@ Watercolor and ink | 93
 Lithograph , colored | 82
 Chalk | 74
 Pencil | 72	
+&lt;/code&gt;&lt;/pre&gt;
 
-=== Artists with most work in the database ===
+&lt;p&gt;=== Artists with most work in the database ===&lt;/p&gt;
 
-ARTIST | COUNT
-Nolde, Emil | 878
-Kirchner, Ernst Ludwig | 622
-Barlach, Ernst | 590
-Heckel, Erich | 587
-Kokoschka, Oskar | 509
-Mueller , Otto | 312
-Pechstein, Max | 268
-Schmidt- Rottluff , Karl | 174
-Beckmann, Max | 159
-Feininger, Lyonel | 138
-Grosz , George | 134
-Jansen, Franz Maria | 126
-Kandinsky, Wassily | 113
-Grossmann, Rudolf | 104
-Marc, Franz | 99
-Dix, Otto | 79
-Klee, Paul | 73
-Corinth, Lovis | 68
-Seewald , Richard | 67
-Ehmsen , Heinrich | 66
-	
-=== Artist with most works under Printmaking ===
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;ARTIST&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;COUNT&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Nolde, Emil&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;878&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kirchner, Ernst Ludwig&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;622&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Barlach, Ernst&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;590&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Heckel, Erich&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;587&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kokoschka, Oskar&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;509&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mueller , Otto&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;312&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Pechstein, Max&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;268&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Schmidt- Rottluff , Karl&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;174&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Beckmann, Max&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;159&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Feininger, Lyonel&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;138&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Grosz , George&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;134&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jansen, Franz Maria&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;126&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kandinsky, Wassily&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;113&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Grossmann, Rudolf&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;104&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Marc, Franz&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Dix, Otto&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;79&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Klee, Paul&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;73&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Corinth, Lovis&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;68&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Seewald , Richard&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;67&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ehmsen , Heinrich&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;66&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code&gt;=== Artist with most works under Printmaking ===
 
 ARTIST | COUNT
 Nolde, Emil | 1102
@@ -251,7 +321,7 @@ Problems with making this data:
 </description>
                 <link>http://subtxt.in/museums/2014/05/24/analyzing_degenerate_art</link>
                 <guid>http://subtxt.in/museums/2014/05/24/analyzing_degenerate_art</guid>
-                <pubDate>2014-05-24T14:37:28-04:00</pubDate>
+                <pubDate>2014-05-24T15:11:55-04:00</pubDate>
         </item>
 
         <item>
