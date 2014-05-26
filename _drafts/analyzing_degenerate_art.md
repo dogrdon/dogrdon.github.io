@@ -13,11 +13,13 @@ tags: [art, database, museums, data analysis, Neue Galerie, art history, python,
 
 ####Introduction
 
-A short while ago I came across [this](http://www.vam.ac.uk/content/articles/e/entartete-kunst/) announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in their program to round up and annihilate European works of art they considered to be 'degenerate'. I hate to give any credit to the Nazis, but in their bookkeeping, they were meticulous. 
+In 1937, the Nazis seized and exhibited works of art that demonstrated what they felt to be a degenerate depictions of religion representations of the human form. It was aimed largely at the modern art of the time and was done to sanction artists who produced it for being "un-German, Jewish Bolshevist in nature" [1]. Currently, there is an exhibition of the works of art that survived from this period in history at the Neue Galerie in New York. This event was also the basis for the book and recent movie, <i>The Monuments Men</i>.
+
+A short while ago I came across [this](http://www.vam.ac.uk/content/articles/e/entartete-kunst/) announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in their program to round up and annihilate works of art they considered to be degenerate. The meticulous bookkeeping herein makes it possible to perform some analytics in the service of Art History research. 
 
 My immediate thought was: Would it be possible to get this information into a database for further analysis of what's there? Without access to some pretty heavy duty OCR or a lot of money to throw at something like Amazon Mechanical Turk, the answer was most likely no, for now.
 
-I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an [online, searchable database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html "link to the degenerate art database at the Freie Universität Berlin"), complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only ~10,300 records of a total ~16,000 works of art in the original record.
+I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an [online, searchable database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html "link to the degenerate art database at the Freie Universität Berlin"), complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only 10,340 records of a total ~16,000 works of art in the original record.
 
 The related scripts and data can be found [here](http://github.com/droquo/entartete_scraper "link to repository containing scraper and data files for the degenerate art database") in a fairly unkempt repository.
 
@@ -41,59 +43,100 @@ The related scripts and data can be found [here](http://github.com/droquo/entart
 
   <iframe width='100%' height='600' frameborder='0' src='//droquo.cartodb.com/viz/e8e4e4a8-e228-11e3-ae87-0e73339ffa50/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=&zoom=2&center_lat=22.59372606392931&center_lon=368.43749999999994' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
   
+    Translation of Legend
+	DRUCKGRAPHIK = PRINTS
+	GEMÄLDE = PAINTINGS
+	AQUARELL = WATERCOLOR
+	ZEICHNUNG = DRAWING
+	SKULPTUR/PLASTIK = SCULPTURE / PLASTIC
+	TEXTIL = TEXTILE
+	MOSAIK = MOSAIC
+  
   
 ####Some Points of Interest
 
 * This post only goes so deep in its analysis. This being a fairly massive crossroad of Art and World History, really getting at the core of it would require a deeper understanding of this point in time and its context. It would also require a much fuller, more complete dataset. As such, this is more of a quick and broad treatment and a proof of concept on my part.
 
-*Also, I apologize if collecting this data was somehow problematic. I do not claim to own it and do not have intent to use this data for commercial gain. It is my hope that wrangling this data for this blog post is, if anything, a good promotion for the database itself and welcome any inquiries, notes of admonishment or cease and desist to the e-mail below.
+* Also, I apologize if collecting this data was somehow problematic. I do not claim to own it and do not have intent to use this data for commercial gain. It is my hope that wrangling this data for this blog post is, if anything, a good promotion for the database itself and welcome any inquiries, notes of admonishment or cease and desist to the e-mail below.
+
+Some obvious points of entry now that we have a database we might query are some basic counts of certain columns. Let's start with the over all current status of works as reported in the database.
 	
-	Top 10 work statuses =========
-	STATUS | COUNT
-	Unknown | 5859
-	destroyed | 1722
-	Rostock, Museum of Cultural History | 572
-	Berlin, Prints and Drawings | 335
-	Private property | 251
-	Munich , Bavarian State Painting Collections - Pinakothek der Moderne | 147
-	In the NS - inventory as listed destroyed | 131
-	Munich , State Graphic Collection | 99
-	Erfurt, Anger Museum | 60
-	Weimar, Weimar Classic Foundation | 57
+	=== Top 10 work statuses ===
+
+| STATUS | COUNT |
+|:------|------:|
+|Unknown | 5859 |
+|destroyed | 1722 |
+|Rostock, Museum of Cultural History | 572 |
+|Berlin, Prints and Drawings | 335 |
+|Private property | 251 |
+|Munich , Bavarian State Painting Collections - Pinakothek der Moderne | 147 |
+|In the NS - inventory as listed destroyed | 131 |
+|Munich , State Graphic Collection | 99 |
+|Erfurt, Anger Museum | 60 |
+|Weimar, Weimar Classic Foundation | 57 |
+
+
+The status of around half of the contents of the current database are unknown. More dismaying we have a reported 16.7% of the recorded online database having been destroyed.
+
+Though perhaps we want a count of the art forms employed by the artists:
+
 	
 	=== Top 10 art formats ===
-	FORMAT | COUNT
-	Printmaking | 7019
-	Paintings | 1298
-	Watercolor | 1034
-	Drawing | 796
-	Sculpture / Sculpture | 155
-	Book | 29
-	Textile | 5
-	General | 2
-	B | 1
-	Mosaic | 1
+	
+| FORMAT | COUNT |
+|:-------|------:|
+|Printmaking | 7019 |
+|Paintings | 1298 |
+|Watercolor | 1034 |
+|Drawing | 796 |
+|Sculpture / Sculpture | 155 |
+|Book | 29 |
+|Textile | 5 |
+|General | 2 |
+|Mosaic | 1 |
+
+
+I was interested to see that an overwhelming majority of the works here were in produced through some form of printmaking (woodcut, lithograph, etching, etc.). While there are some fairly obvious explanations for this. To begin with, printmaking, by its nature is far more reproducible of an art form. It is possible to churn out more representations of this format than something like oil painting or watercolor since once you have a template, you can make multiple copies. Secondly, it's possible that the works referred to might be reproductions of originals, increasing their representation in this dataset.
+
+Though it might be the basis for an interesting exploration by someone more familiar with this point in art history. For instance what were the correlations between modern are and the techniques in printmaking. How might application of this technology have created or facilitated artistic expression at this time. 
+
+Another possibility that might be of interest to explore would be the implications or points of contact with Walter Benjamin's famous essay, <i>The Work of Art in the Age of Mechanical Reproduction</i>. An essay he wrote in 1936, one year before the Nazi exhibition of degenerate art, and which points out that art, where it is possible now to create art works through mechanical reproduction (not simply through printmaking, but also through film and photographer), that art is removed from it's past as a ritualistic tradition towards a more political purpose in society.
+
+
+<div class="figure">
+<img class="blog-post-sm" src="http://upload.wikimedia.org/wikipedia/en/2/23/%27The_Prophet%27%2C_woodcut_by_Emil_Nolde%2C_1912.jpg" alt="author's picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenerate art exhibit in 1937."/>
+<div class="figcaption"> Emil Nolde The Prophet, woodcut, 1912. via <a href="http://en.wikipedia.org/wiki/Emil_Nolde">Wikipedia</a> EK Inventory No.: <a href="http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&module=collection&objectId=121753&viewType=detailView">16302</a></div></div>
+
+	
+Intersted in breaking down the artform into its techniques, we can also count that category to find the various modes of production employed.
 	
 	=== Most frequent materials or techniques =====
 	
-	TECHNIQUE | COUNT
-	Lithograph | 2300
-	Woodcut | 2250
-	Etching | 1462
-	Oil on canvas | 925
-	Watercolor | 628
-	NA | 497
-	Colour lithograph | 284
-	Ink | 180
-	Color woodcut | 122
-	Offset printing | 100
-	Coal | 99
-	Watercolor and ink | 93
-	Lithograph , colored | 82
-	Chalk | 74
-	Pencil | 72	
+| TECHNIQUE | COUNT |
+|:----------|-----:|
+|Lithograph | 2300 |
+|Woodcut | 2250 |
+|Etching | 1462 |
+|Oil on canvas | 925 |
+|Watercolor | 628 |
+|NA | 497 |
+|Colour lithograph | 284 |
+|Ink | 180 |
+|Color woodcut | 122 |
+|Offset printing | 100 |
+|Coal | 99 |
+|Watercolor and ink | 93 |
+|Lithograph, colored | 82 |
+|Chalk | 74 |
+|Pencil | 72 |
+
+
+With lithograph being the most widely used technique, we may be seeing some of that based on many of these works being copies of an artists work and as such that explains why that technique is the most prevelant. Again, a further exploration would probably require a deeper knowledge of this specific field.
+
+Perhaps we want to see which artists are most widely represented in the database.
 	
-=== Artists with most work in the database ===
+	=== Artists with most work in the database ===
 
 | ARTIST | COUNT |
 |--------|------:|
@@ -117,110 +160,110 @@ The related scripts and data can be found [here](http://github.com/droquo/entart
 |Corinth, Lovis | 68 |
 |Seewald , Richard | 67 |
 |Ehmsen , Heinrich | 66 |
-		
-	=== Artist with most works under Printmaking ===
-	
-	ARTIST | COUNT
-	Nolde, Emil | 1102
-	Heckel, Erich | 796
-	Kirchner, Ernst Ludwig | 766
-	Barlach, Ernst | 658
-	Kokoschka, Oskar | 583
-	Mueller , Otto | 414
-	Pechstein, Max | 336
-	Schmidt- Rottluff , Karl | 250
-	Feininger, Lyonel | 235
-	Beckmann, Max | 190
-	Rohlfs , Christian | 183
-	Grosz , George | 180
-	Marc, Franz | 145
-	Klee, Paul | 137
-	Kandinsky, Wassily | 136
-	Dix, Otto | 131
-	Jansen, Franz Maria | 126
-	Grossmann, Rudolf | 114
-	Hofer, Karl | 111
-	Nauen, Heinrich | 107
+
+
+We are not surprised to see these names here. They are largely the most well known artists to have been working at this time. 
+
+One thing that I find important about this exhibition in the present context is that it, unlike many other exhibitions, it was not drawn primarily from the most well-known artists, but rather that the thread that brings them together is having all been selected for political and perhaps sociological rationale. As such, well-known artists and not so well-known artists are present as they were within the milue of that time. Much like current working, contemporary artists, we don't have the benefit of history to judge who are the most enduring contributors to the culture. We can get a sense, perhaps, of what it is that makes some artists stand out over the course of time. Simplistically speaking, proflicness appears to be a virtue in being remembered in the cultural cannon. Though on the other hand it might be argued that the most prevelant artists in the database are those who were the most influential at the time, there artists that were most well known and who posed a greater threat than the more obscure artists at the time.
+
+
+As another part of this exploration, and one that takes note of the linked data aspect of this data set, we might look at the most common subject terms associated with this set of artists.
+
 	
 	=== Most frequent subject terms ===
 	
-	SUBJECT TERM | COUNT
-	German_painters | 58
-	Modern_painters | 39
-	German_artists | 21
-	Expressionism | 20
-	French_painters | 18
-	German_sculptors | 18
-	1887_births | 13
-	1881_births | 12
-	German_printmakers | 12
-	Jewish_painters | 12
-	German_military_personnel_of_World_War_I | 11
-	Modern_sculptors | 11
-	20th - century_painters | 10
-	Bauhaus | 10
-	German_Jews | 10
-	School_of_Paris | 10
-	Commanders_Crosses_of_the_Order_of_Merit_of_the_Federal_Republic_of_Germany | 9
-	1889_births | 8
-	1945_deaths | 8
+| SUBJECT TERM | COUNT |
+|:-------|------:|
+|German_painters | 58 |
+|Modern_painters | 39 |
+|German_artists | 21 |
+|Expressionism | 20 |
+|French_painters | 18 |
+|German_sculptors | 18 |
+|1887_births | 13 |
+|1881_births | 12 |
+|German_printmakers | 12 |
+|Jewish_painters | 12 |
+|German_military_personnel_of_World_War_I | 11 |
+|Modern_sculptors | 11 |
+|20th - century_painters | 10 |
+|Bauhaus | 10 |
+|German_Jews | 10 |
+|School_of_Paris | 10 |
+|Commanders_Crosses_of_the_Order_of_Merit_of_the_Federal_Republic_of_Germany | 9 |
+|1889_births | 8 |
+|1945_deaths | 8 |
+
+This simply count is interesting in how succintly it gives us a picture of what art and artists the Nazis targetted. Largely German painters and artists. We also see that movements the Nazi's targeted, certainly not surprising to see the ones that were modern and revolutionary in their treatment of the human form and the form of objects like buildings and furniture. We also see a number of artists born in 1887 and 1881. Were this a more complete dataset, we might take a look more deeply at those dimensions. 
 	
 	=== Commanders of the cross subject term ===
-	Dix, Otto
-	Heckel, Erich
-	Hofer, Karl
-	Marcks , Gerhard
-	Mataré , Ewald
-	Meidner , Ludwig
-	Pechstein, Max
-	Pieper, Josef
-	Sintenis , Renee
+	
+|Artist Name|
+|:----------|
+|Dix, Otto |
+|Heckel, Erich |
+|Hofer, Karl |
+|Marcks , Gerhard |
+|Mataré , Ewald |
+|Meidner , Ludwig |
+|Pechstein, Max |
+|Pieper, Josef |
+|Sintenis , Renee |
 	
 	=== Most frequent artwork titles ===
-	TITLE | COUNT
-	Landscape | 65
-	Self-portrait | 61
-	Head of a Woman | 33
-	Still life | 31
-	Portrait of a Woman | 26
-	Girls head | 26
-	Illustration to Curt Hotzel "The City of a good conscience ," Portfolio with 22 lithographs | 22
-	Bathers | 21
-	Head | 21
-	Mother and child | 21
-	Female Nude | 21
-	Man's head | 17
-	Love couple | 16
-	Postcard | 16
-	Illustration to " Woe to the world A black and white game in Marmorätzung to a poem by August Stramm . " | 15
+	
+|TITLE | COUNT |
+|:-------|------:|
+|Landscape | 65 |
+|Self-portrait | 61 |
+|Head of a Woman | 33 |
+|Still life | 31 |
+|Portrait of a Woman | 26 |
+|Girls head | 26 |
+|Illustration to Curt Hotzel "The City of a good conscience ," Portfolio with 22 lithographs | 22 |
+|Bathers | 21 |
+|Head | 21 |
+|Mother and child | 21 |
+|Female Nude | 21 |
+|Man's head | 17 |
+|Love couple | 16 |
+|Postcard | 16 |
+|Illustration to " Woe to the world A black and white game in Marmorätzung to a poem by August Stramm . " | 15 |
+
+
+Here we notice how landscapes, self-portraits and representations of women were common subjects of these artworks. Though it might be that these titles were all of the same work (there are duplicates in the database based on different copies of the same painting). In which case, perhaps we can group these by artist.
 		
 	=== Titles by Grouped by technique and Artist ===
-	TECHNIQUE | TITLE | ARTIST | COUNT
-	Lithographs | Illustration Curt Hotzel "The City of a good conscience ," Portfolio with 22 lithographs | Hemp , Alfred | 22
-	NA | Illustration to " Woe to the world A black and white game in Marmorätzung to a poem by August Stramm . " | Meier -Thur , Hugo | 15
-	Etching | scribe | Nolde, Emil | 15
-	Lithograph | Walter Hasenclever | Kokoschka, Oskar | 14
-	Drawing | Postcard | Heckel, Erich | 13
-	Woodcut | Prophet | Nolde, Emil | 12
-	Woodcut | Tiger | Marc, Franz | 10
-	Woodcut | Drinking horse | Marc, Franz | 10
-	Lithograph | Maria Orska | Kokoschka, Oskar | 10
-	Lithograph | Max Reinhardt ( breast image ) | Kokoschka, Oskar | 10
-	NA | Illustration | Masereel , Frans | 10
-	Etching | sheet from the portfolio " Herbarium " by Grossmann, Expl 13/100 | Grossmann, Rudolf | 10
-	Etching | Saul and David | Nolde, Emil | 10
-	Colour lithograph | Two Bathers in Bach | Mueller , Otto | 8
-	Woodcut | The Bull | Marc, Franz | 8
-	Woodcut | Hundefängerin | Barlach, Ernst | 8
-	Woodcut | Candle Dancers | Nolde, Emil | 8
-	Woodcut | Kindertod | Barlach, Ernst | 8
-	Lithograph | Christ on the cross | Kokoschka, Oskar | 8
-	Lithograph | Christ on the Mount of Olives | Kokoschka, Oskar | 8
-	Lithograph | Two girls half- Nudes | Mueller , Otto | 8
-	NA | figure study | Lauterbach, Carl | 8
-	NA | Landscape | Macke, Helmuth | 8
-	Etching | Solomon and his Women | Nolde, Emil | 8
-	Etching | ships in the harbor , Flensburg | Nolde, Emil | 8
+	
+|TECHNIQUE | TITLE | ARTIST | COUNT |
+|----------|:-----:|:-------|------:|
+|Lithographs | Illustration Curt Hotzel "The City of a good conscience ," Portfolio with 22 lithographs | Hemp , Alfred | 22 |
+|NA | Illustration to " Woe to the world A black and white game in Marmorätzung to a poem by August Stramm . " | Meier -Thur , Hugo | 15 |
+|Etching | scribe | Nolde, Emil | 15 |
+|Lithograph | Walter Hasenclever | Kokoschka, Oskar | 14 |
+|Drawing | Postcard | Heckel, Erich | 13 | 
+|Woodcut | Prophet | Nolde, Emil | 12 |
+|Woodcut | Tiger | Marc, Franz | 10 |
+|Woodcut | Drinking horse | Marc, Franz | 10 |
+|Lithograph | Maria Orska | Kokoschka, Oskar | 10 |
+|Lithograph | Max Reinhardt ( breast image ) | Kokoschka, Oskar | 10 |
+|NA | Illustration | Masereel , Frans | 10 |
+|Etching | sheet from the portfolio " Herbarium " by Grossmann, Expl 13/100 | Grossmann, Rudolf | 10 |
+|Etching | Saul and David | Nolde, Emil | 10 |
+|Colour lithograph | Two Bathers in Bach | Mueller , Otto | 8 |
+|Woodcut | The Bull | Marc, Franz | 8 |
+|Woodcut | Hundefängerin | Barlach, Ernst | 8 |
+|Woodcut | Candle Dancers | Nolde, Emil | 8 |
+|Woodcut | Kindertod | Barlach, Ernst | 8 |
+|Lithograph | Christ on the cross | Kokoschka, Oskar | 8 |
+|Lithograph | Christ on the Mount of Olives | Kokoschka, Oskar | 8 |
+|Lithograph | Two girls half- Nudes | Mueller , Otto | 8 |
+|NA | figure study | Lauterbach, Carl | 8 |
+|NA | Landscape | Macke, Helmuth | 8 |
+|Etching | Solomon and his Women | Nolde, Emil | 8 |
+|Etching | ships in the harbor , Flensburg | Nolde, Emil | 8 |
+
+Doing so, we see that some of these were the same work, or a series, from one artist. But some of the more generic titles 'Landscape', we see are the work of more than one artist.
 
 
 
@@ -237,4 +280,8 @@ The use of databases in the research of art history.
 Problems with making this data:
 *unicode, obviously
 *NER was done extremely naively, hence a good number of names probably resolved to someone more famous who reserved the canonical spot for the dbpedia resource (ex. the Robert Michel we were looking for would have been at Robert_Michel_(Künstler) and not http://dbpedai.org/page/Robert_Michel - an American politician. A mistake dbpedia spotlight NER would have also made.)
+
+####References
+
+[1] <a href="http://en.wikipedia.org/wiki/Degenerate_art"> http://en.wikipedia.org/wiki/Degenerate_art </a>
 
