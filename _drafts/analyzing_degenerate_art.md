@@ -13,30 +13,31 @@ tags: [art, database, museums, data analysis, Neue Galerie, art history, python,
 
 ####Introduction
 
-In 1937, the Nazis seized and exhibited works of art that demonstrated what they felt to be a degenerate depictions of religion representations of the human form. It was aimed largely at the modern art of the time and was done to sanction artists who produced it for being "un-German, Jewish Bolshevist in nature" [1]. Currently, there is an exhibition of the works of art that survived from this period in history at the Neue Galerie in New York. This event was also the basis for the book and recent movie, <i>The Monuments Men</i>.
+In 1937, the Nazis began the public exhibition works of art which they had seized that demonstrated what they felt to be degenerate. It was aimed largely at the modern art of the time and was part of a campaign to deride and sanction artists who produced works that were "un-German, Jewish Bolshevist in nature" [1]. Currently, there is an exhibition of the works of art that survived from this period in history at the [Neue Galerie](http://www.neuegalerie.org/) in New York through September 1, 2014.
 
-A short while ago I came across [this](http://www.vam.ac.uk/content/articles/e/entartete-kunst/) announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in their program to round up and annihilate works of art they considered to be degenerate. The meticulous bookkeeping herein makes it possible to perform some analytics in the service of Art History research. 
+A short while ago I came across [this](http://www.vam.ac.uk/content/articles/e/entartete-kunst/) announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in the process of "collecting" these works of art. The meticulous record keeping herein appears to make it possible to perform some analytics in the service of Art History research, to serve as a baseline for hypothesis or new investigations into this period of modern art. 
 
-My immediate thought was: Would it be possible to get this information into a database for further analysis of what's there? Without access to some pretty heavy duty OCR or a lot of money to throw at something like Amazon Mechanical Turk, the answer was most likely no, for now.
+Would it be possible to get this information into a database for further analysis of what's there? Without access to some pretty heavy-duty OCR or a lot of money to throw at something like [Amazon Mechanical Turk](https://www.mturk.com/mturk/welcome), the answer was most likely no, for now.
 
-I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an [online, searchable database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html "link to the degenerate art database at the Freie Universität Berlin"), complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only 10,340 records of a total ~16,000 works of art in the original record.
+I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an [online, searchable database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html "link to the degenerate art database at the Freie Universität Berlin"), complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only 10,340 records of a total ~16,000 works of art in the original record. Though it is a good chunk of the original and as such, still quite useful for running some analysis. 
 
-The related scripts and data can be found [here](http://github.com/droquo/entartete_scraper "link to repository containing scraper and data files for the degenerate art database") in a fairly unkempt repository.
+Interested to dig in, I scraped off the basic metadata from the online database and put it into a SQLite database. The related scripts and data can be found [here](http://github.com/droquo/entartete_scraper "link to repository containing scraper and data files for the degenerate art database") in a fairly unkempt repository.
 
-####Getting and Processing the Data
+Below I wanted to discuss gathering and running some summary statistics over the data for those who might be interested.
+
+####Notes on Getting and Processing the Data
   
-  - Scraping the database - [scraper here](https://github.com/droquo/entartete_scraper/blob/master/scripts/entartete_scraper.py)
-  To save myself the headache of dealing with installing mechanize and lxml again, I opted to use [Scraperwiki](http://scraperwiki.com), so the script is not 100% plug and play.
+  - <b>Scraping the database</b> - [scraper here](https://github.com/droquo/entartete_scraper/blob/master/scripts/entartete_scraper.py)
+  To save myself the headache of dealing with reinstalling mechanize and lxml on a local machine, I opted to use [Scraperwiki](http://scraperwiki.com), so the script is not 100% plug and play.
   
-  In scraping the database, I only took some of the primary metadata for the work, that which appears in tabular format. There is added, somewhat variable data below about the provenance of particular artworks, biographical details about the artist etc. Because these were presented in fairly non-sturctured formats, I felt it was not really beneficial to grab this information myself.
+  In scraping the database, I only took some of the primary metadata for the work, that which appears in tabular format. There is added, somewhat variable data below that ([example here](http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&module=collection&objectId=117011&viewType=detailView)) about the provenance of particular artworks, biographical details about the artist etc. However, these details were presented in fairly non-sturctured formats or sometimes not done in consistent or predictable ways from artist to artist. So I felt it was not really beneficial to grab this information currently.
   
-  - Adding Information to the artists table - [ad hoc enrichment script here](https://github.com/droquo/entartete_scraper/blob/master/scripts/artists_extend.py)
+  - <b>Adding Information to the artists table</b> - [ad hoc enrichment script here](https://github.com/droquo/entartete_scraper/blob/master/scripts/artists_extend.py)
   As I was originally interested in taking artwork data and combining it with biographical data about the artists who made the work, I attempted to enrich the artist data with [dbpedia](http://dbpedia.org "link to dbpedia"). Noting that generally the dbpedia resource for an individual follows the pattern of `http://dbpedia.org/resource/Firstname_Surname`. So artist Paul Klee is located at `http://dbpedia.org/resource/Paul_Klee`. As such, I created a pretty naive dbpedia url generator that just used the artist name from the orginal database, switched the firstname and last name and added underscores for spaces. What I came to find was that many of these artists did not have resource pages. And of the ones that did, it was possible that it was not identifying the correct person. For instance the case of http://dbpedia.org/page/Robert_Michel_(K%C3%BCnstler), (vs. http://dbpedia.org/page/Robert_Michel, an American politician). Even then it is such that there is a wikipedia resource for this artist, but not dbpedia resource.
   
   It is also interesting to note that I had first attempted to enrich this data by sticking strictly to the linked data practice of using an RDF graph, though I found that SPARQL queries skewed towards only returning full records and passed over records that did not have all properties or values we wanted to enrich the database. As such I didn't find it totally practical for this purpose and probably not the main virtue of using a graph database (though I could also be wrong about that.)
-  
-  - Geocoding [geocoder here](https://github.com/droquo/entartete_scraper/blob/master/scripts/geocoder.py)
-  
+    
+  - <b>Geocoding</b> [geocoder here](https://github.com/droquo/entartete_scraper/blob/master/scripts/geocoder.py)
   The geocoding approach I used was via the Bing API. This, I assume is a mainstay for most off hand geocoding since Google began to place limits on it's geocoding service unless you wanted to start paying some money for it. Out of ~10,000 records, only ~2,000 were geocoded based on whether there was a current location value for the artwork. Of the final geocoded results, there were also a few inaccuracies, particularly if the listed location was a private location. At best the geocoded data (as depicted in the map below), is tenous and not for expert consumption.
   
   Map:
@@ -60,7 +61,8 @@ The related scripts and data can be found [here](http://github.com/droquo/entart
 * Also, I apologize if collecting this data was somehow problematic. I do not claim to own it and do not have intent to use this data for commercial gain. It is my hope that wrangling this data for this blog post is, if anything, a good promotion for the database itself and welcome any inquiries, notes of admonishment or cease and desist to the e-mail below.
 
 Some obvious points of entry now that we have a database we might query are some basic counts of certain columns. Let's start with the over all current status of works as reported in the database.
-	
+
+
 	=== Top 10 work statuses ===
 
 | STATUS | COUNT |
@@ -162,7 +164,7 @@ Perhaps we want to see which artists are most widely represented in the database
 |Ehmsen , Heinrich | 66 |
 
 
-We are not surprised to see these names here. They are largely the most well known artists to have been working at this time. 
+We are not surprised to see these names here. They are largely the most well known artists to have been working at this time[2]. 
 
 One thing that I find important about this exhibition in the present context is that it, unlike many other exhibitions, it was not drawn primarily from the most well-known artists, but rather that the thread that brings them together is having all been selected for political and perhaps sociological rationale. As such, well-known artists and not so well-known artists are present as they were within the milue of that time. Much like current working, contemporary artists, we don't have the benefit of history to judge who are the most enduring contributors to the culture. We can get a sense, perhaps, of what it is that makes some artists stand out over the course of time. Simplistically speaking, proflicness appears to be a virtue in being remembered in the cultural cannon. Though on the other hand it might be argued that the most prevelant artists in the database are those who were the most influential at the time, there artists that were most well known and who posed a greater threat than the more obscure artists at the time.
 
@@ -267,21 +269,15 @@ Doing so, we see that some of these were the same work, or a series, from one ar
 
 
 
-####Some Thoughts:
-
-One of the problems is it's reasonable to hypothesize that many of these artists careers were cut short by this suppression by the Nazis (though it's arguable that some artists were brought more attention by this and it stands to be explored what makes an artist stand out from their milieu).
-
-Some questions for further research:
-* Why was printmaking the most predominant art form in the database? (possibly because could be done in quicker succession)
-* Age of artists at the time of this program (1937 - dob).
-
+####Some Final Thoughts:
 
 The use of databases in the research of art history.
 Problems with making this data:
-*unicode, obviously
-*NER was done extremely naively, hence a good number of names probably resolved to someone more famous who reserved the canonical spot for the dbpedia resource (ex. the Robert Michel we were looking for would have been at Robert_Michel_(Künstler) and not http://dbpedai.org/page/Robert_Michel - an American politician. A mistake dbpedia spotlight NER would have also made.)
+* Unicode, obviously
+* As noted above this is not my data. I've done this for educational purposes. Cease and desist can be sent to the e-mail below.
 
 ####References
 
 [1] <a href="http://en.wikipedia.org/wiki/Degenerate_art"> http://en.wikipedia.org/wiki/Degenerate_art </a>
 
+[2] <a href="http://cla.calpoly.edu/~mriedlsp/history437/art/Entartete%20Kunst.htm">http://cla.calpoly.edu/~mriedlsp/history437/art/Entartete%20Kunst.htm</a>
