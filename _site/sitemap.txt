@@ -10,11 +10,8 @@ http://subtxt.in/rss.xml
 http://subtxt.in/sitemap.txt
 http://subtxt.in/tags.html
 
-http://subtxt.in/museums/2014/05/27/analyzing_degenerate_art
-http://subtxt.in/linked-data/2014/05/06/i_have_rdf_now_what
+http://subtxt.in/museums/2014/05/29/analyzing_degenerate_art
 http://subtxt.in/museums/2014/04/22/archive-as-art
-http://subtxt.in/museums/2014/04/21/archive_as_art
-http://subtxt.in/digital-libraries/2014/04/18/preservation_and_access
 http://subtxt.in/thoughts/2014/03/30/database-novel
 http://subtxt.in/digital-libraries/2014/03/13/digital-books-prelim
 http://subtxt.in/project/2014/01/24/artdealer

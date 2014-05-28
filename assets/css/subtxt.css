@@ -94,12 +94,13 @@ div.figcaption{
 }
 
 table{
-	
-	margin: 5px 3px 8px 3px;
-	
+
+	margin: 0 auto 8px auto;
+
+
 }
 
-td { 
+td {
     padding: 5px !important;
 	border: 1px #cecece solid;
 }

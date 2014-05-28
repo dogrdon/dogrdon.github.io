@@ -16,7 +16,7 @@
 	<meta name="twitter:site" value="@droquo">
 	<meta name="twitter:creator" value="@droquo">
 	<meta name="twitter:title" value="The Datenbank Entartete Kunst (Degenerate Art Database)">
-    <meta name="twitter:description" value="The Nazi's attempt to control and or destroy the art they found to be degenerate resulted in a meticulous record keeping of that artwork. The Freie Universität Berlin has undertaken the process of turning that Nazi bookkeeping into a publically accessible database. I took a pass at collecting that data into a sqlite database and went over some of the readily available summary statistics. There are extreme gaps in this data due to incompleteness of the online database itself as well as a lack of information for its artists currently available on services like dbpedia. As such I don't believe it is totally fit for deep analysis. But I think a surface report of some of its attributes is worth the while and provides a proof of concept for datasets in art history. The statistical accumulation of artistic works within a particular context could offer a interesting launch pad for researchers inquiring into that domain.">
+    <meta name="twitter:description" value="The Nazi's attempt to control and or destroy the art they found to be degenerate resulted in a meticulous record keeping of that artwork. The Freie Universität Berlin has undertaken the process of turning these records into a publicly accessible database. I took a pass at collecting that data into a sqlite database and went over some of the readily available summary statistics. There are extreme gaps in this data due to some incompleteness of the online database itself as well as a lack of information for its artists currently available on services like dbpedia. As such I don't believe it is totally fit for deep analysis. But I think a surface report of some of its attributes is worth the while and provides a proof of concept for datasets in art history. The statistical accumulation of artistic works within a particular context could offer a interesting launch pad for researchers inquiring into that domain.">
 
 
 	<link href='/assets/themes/the-minimum/css/style.css' rel="stylesheet" media="all">
@@ -68,17 +68,15 @@
 
 <h4 id="introduction">Introduction</h4>
 
-<p>In 1937, the Nazis began the public exhibition works of art which they had seized that demonstrated what they felt to be degenerate. It was aimed largely at the modern art of the time and was part of a campaign to deride and sanction artists who produced works that were “un-German, Jewish Bolshevist in nature” [1]. For those interested in seeing some of these works in person, there is an exhibition of some of the works of art that survived from this period in history at the <a href="http://www.neuegalerie.org/">Neue Galerie</a> in New York through September 1, 2014.</p>
+<p>In 1937, the Nazis began the public exhibition of works of art which they had seized for being deemed degenerate. It was aimed largely at the new modern art of the time and was part of a campaign to deride and sanction artists who produced works that were “un-German, Jewish Bolshevist in nature” [1]. This is not a post, though, about the history or the art as such. Rather it’s a brief discussion of the data generated around this art. For those interested in seeing some of these works in person, there is an exhibition of some of the works of art that survived from this period in history at the <a href="http://www.neuegalerie.org/">Neue Galerie</a> in New York through September 1, 2014.</p>
 
-<p>A short while ago I came across <a href="http://www.vam.ac.uk/content/articles/e/entartete-kunst/">this</a> announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in the process of “collecting” these works of art. The meticulous record keeping herein appears to make it possible to perform some analytics in the service of Art History research, to serve as a baseline for hypothesis or new investigations into this period of modern art. </p>
+<p>A short while ago I came across <a href="http://www.vam.ac.uk/content/articles/e/entartete-kunst/">this</a> announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in the process of “collecting” these works of art. The meticulous record keeping appears to make it possible to perform some analytics in the service of Art History research, to serve as a baseline for research into this period of modern art.</p>
 
-<p>Would it be possible to get this information into a database for further analysis of what’s there? Without access to some pretty heavy-duty OCR or a lot of money to throw at something like <a href="https://www.mturk.com/mturk/welcome">Amazon Mechanical Turk</a>, the answer was most likely no, for now.</p>
+<p>At first I considered whethere it would it be possible to get this information into a database for further analysis of what’s there? Though without access to some pretty heavy-duty OCR or a lot of money to throw at something like <a href="https://www.mturk.com/mturk/welcome">Amazon Mechanical Turk</a>, the answer was most likely no, for now.</p>
 
-<p>I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an <a href="http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html" title="link to the degenerate art database at the Freie Universität Berlin">online, searchable database</a>, complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only 10,340 records of a total ~16,000 works of art in the original record. Though it is a good chunk of the original and as such, still quite useful for running some analysis. </p>
+<p>I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an <a href="http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html" title="link to the degenerate art database at the Freie Universität Berlin">online, searchable database</a>, complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only 10,340 records of a total ~16,000 works of art in the original record. Though it is a good chunk of the original and, as such, still quite useful for running some numbers.</p>
 
 <p>Interested to dig in, I scraped off the basic metadata from the online database and put it into a SQLite database. The related scripts and data can be found <a href="http://github.com/droquo/entartete_scraper" title="link to repository containing scraper and data files for the degenerate art database">here</a> in a fairly unkempt repository.</p>
-
-<p>Below I wanted to discuss gathering and running some summary statistics over the data for those who might be interested.</p>
 
 <h4 id="notes-on-getting-and-processing-the-data">Notes on Getting and Processing the Data</h4>
 
@@ -87,23 +85,21 @@
   To save myself the headache of dealing with reinstalling mechanize and lxml on a local machine, I opted to use <a href="http://scraperwiki.com">Scraperwiki</a>, so the script is not 100% plug and play.</li>
 </ul>
 
-<p>In scraping the database, I only took some of the primary metadata for the work, that which appears in tabular format. There is added, somewhat variable data below that (<a href="http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&amp;module=collection&amp;objectId=117011&amp;viewType=detailView">example here</a>) about the provenance of particular artworks, biographical details about the artist etc. However, these details were presented in fairly non-sturctured formats or sometimes not done in consistent or predictable ways from artist to artist. So I felt it was not really beneficial to grab this information currently.</p>
+<p>In scraping the database, I only took some of the primary metadata for the work, that which is laid out in tabular format. There is added, somewhat variable data below that (<a href="http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&amp;module=collection&amp;objectId=117011&amp;viewType=detailView">example here</a>) about the provenance of particular artworks, biographical details about the artist etc. However, these details were presented in sometimes unstructured formats and sometimes not done in consistent or predictable ways from artist to artist. So I felt it was not really imperative to grab this information currently.</p>
 
 <ul>
   <li><b>Adding Information to the artists table</b> - <a href="https://github.com/droquo/entartete_scraper/blob/master/scripts/artists_extend.py">ad hoc enrichment script here</a>
-  As I was originally interested in taking the artwork data and combining it with biographical data about the artists who made the work, I attempted to enrich the artist data with <a href="http://dbpedia.org" title="link to dbpedia">dbpedia</a>. Generally the dbpedia resource for an individual follows the pattern of <code>http://dbpedia.org/resource/Firstname_Surname</code> (so artist Paul Klee is located at <code>http://dbpedia.org/resource/Paul_Klee</code>). As such, I created a pretty naive dbpedia url generator that using the artist name from the orginal database, switching the first name and last name and adding underscores for spaces. </li>
+  As I was originally interested in taking the artwork data and combining it with biographical data about the artists who made the work, I attempted to enrich the artist data with <a href="http://dbpedia.org" title="link to dbpedia">dbpedia</a>. Generally the dbpedia resource for an individual follows the pattern of <code>http://dbpedia.org/resource/Firstname_Surname</code> (so artist Paul Klee is located at <code>http://dbpedia.org/resource/Paul_Klee</code>). I created a pretty naive dbpedia url generator using the artist name from the orginal database, switching the first name and last name and adding underscores for spaces.</li>
 </ul>
 
-<p>What I came to find was that many of these artists did not have resource pages (out of 6__ only about 1__ appeared to have any kind of dbpedia resource page). Of the ones that did, it was possible that it was not identifying the correct person. For instance the case of http://dbpedia.org/page/Robert_Michel_(K%C3%BCnstler), (vs. http://dbpedia.org/page/Robert_Michel, an American politician). Even then it is such that there is a wikipedia resource for this artist, but not dbpedia resource. As such, a much more dependable and thorough Named Entity Recognizer (NER) would have to be employed for a more complete dataset.</p>
+<p>What I came to find was that many of these artists did not have resource pages (out of 663 artists in the database only 168 appeared to have any kind of dbpedia resource page). Of the ones that did, it was possible that it was not identifying the correct person. For instance the case of Robert Michel, who would be at <code>http://dbpedia.org/page/Robert_Michel_(K%C3%BCnstler)</code>, vs. <code>http://dbpedia.org/page/Robert_Michel</code>, an American politician). In the end, a much more dependable and thorough Named Entity Recognizer (NER) would have to be employed for a more complete dataset of artist data.</p>
 
-<p>It is also interesting to note that I had first attempted to enrich this data by sticking strictly to the linked data practice of using an RDF graph, though I found that SPARQL queries skewed towards only returning full records and passed over records that did not have all properties or values for an entity (read: artist). As such I didn’t find it totally practical for this purpose and probably not the main virtue of using a graph database (though I could also be wrong about that.)</p>
+<p>As a side note, I had first attempted to enrich this data by sticking strictly to the linked data practice of using an RDF graph, though I found that SPARQL queries skewed towards only returning full records and passed over records that did not have all properties or values for an entity (read: artist). As such I didn’t find it totally practical for this purpose and probably not the main virtue of using a graph database (though I could also be wrong about that.)</p>
 
 <ul>
   <li><b>Geocoding</b> <a href="https://github.com/droquo/entartete_scraper/blob/master/scripts/geocoder.py">geocoder here</a>
-  The geocoding approach I used was the Bing API. This, was because the Google has long since placed limits on its geocoding service unless you wanted to start paying some money for it. Out of ~10,000 records, only ~2,000 were geocoded based on whether there was a current location value for the artwork. Of the final geocoded results, there were also a few inaccuracies, particularly if the listed location was a private location and not a well known museum. At best the geocoded data (as depicted in the map below), is tenous and not meant for actual research.</li>
+  The geocoding approach I used was the Bing API. This was due to the face that Google has long since placed limits on its geocoding service unless you paid money for it. Out of ~10,000 records, only ~2,000 were geocoded based on whether there was a current location for the artwork (generally the name of a museum). Of the final geocoded results, there were also a few inaccuracies, particularly if the listed location was a private owner and not a well-known museum. At best the geocoded data (as depicted in the map below), is tenuous and not meant for serious research.</li>
 </ul>
-
-<p>Map:</p>
 
 <iframe width="100%" height="600" frameborder="0" src="//droquo.cartodb.com/viz/e8e4e4a8-e228-11e3-ae87-0e73339ffa50/embed_map?title=true&amp;description=true&amp;search=false&amp;shareable=true&amp;cartodb_logo=true&amp;layer_selector=false&amp;legends=true&amp;scrollwheel=true&amp;fullscreen=true&amp;sublayer_options=1&amp;sql=&amp;zoom=2&amp;center_lat=22.59372606392931&amp;center_lon=368.43749999999994" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe>
 
@@ -117,9 +113,9 @@ TEXTIL = TEXTILE
 MOSAIK = MOSAIC
 </code></pre>
 
-<h4 id="some-points-of-interest">Some Points of Interest</h4>
+<h4 id="some-points-of-interest-in-the-data">Some Points of Interest in the Data</h4>
 
-<p>It’s probably worthwhile to note here that this post only goes so deep in its analysis. This being a fairly massive crossroad of Art and World History, really getting at the core of it would require a deeper understanding of this point in time and its context. It would also require a much fuller, more complete dataset. As such, this is more of a quick and broad treatment and a proof of concept for future work.</p>
+<p>It’s worthwhile to note here that this post only goes so deep in its analysis. This being a fairly massive crossroad of Art and World History, really getting at the core of it would require a deeper understanding of this point in time and its context. It would also require a much fuller, more complete dataset. So this is more of a quick and broad treatment and a proof of concept for future work.</p>
 
 <p>Some obvious points of entry now that we have a database we might query are some basic counts of selected columns. Let’s start with the overall, current status of works as reported in the database.</p>
 
@@ -177,9 +173,9 @@ MOSAIK = MOSAIC
   </tbody>
 </table>
 
-<p>The status of around half of the contents of the current database are unknown. More dismaying we have a reported 16.7% of the recorded online database having been destroyed.</p>
+<p>The current status of around half of the contents of the current database are <code>Unknown</code>. More dismaying, we have a reported 16.7% of the recorded online database having been destroyed.</p>
 
-<p>Though perhaps we want a count of the art forms employed by the artists.</p>
+<p>Next, perhaps we want a count of the art forms employed by the artists.</p>
 
 <pre><code>=== Top 10 art formats ===
 </code></pre>
@@ -231,19 +227,19 @@ MOSAIK = MOSAIC
   </tbody>
 </table>
 
-<p>I was interested to see that an overwhelming majority of the works here were in produced through some form of printmaking (woodcut, lithograph, etching, etc.). While there are some fairly obvious explanations for this. To begin with, printmaking, by its nature is far more reproducible of an art form. It is possible to churn out more representations of this format than something like oil painting or watercolor since once you have a template, you can make multiple copies. Secondly, it’s possible that the works referred to might be reproductions of originals, increasing their representation in this dataset.</p>
+<p>I was interested to see that an overwhelming majority of the works here were produced through some form of printmaking (woodcut, lithograph, etching, etc.). There might be a fairly obvious explanation for this. Printmaking, by its nature is far more reproducible of an art form. It is possible to churn out more representations in this format than something like oil painting or watercolor since with a template, you can make multiple copies. It is also possible that the works referred to might be reproductions of originals, increasing the representation of this artform in this dataset.</p>
 
 <div class="figure">
 <img class="blog-post-sm" src="http://upload.wikimedia.org/wikipedia/en/2/23/%27The_Prophet%27%2C_woodcut_by_Emil_Nolde%2C_1912.jpg" alt="author's picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenerate art exhibit in 1937." />
 <div class="figcaption"> Emil Nolde The Prophet, woodcut, 1912. via <a href="http://en.wikipedia.org/wiki/Emil_Nolde">Wikipedia</a> EK Inventory No.: <a href="http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&amp;module=collection&amp;objectId=121753&amp;viewType=detailView">16302</a></div></div>
 
-<p>Though it might be the basis for an interesting exploration by someone more familiar with this point in art history. For instance what were the correlations between modern are and the techniques in printmaking. How might application of this technology have created or facilitated artistic expression at this time. </p>
+<p>Though it might be the basis for an interesting exploration by someone more familiar with this point in art history. For instance what were the correlations between modern are and the techniques in printmaking. Was there an increase for any non-trivial reasons? How might application of this technology have facilitated or impacted artistic expression at this time?</p>
 
-<p>Another possibility that might be of interest to explore would be the implications or points of contact with Walter Benjamin’s famous essay, <i>The Work of Art in the Age of Mechanical Reproduction</i>. An essay he wrote in 1936, one year before the Nazi exhibition of degenerate art, and which points out that art, where it is possible now to create art works through mechanical reproduction (not simply through printmaking, but also through film and photographer), that art is removed from it’s past as a ritualistic tradition towards a more political purpose in society.</p>
+<p>Another possibility that might be of interest to explore would be the implications or points of contact with Walter Benjamin’s famous essay, <i>The Work of Art in the Age of Mechanical Reproduction</i>. An essay he wrote in 1936, one year before the Nazi exhibition of degenerate art,  which points out that art, where it is possible now to create works through mechanical reproduction (not simply through printmaking, but also through film and photography), is removed from its past as a ritualistic tradition towards a more political purpose in society.[2]</p>
 
-<p>Interested in breaking down the artform into its techniques, we can also count that category to find the various modes of production employed.</p>
+<p>Interested in the breakdown of techniques employed by these artists (different from the forms of art), we can also count that category to find the various modes of production employed.</p>
 
-<pre><code>=== Most frequent materials or techniques =====
+<pre><code>=== Most frequent materials or techniques employed =====
 </code></pre>
 
 <table>
@@ -317,7 +313,7 @@ MOSAIK = MOSAIC
   </tbody>
 </table>
 
-<p>With lithograph being the most widely used technique, we may be seeing some of that based on many of these works being copies of an artists work and as such that explains why that technique is the most prevelant. Again, a further exploration would probably require a deeper knowledge of this specific field.</p>
+<p>With lithograph being the most widely used technique, we may be seeing some of that based on many of these works being copies of an artists work explaining why that technique is the most prevalent. Though here we see that the next most represented techniques are woodcut and etchings, other forms of printmaking (like the Nolde work above) which might hint at something more interesting in the correlations between modern art, degenerate art, and this artistic technique. Again, a further exploration would probably require a deeper knowledge of this specific field.</p>
 
 <p>Perhaps we want to see which artists are most widely represented in the database.</p>
 
@@ -415,9 +411,11 @@ MOSAIK = MOSAIC
   </tbody>
 </table>
 
-<p>We are not surprised to see these names here. They are largely the most well known artists to have been working at this time[2]. </p>
+<p>We are not surprised to see these names here. They are largely the most well known artists to have been working at this time.[3]</p>
 
-<p>One thing that I find important about this exhibition in the present context is that it, unlike many other exhibitions, it was not drawn primarily from the most well-known artists, but rather that the thread that brings them together is having all been selected for political and perhaps sociological rationale. As such, well-known artists and not so well-known artists are present as they were within the milue of that time. Much like current working, contemporary artists, we don’t have the benefit of history to judge who are the most enduring contributors to the culture. We can get a sense, perhaps, of what it is that makes some artists stand out over the course of time. Simplistically speaking, proflicness appears to be a virtue in being remembered in the cultural cannon. Though on the other hand it might be argued that the most prevelant artists in the database are those who were the most influential at the time, there artists that were most well known and who posed a greater threat than the more obscure artists at the time.</p>
+<p>One thing that I find important and fascinating about this exhibition in the present context, however, is that it, unlike other contemporary exhibitions, it was not drawn entirely from the most well-known artists of the time or now, for that matter. Rather, the thread that brings them together is having all been selected for political and perhaps sociological reasons at a specific point in history. As such, well-known artists and not so-well-known artists are present in an exhibition as they were within the miliue of that time. In its current manifestation at the Neue Galerie, it is an exhibition largely frozen in time (though not without its present day interpretations and narrative). Thus we are able, slightly, to evaluate it more like we would our currently working, contemporary artists. Wherein we don’t necessarily have the benefit of history to judge who are the most enduring contributors to the culture. In examining this exhibition as it is, we can get a sense, perhaps, of what it is that makes some artists stand out over the course of time.</p>
+
+<p>Speaking simplistically, the counts above may indicate that prolificness is a virtue in being remembered in the cultural cannon. Though on the other hand it might be argued that the most prevalent artists in the database are those who were the most influential at the time, where artists that were more well-known and  posed a greater threat than the more obscure artists at the time.</p>
 
 <p>As another part of this exploration, and one that takes note of the linked data aspect of this data set, we might look at the most common subject terms associated with this set of artists.</p>
 
@@ -511,7 +509,9 @@ MOSAIK = MOSAIC
   </tbody>
 </table>
 
-<p>This simply count is interesting in how succintly it gives us a picture of what art and artists the Nazis targetted. Largely German painters and artists. We also see that movements the Nazi’s targeted, certainly not surprising to see the ones that were modern and revolutionary in their treatment of the human form and the form of objects like buildings and furniture. We also see a number of artists born in 1887 and 1881. Were this a more complete dataset, we might take a look more deeply at those dimensions. </p>
+<p>This simple count is interesting in how succinctly it gives us a picture of what art and artists the Nazis targeted. Largely German painters and artists. We also see the artistic movements the Nazi’s targeted, certainly not surprising to see the ones that were modern and revolutionary in their treatment of the human form and the form of objects like buildings and furniture (Expressionism, Bauhaus). We also see a number of artists born in 1887 and 1881. Were this a more complete dataset, we might take a look more deeply at those dimensions.</p>
+
+<p>Interested in seeing which artists were awarded the Commanders Cross (an honor not created until 1951)[4], we can print those names out.</p>
 
 <pre><code>=== Commanders of the cross subject term ===
 </code></pre>
@@ -552,6 +552,8 @@ MOSAIK = MOSAIC
     </tr>
   </tbody>
 </table>
+
+<p>We can also print out the most commonly used titles for artworks to see if there is anything interesting here.</p>
 
 <pre><code>=== Most frequent artwork titles ===
 </code></pre>
@@ -627,9 +629,9 @@ MOSAIK = MOSAIC
   </tbody>
 </table>
 
-<p>Here we notice how landscapes, self-portraits and representations of women were common subjects of these artworks. Though it might be that these titles were all of the same work (there are duplicates in the database based on different copies of the same painting). In which case, perhaps we can group these by artist.</p>
+<p>Here we notice how landscapes, self-portraits and representations of women were common subjects of these artworks. Though it might be that these titles were all of the same work (there are duplicates in the database based on different copies of the same painting, after all). Though in that case, perhaps we can group these by artists to get a better look.</p>
 
-<pre><code>=== Titles by Grouped by technique and Artist ===
+<pre><code>=== Titles of works grouped by technique and Artist ===
 </code></pre>
 
 <table>
@@ -795,27 +797,28 @@ MOSAIK = MOSAIC
   </tbody>
 </table>
 
-<p>Doing so, we see that some of these were the same work, or a series, from one artist. But some of the more generic titles ‘Landscape’, we see are the work of more than one artist. The results are not conclusive, but we gain a further insight into the general priorities of these artists as well as a more interesting contrast with these artworks having been deemed degenerate. </p>
+<p>Doing so, we see that some of these were the same work, or a series, from one artist. But some of the more generic titles ‘Landscape’, we see are the work of more than one artist. The results are not conclusive (or terribly interesting), but we gain a further insight into the general priorities of these artists as well as a more nuanced contrast with these artworks having been deemed degenerate.</p>
 
 <h4 id="some-final-thoughts">Some Final Thoughts:</h4>
 
-<p>The use of databases in the research of art history.
-Problems with making this data:
-* Unicode, obviously
-* As noted above this is not my data. I’ve done this for educational purposes. Cease and desist can be sent to the e-mail below.</p>
+<p>Lacking a firm background in this domain, I am not sure if the ideas expressed above are exceedingly obvious or not. I’d be interested to know if anyone with a background in art history might find value in a dataset like this. For anyone who is interested, the database and its schema can be found <a href="https://github.com/droquo/entartete_scraper/tree/master/data/db" title="link to sqlite version of degenerate art database, with some additional data">here</a>. Again, I do not own this data as it was culled from the Freie Universität Berlin’s <a href="http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html" title="link to the degenerate art database at the Freie Universität Berlin">database</a>. The collection of this data and its use here was strictly for educational purposes.</p>
 
 <h4 id="references">References</h4>
 
 <p>[1] <a href="http://en.wikipedia.org/wiki/Degenerate_art"> http://en.wikipedia.org/wiki/Degenerate_art </a></p>
 
-<p>[2] <a href="http://cla.calpoly.edu/~mriedlsp/history437/art/Entartete%20Kunst.htm">http://cla.calpoly.edu/~mriedlsp/history437/art/Entartete%20Kunst.htm</a></p>
+<p>[2] <a href="http://en.wikipedia.org/wiki/The_Work_of_Art_in_the_Age_of_Mechanical_Reproduction">http://en.wikipedia.org/wiki/The_Work_of_Art_in_the_Age_of_Mechanical_Reproduction</a></p>
+
+<p>[3] <a href="http://cla.calpoly.edu/~mriedlsp/history437/art/Entartete%20Kunst.htm">http://cla.calpoly.edu/~mriedlsp/history437/art/Entartete%20Kunst.htm</a></p>
+
+<p>[4] <a href="http://en.wikipedia.org/wiki/Order_of_Merit_of_the_Federal_Republic_of_Germany">http://en.wikipedia.org/wiki/Order_of_Merit_of_the_Federal_Republic_of_Germany</a></p>
 
 					<div class="meta">
 						<p class="date-publish">
 							Published: 
-							<date class="date-pub" title="2014-05-27T00:12:22-04:00" datetime="2014-05-27T00:12:22-04:00" pubdate>
+							<date class="date-pub" title="2014-05-29T00:00:00-04:00" datetime="2014-05-29T00:00:00-04:00" pubdate>
 							<span class="month"><abbr>May</abbr></span>
-							<span class="day">27</span>
+							<span class="day">29</span>
 							<span class="year">2014</span>
 							</date>
 						</p>
@@ -828,7 +831,7 @@ Problems with making this data:
   
      
     	<li><a href="/categories.html#museums-ref">
-    		museums <span>3</span>
+    		museums <span>2</span>
     	</a></li>
     
   
@@ -843,11 +846,11 @@ Problems with making this data:
 
   
      
-    	<li><a href="/tags.html#art-ref">art <span>3</span></a></li>
+    	<li><a href="/tags.html#art-ref">art <span>2</span></a></li>
      
     	<li><a href="/tags.html#database-ref">database <span>2</span></a></li>
      
-    	<li><a href="/tags.html#museums-ref">museums <span>3</span></a></li>
+    	<li><a href="/tags.html#museums-ref">museums <span>2</span></a></li>
      
     	<li><a href="/tags.html#data analysis-ref">data analysis <span>2</span></a></li>
      
@@ -857,7 +860,7 @@ Problems with making this data:
      
     	<li><a href="/tags.html#python-ref">python <span>2</span></a></li>
      
-    	<li><a href="/tags.html#linked data-ref">linked data <span>2</span></a></li>
+    	<li><a href="/tags.html#linked data-ref">linked data <span>1</span></a></li>
     
   
 
@@ -903,7 +906,7 @@ Problems with making this data:
 					<nav class="pagination">
 						<ul>
 							
-							<li class="prev"><a class="internal" rel="prev"  href="/linked-data/2014/05/06/i_have_rdf_now_what" title="View I Have and RDF file. Now What?">&laquo; I Have and RDF file. Now What?</a></li>
+							<li class="prev"><a class="internal" rel="prev"  href="/museums/2014/04/22/archive-as-art" title="View The Archive as Artistic Spectacle">&laquo; The Archive as Artistic Spectacle</a></li>
 							
 							
 							
@@ -953,7 +956,7 @@ Problems with making this data:
 		};
 	load('//platform.twitter.com/widgets.js', 'tweetjs');
 	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
-	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/museums/2014/05/27/analyzing_degenerate_art" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/museums/2014/05/29/analyzing_degenerate_art" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
 	}(document, 'script'));
 </script>
 <script>
