@@ -86,6 +86,12 @@ div.figure{
 	width: 100%;
 }
 
+div.float_left, div.float_right{
+  width: 40%;
+  float: left;
+  padding: 8px;
+} 
+
 div.figcaption{
 	text-align: center;
 	background-color: #eee;

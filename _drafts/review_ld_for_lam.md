@@ -7,7 +7,12 @@ tags: [linked data, rdf, n-triples, book review, SPARQL, reference]
 ---
 {% include JB/setup %}
 
+
 I'd recently been sent a copy Linked Data for Libraries, Archives and Museums and felt this could use a review. 
+
+<div class="figure float_left"><img class="blog_post" src="/assets/images/posts/2014/08/VanHooland_fullsize_RGB.jpg" title="Image of book cover for Linked Data for Libraries, Archives and Museums" alt="Image of book cover for Linked Data for Libraries, Archives and Museums"/>
+<div class="figcaption">Book Image circa 10min. ago</div></div>
+
 
 Though I work in a library setting and have sat down with linked data concepts and examples a few times already, I don't use it outright in my day to day and I admitedly have struggled with what Linked Data exactly is and how to implement some of its practices in the work I do. 
 
@@ -30,3 +35,10 @@ Within the jumble of potential approaches, tools, and theories of practice, this
 To the books credit, in it's final chapters on Publishing linked data and is conclsion, it is opinionated in offerring a framework for viewing the future of Linked Data as it is tied to the future of the Internet, or rather, how linked data can return the world wide web (what we know as the internet today) to its nascent conceits - to being a egalitarian platform for information sharing and linking. I was interested also to see this book take a bit of a swipe at API platforms like that of Europeana and the Digital Public Lirbrary of America, arguing that an architected, multi-API approach is not as future proof as a REST API tied flush to the exact workings of HTTP. That is, a separate URI for resources does not a good API make (no, we're not writing this). Their use, also, of a simple Node.JS application to demonstrate how one might create and API for a collection is another reason why this book, as it ties into the efforts of freeyourmetadata.org and its various Open Refine tools and code bases like this make it a compelling resource for going as shallow or as deep as you'd like.
 
 In the end, this book goes beyond technical details to provide a broader context for Linked Data and its uses in Libraries, Archives, and Museums. In doing so, it does skim some of the technical details, but as a primer for understanding the wider-picture of how all these peices sit together and what peices may soon be giving way to other peices, it is a great resource and one I could certainly picture as a base textbook and jump off point in a class on linked data, or a data and the architecture of the web course that focuses on linked data as a focal point or underlying theme. But this book is also for day-to-day professionals who want a good starting point for figuring out what linked data is and how they can start incorporating it into their workflows in an accessible manner.
+
+
+**It's possible that this book will be devisive and perhaps step on some toes, but I think it provides enough grounding for its assertions that it's worth a read for the beginner to step through to the intermediate.
+
+**It's final example pulls back enough from the canonic insistence of RDF/SPARQL enough to provide an vision for LD that goes beyond those structures.
+
+Disclosure: I was provided a copy of this book for review purposes. I am otherwise in now way affiliate with the authors or freeyourmetadata.org

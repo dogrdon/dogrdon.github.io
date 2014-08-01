@@ -12,7 +12,7 @@ Before picking up Georges Perec's <a href="http://en.wikipedia.org/wiki/Life_A_U
 
 Or rather, it might have occurred to me insofar as books bring together predictable units: words make paragraphs, paragraphs make chapters, chapters comprise sections or parts (optional) and parts align to make an entire book. Though it interested me to consider that the elements of a novel, its content, the situations and items that inspire the plot or narrative might assemble as if the components of a relational database.
 
-<img class='blog-post'  src='https://wiki.duraspace.org/download/attachments/32473993/DSpace-1.8-Database-Schema.png?version=1&amp;modificationDate=1366279060281&amp;api=v2' alt='image of a relational database model' title='relational database model'>
+<img class='blog-post'  src='/assets/images/posts/2014/03/DSpace-1.8-Database-Schema.png' alt='image of a relational database model' title='relational database model'>
 
 Or this is what comes to mind as I review the wikipedia <a href="http://en.wikipedia.org/wiki/Life_A_User's_Manual#The_constraints"> section </a> for this novel describing the constraints Perec used to craft his novel.
 
