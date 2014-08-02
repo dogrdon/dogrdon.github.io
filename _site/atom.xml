@@ -4,7 +4,7 @@
  <title>subtxt/in</title>
  <link href="http://subtxt.in/" rel="self"/>
  <link href="http://subtxt.in"/>
- <updated>2014-08-02T15:46:12-04:00</updated>
+ <updated>2014-08-02T17:06:49-04:00</updated>
  <id>http://subtxt.in</id>
  <author>
    <name>drew gordon</name>
@@ -15,11 +15,12 @@
  <entry>
    <title>Review: Linked Data for Libraries, Archives, and Museums</title>
    <link href="http://subtxt.in/linked-data/2014/08/02/review_ld_for_lam"/>
-   <updated>2014-08-02T15:46:11-04:00</updated>
+   <updated>2014-08-02T17:06:48-04:00</updated>
    <id>http://subtxt.in/linked-data/2014/08/02/review_ld_for_lam</id>
    <content type="html">
 &lt;div class=&quot;figure float_left&quot;&gt;&lt;img class=&quot;blog_post&quot; src=&quot;/assets/images/posts/2014/08/VanHooland_fullsize_RGB.jpg&quot; title=&quot;Image of book cover for Linked Data for Libraries, Archives and Museums&quot; alt=&quot;Image of book cover for Linked Data for Libraries, Archives and Museums&quot; /&gt;
 &lt;div class=&quot;figcaption&quot; style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Linked Data for Libraries, Archives and Museums&lt;/b&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;b&gt;Authors:&lt;/b&gt;  &lt;br /&gt;
 &lt;b&gt;Paperback:&lt;/b&gt; 224 pages &lt;br /&gt;
 &lt;b&gt;Publisher:&lt;/b&gt; Facet Publishing (June 19, 2014) &lt;br /&gt;
 &lt;b&gt;Language:&lt;/b&gt; English&lt;br /&gt;
@@ -49,6 +50,10 @@
 &lt;p&gt;To the books credit, in its final chapters on Publishing linked data and its conclusion, it is opinionated in offerring a framework for viewing the future of Linked Data as it is tied to the future of the Internet, or rather, how linked data can return the world wide web (what we know as the internet today) to its nascent conceits - to being a egalitarian platform for information sharing and linking. I was interested also to see this book take a bit of a swipe at API platforms like that of Europeana and the Digital Public Lirbrary of America, arguing that an architected, multi-API approach is not as future proof as a REST API tied flush to the exact workings of HTTP. That is, a separate URI for resources does not a good API make (no, we’re not writing this). Their use, also, of a simple Node.JS application to demonstrate how one might create and API for a collection is another reason why this book, as it ties into the efforts of freeyourmetadata.org and its various Open Refine tools and code bases like this make it a compelling resource for going as shallow or as deep as you’d like.&lt;/p&gt;
 
 &lt;p&gt;In the end, this book goes beyond technical details to provide a broader context for Linked Data and its uses in Libraries, Archives, and Museums. In doing so, it does skim some of the technical details, but as a primer for understanding the wider-picture of how all these peices sit together and what peices may soon be giving way to other peices, it is a great resource and one I could certainly picture as a base textbook and jump off point in a class on linked data, or a data and the architecture of the web course that focuses on linked data as a focal point or underlying theme. But this book is also for day-to-day professionals who want a good starting point for figuring out what linked data is and how they can start incorporating it into their workflows in an accessible manner.&lt;/p&gt;
+
+&lt;p&gt;**Other presentations, tutorials, and guides on the web are valuable, but for someone getting their feet wet, the domain is a bit scattered and tends to jump right into the deep end. At the end you think you need to create a SPARQL endpoint and then you have no idea why or how.&lt;/p&gt;
+
+&lt;p&gt;**While it makes technology recommendations, it also raises the caveat against letting technology guide the way towards linked data. There are many different ways to arrive at linked data and one should do what makes the most sense for your organization (which may preclude setting up your own SPARQL endpoint, for isntance).&lt;/p&gt;
 
 &lt;p&gt;**It’s possible that this book will be devisive and perhaps step on some toes, but I think it provides enough grounding for its assertions that it’s worth a read for the beginner to step through to the intermediate.&lt;/p&gt;
 

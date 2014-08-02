@@ -9,6 +9,7 @@ tags: [linked data, rdf, n-triples, book review, SPARQL, reference]
 
 <div class="figure float_left"><img class="blog_post" src="/assets/images/posts/2014/08/VanHooland_fullsize_RGB.jpg" title="Image of book cover for Linked Data for Libraries, Archives and Museums" alt="Image of book cover for Linked Data for Libraries, Archives and Museums"/>
 <div class="figcaption" style="text-align: left;"><b>Linked Data for Libraries, Archives and Museums</b><br/><br/>
+<b>Authors:</b>  <br/>
 <b>Paperback:</b> 224 pages <br/>
 <b>Publisher:</b> Facet Publishing (June 19, 2014) <br/>
 <b>Language:</b> English<br/>
@@ -39,6 +40,9 @@ To the books credit, in its final chapters on Publishing linked data and its con
 
 In the end, this book goes beyond technical details to provide a broader context for Linked Data and its uses in Libraries, Archives, and Museums. In doing so, it does skim some of the technical details, but as a primer for understanding the wider-picture of how all these peices sit together and what peices may soon be giving way to other peices, it is a great resource and one I could certainly picture as a base textbook and jump off point in a class on linked data, or a data and the architecture of the web course that focuses on linked data as a focal point or underlying theme. But this book is also for day-to-day professionals who want a good starting point for figuring out what linked data is and how they can start incorporating it into their workflows in an accessible manner.
 
+**Other presentations, tutorials, and guides on the web are valuable, but for someone getting their feet wet, the domain is a bit scattered and tends to jump right into the deep end. At the end you think you need to create a SPARQL endpoint and then you have no idea why or how.
+
+**While it makes technology recommendations, it also raises the caveat against letting technology guide the way towards linked data. There are many different ways to arrive at linked data and one should do what makes the most sense for your organization (which may preclude setting up your own SPARQL endpoint, for isntance).
 
 **It's possible that this book will be devisive and perhaps step on some toes, but I think it provides enough grounding for its assertions that it's worth a read for the beginner to step through to the intermediate.
 
