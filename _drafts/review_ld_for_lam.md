@@ -16,9 +16,16 @@ tags: [linked data, rdf, n-triples, book review, SPARQL, reference]
 <b>ISBN-10:</b> 1856049647<br/>
 <b>ISBN-13:</b> 978-1856049641</div></div>
 
-Though I work in a library setting and have sat down with linked data concepts and examples a few times already, I don't use it outright in my day to day and I admitedly have struggled with what Linked Data exactly is and how to implement some of its practices in the work I do. (I certainly could have used this book in the working of my last post.)
+### I (The discussion)
+There are a lot of great resources out there that document Linked Data fundamentals and best practices (here, here, here, and here are a good start, though not comprehensive). It is, after all an offshoot of the semantic web, an aspiration that ahs been around since the early days of the internet and the world wide web [1]. But despite all of these resources being widely available and freely accessible online I've found that the discussion still suffers from being too unattainable for the beginner or even folks who have regular interaction with data and or work within a Library, Museum, or Archive setting. 
 
-This book is a welcome addition to the literature on the concept of Linked Data <i>particularly</i> in a Library, Archives and Museum's setting, where often the tensions between where LAM organizations need linked data to be and where researchers and computer scientists want linked data to be through the development of the semantic web. Because it is a concept and theory of practice that is intepretted differently depending on whom you ask, it is difficult to learn its components without mixing ideological views. This book at least takes a wide-lens look under a single (although sometimes opinionated) perspective. 
+Though I work in a library setting and have sat down with linked data concepts and examples more than a few times already, I don't use it outright in my day to day and I admitedly have struggled with what Linked Data exactly is and how to implement some of its practices in the work I do. (I certainly could have used a better understanding of its theory and practice in working up my last [](post).)
+
+This book is a welcome addition to the literature on the concept of Linked Data <i>particularly</i> in a Library, Archives and Museum's setting. A setting where often the tensions between where LAM organizations need linked data to be and where researchers and computer scientists want linked data to be through the development of the semantic web. 
+
+It's hard to pin down Linked Data because it is not a single technology but rather a set of different practices and potential technologies for manifesting those practices. Further more it is a concept and theory of practice that is interpretted slightly differently depending on whom you ask, (Librarian or Computer Scientist, Digital Humanist, or Web Developer). Thus it it is difficult to learn from various resources across the web without mixing ideological views from resource to resource. This book, instead, takes a wide-lens look under a single (although not without its own opinion and biases) perspective. 
+
+### II (The contribution)
 
 As mentioned above, I've had fleeting interactions with Linked Data in the past, and I have found it a bit unwieldy or often abstract and difficult to translate into real data practices. Coming from an 'Open Data' background, I can appreciate the process of linking datasets and concepts across datasets, but when CSV, JSON and *SQL databases are more of what you are used to, trying to wrap your mind around RDF/XML, SKOS, and SPARQL is more than a little difficult.
 
@@ -40,7 +47,7 @@ To the books credit, in its final chapters on Publishing linked data and its con
 
 In the end, this book goes beyond technical details to provide a broader context for Linked Data and its uses in Libraries, Archives, and Museums. In doing so, it does skim some of the technical details, but as a primer for understanding the wider-picture of how all these peices sit together and what peices may soon be giving way to other peices, it is a great resource and one I could certainly picture as a base textbook and jump off point in a class on linked data, or a data and the architecture of the web course that focuses on linked data as a focal point or underlying theme. But this book is also for day-to-day professionals who want a good starting point for figuring out what linked data is and how they can start incorporating it into their workflows in an accessible manner.
 
-**Other presentations, tutorials, and guides on the web are valuable, but for someone getting their feet wet, the domain is a bit scattered and tends to jump right into the deep end. At the end you think you need to create a SPARQL endpoint and then you have no idea why or how.
+**Other presentations, tutorials, and guides on the web are valuable, but for someone getting their feet wet, the domain is a bit scattered and tends to jump right into the deep end. At the end you think you need to create a SPARQL endpoint and then you have no idea why or how. Many resources tend to be ingredients lists and not recipes.
 
 **While it makes technology recommendations, it also raises the caveat against letting technology guide the way towards linked data. There are many different ways to arrive at linked data and one should do what makes the most sense for your organization (which may preclude setting up your own SPARQL endpoint, for isntance).
 
@@ -48,4 +55,8 @@ In the end, this book goes beyond technical details to provide a broader context
 
 **It's final example pulls back enough from the canonic insistence of RDF/SPARQL enough to provide an vision for LD that goes beyond those structures.
 
+**I did not learn about Linked Data practices in library school, though we did explore the semantic web, but that discussion was fairly abstract and I was left with the idea that this was more of a utopian concept like pure anarchy or 
+
 Disclosure: I was provided a copy of this book for review purposes. I am otherwise in no way affiliate with the publishers, authors, or any of their related ventures.
+
+[1] [http://en.wikipedia.org/wiki/Semantic_Web#History](http://en.wikipedia.org/wiki/Semantic_Web#History)
