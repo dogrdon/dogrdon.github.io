@@ -4,22 +4,13 @@
  <title>subtxt/in</title>
  <link href="http://subtxt.in/" rel="self"/>
  <link href="http://subtxt.in"/>
- <updated>2014-08-16T11:24:55-04:00</updated>
+ <updated>2014-08-17T01:11:24-04:00</updated>
  <id>http://subtxt.in</id>
  <author>
    <name>drew gordon</name>
    <email>drew@subtxt.in</email>
  </author>
 
- 
- <entry>
-   <title>Documents to Databases - An exploration of turning digital documents into strucuted data</title>
-   <link href="http://subtxt.in/data/2014/08/16/documents_to_databases"/>
-   <updated>2014-08-16T11:19:27-04:00</updated>
-   <id>http://subtxt.in/data/2014/08/16/documents_to_databases</id>
-   <content type="html">
-</content>
- </entry>
  
  <entry>
    <title>Review: Linked Data for Libraries, Archives and Museums</title>
@@ -832,30 +823,6 @@ MOSAIK = MOSAIC
  </entry>
  
  <entry>
-   <title>I Have and RDF file. Now What?</title>
-   <link href="http://subtxt.in/linked-data/2014/05/06/i_have_rdf_now_what"/>
-   <updated>2014-05-06T20:32:49-04:00</updated>
-   <id>http://subtxt.in/linked-data/2014/05/06/i_have_rdf_now_what</id>
-   <content type="html">
-&lt;p&gt;Sample Data Example: Gathering extended data for entities from DBPedia. You have a file of names, places, or events and you want to fill our your data with facts about that individual.&lt;/p&gt;
-
-&lt;p&gt;Creating the data: Use rdflib and fetch the info from DBPedia with python.&lt;/p&gt;
-
-&lt;p&gt;Now you have your RDF file, what does it look like?&lt;/p&gt;
-
-&lt;p&gt;What are we going to do with it?&lt;/p&gt;
-
-&lt;p&gt;Caveat: I am clear that this may not be the general use case for RDF. To me, it appears that that now that you have your sparkling clean RDF graph, now you connect it to other RDF graphs, and sit happily as your data is now linked. I don’t know about any of that. I just want to do a little data analysis.&lt;/p&gt;
-
-&lt;p&gt;How do we get data out of the Graph: We query it.&lt;/p&gt;
-
-&lt;p&gt;What if I want to create a database for it? There are options for that, but I am not exploring any of them. I really just want to get data out and this is a way to acces wikipedia in a structured way. I am open to alternatives.&lt;/p&gt;
-
-&lt;p&gt;Get your data out and append it to a csv file. &lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
    <title>The Archive as Artistic Spectacle</title>
    <link href="http://subtxt.in/museums/2014/04/22/archive-as-art"/>
    <updated>2014-04-22T00:00:00-04:00</updated>
@@ -904,15 +871,6 @@ Whitney Museum of American Art, New York. Photograph by Sheldan C. Collins &lt;a
 &lt;/div&gt;
 
 &lt;p&gt;Some of this leads me then to suggest a need for more data science at the point where the archive meets the museum. Though I am not recommending a complete replacement of Archival and Museum professionals with data scientists. However, it seems that being able to manipulate and communicate large sets of digital information will be a crucial skill set for those attempting to narrate in this space in the future (and currently, it doesn’t hurt to have some of these skills currently). In the meantime, I’ll be keeping an eye out for more and more interesting embeds of archives in the public art space.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Preservation and Access - Digital Libraries Part II</title>
-   <link href="http://subtxt.in/digital-libraries/2014/04/18/preservation_and_access"/>
-   <updated>2014-04-18T01:01:31-04:00</updated>
-   <id>http://subtxt.in/digital-libraries/2014/04/18/preservation_and_access</id>
-   <content type="html">
 </content>
  </entry>
  
