@@ -28,7 +28,11 @@ tags: [data]
 
 *difference between .doc and .docx files since docx is already XML based (though we don't yet know how clean it is till we look further into that standard)? If so, does it make sense to parse only .docx and so convert all doc to that first. [1]
 
+*Parsing a docx document in its native XML format. You _can_ unzip a .docx file and you'll get a file at `./word/document.xml` which you may think you can parse. This is pretty much a joke, even if your document is predictably formatted, finding the reflection of this formating in your XML tree would be a massive headache. Feeding your docx file to a python-docx `Document` object gives you a change to parse on special characters and formating (like continous breaks) in a more reasonable fashion.
+
 *python-docx - this library looks like it works mostly for the create of .docx files, but not the parsing and reading of them (for instance, only a few methods for reading text out of a table cell or paragraph, .text methods reserved for writing into the document) - though it kicks out text for paragraphs, but that's about as good as just copy pasting over to a text file.
+
+*
 
 
 [1]Some references for doc and docx parsing: 
