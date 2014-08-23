@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Archive as Artistic Spectacle"
-description: "Or: How Upon visiting the Biennial at the Whitney Museum in New York and seeing an artist's archive there, the author wondered about the artistry of the archive and how artistic process might be documented in the age of digital tools."
+description: "How Upon visiting the Biennial at the Whitney Museum in New York and seeing an artist's archive there, the author wondered about the artistry of the archive and how artistic process might be documented in the age of digital tools."
 category: museums
 tags: [art, meta-art, museums, preservation, process, archives]
 ---
