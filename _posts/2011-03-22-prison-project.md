@@ -1,7 +1,7 @@
 ---
 layout: project_post
 title: "Department of Justice Data Analysis"
-description: "A course project from the University Of Michigan School of Information's Exploratory Data Analysis course. Using [R](http://www.r-project.org/) to explore and make sense of a 1.3 million record Department of Justice dataset of the US prison population in 2004."
+description: "A course project from the University Of Michigan School of Information's Exploratory Data Analysis course. Using R to explore and make sense of a 1.3 million record Department of Justice dataset of the US prison population in 2004."
 category: project
 tags: [R, data analysis]
 image: /assets/images/projects/prison/r4-1-tsr.png

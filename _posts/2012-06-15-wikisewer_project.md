@@ -1,7 +1,7 @@
 ---
 layout: project_post
 title: "Wikisewer"
-description: "A fork of [Wikistream](https://github.com/edsu/wikistream) with a focus on capturing the vandalism that occurrs on Wikipedia. Uses [Flask](http://flask.pocoo.org/) and [MongoDB](http://www.mongodb.org/)"
+description: "A fork of Wikistream with a focus on capturing the vandalism that occurrs on Wikipedia. Uses Flask and MongoDB."
 category: project 
 comments: false
 tags: [wikisewer, python, nodejs]
