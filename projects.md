@@ -13,6 +13,7 @@ description: "List all projects"
 
       <h4 class="post-title">{{ post.title }}</h4>
       <br/>
+      <p> {{ post.description }} </p>
 
           
       <img class="port-thumb" src="{{ post.image }}"/> 

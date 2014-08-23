@@ -1,7 +1,7 @@
 ---
 layout: project_post
 title: "Artdealer"
-description: "Project description of blacklight ui implementation for an artdealer's poster collection"
+description: "Blacklight Project (solr and rails) implementation for an artdealer's poster collection"
 category: project
 tags: [solr, blacklight, posters, scraping]
 image: /assets/images/projects/artdealer/artdealer.png
