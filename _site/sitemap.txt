@@ -10,6 +10,7 @@ http://subtxt.in/rss.xml
 http://subtxt.in/sitemap.txt
 http://subtxt.in/tags.html
 
+http://subtxt.in/digital-libraries/2015/05/09/youtube_preservation
 http://subtxt.in/linked-data/2014/08/06/review_ld_for_lam
 http://subtxt.in/museums/2014/05/29/analyzing_degenerate_art
 http://subtxt.in/museums/2014/04/22/archive-as-art
