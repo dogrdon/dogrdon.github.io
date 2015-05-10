@@ -8,7 +8,7 @@ description: ""
   <div id="about-section">
   	<p>My name is Drew.</p>
 
-  	<p>I am a card-carrying Information Scientist. I enjoy work that involves collecting, sorting, organizing, and making sense of the vast amounts of data, text, and other meaningful symbols that drive societies and cultures. This site <i>tries</i> to prove that.</p>
+  	<p>I am a card-carrying information professional and data curator. I enjoy work that involves collecting, sorting, organizing, and making sense of the vast amounts of data, text, and other meaningful symbols that drive societies and cultures. This site is a place to experiment with that premise.</p>
 
   	<strong>If you'd like to know more:</strong><br/>
 
