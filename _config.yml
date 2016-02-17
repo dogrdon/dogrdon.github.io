@@ -17,13 +17,8 @@ keywords: language, culture, data, libraries, archives, history, NLP
 author :
   name : drew gordon
   email : drew@subtxt.in
-  github : droquo
+  github : dogrdon
 
-#Additional meta tags for connecting to services
-twittercard:
-  summary: summary
-  site: droquo
-  creator: droquo
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
