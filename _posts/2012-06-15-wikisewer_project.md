@@ -13,4 +13,4 @@ image: /assets/images/projects/wikisewer/wikisewer.png
 
 <p>This project, like Wikistream, monitors the recent changes wikipedia irc channel. It then scrapes the pages identified as having some vandalism on them, collects the proper metadata like date, time, the information for the wikipedia page, the parties involved, and the content of the vandalism and stores it in mongodb.</p>
 
-<a class="source" href="https://github.com/droquo/wikisewer">You can see more at the github repository</a>
+<a class="source" href="https://github.com/dogrdon/wikisewer">You can see more at the github repository</a>
