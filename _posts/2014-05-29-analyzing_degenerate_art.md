@@ -25,18 +25,18 @@ At first I considered whether it would it be possible to get this information in
 
 I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an [online, searchable database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html "link to the degenerate art database at the Freie Universität Berlin"), complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only 10,340 records of a total ~16,000 works of art in the original record. Though it is a good chunk of the original and, as such, still quite useful for running some numbers.
 
-Interested to dig in, I scraped off the basic metadata from the online database and put it into a [SQLite database](https://github.com/droquo/entartete_scraper/tree/master/data/db "link to sqlite version of degenerate art database, with some additional data"). The related scripts and data can be found [here](http://github.com/droquo/entartete_scraper "link to repository containing scraper and data files for the degenerate art database") in a fairly unkempt repository.
+Interested to dig in, I scraped off the basic metadata from the online database and put it into a [SQLite database](https://github.com/dogrdon/entartete_scraper/tree/master/data/db "link to sqlite version of degenerate art database, with some additional data"). The related scripts and data can be found [here](http://github.com/dogrdon/entartete_scraper "link to repository containing scraper and data files for the degenerate art database") in a fairly unkempt repository.
 
 
 ####Notes on Getting and Processing the Data
 
-  - <b>Scraping the database</b> - [scraper here](https://github.com/droquo/entartete_scraper/blob/master/scripts/entartete_scraper.py)
+  - <b>Scraping the database</b> - [scraper here](https://github.com/dogrdon/entartete_scraper/blob/master/scripts/entartete_scraper.py)
 
   To save myself the headache of dealing with reinstalling [lxml](http://lxml.de/) on a local machine, I opted to use [Scraperwiki](http://scraperwiki.com), so the script is not 100% plug and play.
 
   In scraping the database, I only took some of the primary metadata for the work; that which is reliably laid out in tabular format. There is additional, somewhat variable data below that ([example here](http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&module=collection&objectId=117011&viewType=detailView)) related to the provenance of particular artworks, biographical details about the artist, etc. However, these details were presented in sometimes unstructured formats and sometimes not done in consistent or predictable ways from artist to artist. So I felt it was not really imperative to grab this information, currently.
 
-  - <b>Adding Information to the artists table</b> - [ad hoc enrichment script here](https://github.com/droquo/entartete_scraper/blob/master/scripts/artists_extend.py)
+  - <b>Adding Information to the artists table</b> - [ad hoc enrichment script here](https://github.com/dogrdon/entartete_scraper/blob/master/scripts/artists_extend.py)
 
   As I was originally interested in taking the artwork data and combining it with biographical data about the artists who made the work, I attempted to enrich the artist data with [DBpedia](http://dbpedia.org "link to DBpedia"). Generally, the DBpedia resource for an individual follows the pattern of `http://dbpedia.org/resource/Firstname_Surname` (so artist Paul Klee is located at `http://dbpedia.org/resource/Paul_Klee`). I created a pretty naive DBpedia url generator using the artist name from the original database, switching the first name and last name and adding underscores for spaces.
 
@@ -44,7 +44,7 @@ Interested to dig in, I scraped off the basic metadata from the online database 
 
   As a side note, I had first attempted to enrich this data by sticking strictly to the linked data practice of using an RDF graph. While pulling together the graph was very easy with [RDFLib](https://github.com/RDFLib), I found that SPARQL queries skewed towards only returning full records and passed over records that did not have all properties or values for an entity (read: artist). As such, I didn't find it totally practical for this purpose and probably not the main virtue of using a graph database (though I could also be wrong about that.)
 
-  - <b>Geocoding</b> [geocoder here](https://github.com/droquo/entartete_scraper/blob/master/scripts/geocoder.py)
+  - <b>Geocoding</b> [geocoder here](https://github.com/dogrdon/entartete_scraper/blob/master/scripts/geocoder.py)
 
   The geocoding approach I used was the Bing API. This was due to the fact that Google has long since placed limits on its geocoding service unless you pay money for it. Out of ~10,000 records, only ~2,000 were geocoded based on whether there was a current location for the artwork (generally the name of a museum). Of the final geocoded results, there were also a few inaccuracies, particularly if the listed location was a private owner and not a well-known museum. At best the geocoded data (as depicted in the map below), is tenuous and not meant for serious research.
 
@@ -273,7 +273,7 @@ Doing so, we see that some of these were the same work, or a series, from one ar
 
 ####Some Final Thoughts:
 
-Lacking a firm background in this domain, I am not sure if the ideas expressed above are exceedingly obvious or not. I'd be interested to know if anyone with a background in this might find value in a dataset like this. For anyone who is interested, the database and its schema can be found [here](https://github.com/droquo/entartete_scraper/tree/master/data/db "link to sqlite version of degenerate art database, with some additional data"). Again, I do not own this data as it was culled from the Freie Universität Berlin's [online database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html "link to the degenerate art database at the Freie Universität Berlin"). The collection of this data and its use here was strictly for educational purposes.
+Lacking a firm background in this domain, I am not sure if the ideas expressed above are exceedingly obvious or not. I'd be interested to know if anyone with a background in this might find value in a dataset like this. For anyone who is interested, the database and its schema can be found [here](https://github.com/dogrdon/entartete_scraper/tree/master/data/db "link to sqlite version of degenerate art database, with some additional data"). Again, I do not own this data as it was culled from the Freie Universität Berlin's [online database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html "link to the degenerate art database at the Freie Universität Berlin"). The collection of this data and its use here was strictly for educational purposes.
 
 
 
