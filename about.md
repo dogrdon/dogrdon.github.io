@@ -13,7 +13,7 @@ description: "about page"
 
   	<a href="https://www.linkedin.com/pub/andrew-gordon/25/ab1/613" title="linkedin"><div class="soc-med">li</div></a>
 
-  	<a href="https://www.github.com/droquo" title="github"><div class="soc-med">gh</div></a>
+  	<a href="https://www.github.com/dogrdon" title="github"><div class="soc-med">gh</div></a>
 
         <a href="https://pinboard.in/u:droquo" title="pinboard"><div class="soc-med">pb</div></a>
 
