@@ -1,0 +1,992 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>The Datenbank Entartete Kunst (Degenerate Art Database)</title>
+	<meta name="author" content="drew gordon">
+	<meta name="description" content="personal website for drew gordon. writings about technology in libraries and archives, culture, literature, language, and data">
+	<meta name="keywords" content="language, culture, data, libraries, archives, history, NLP">
+	<!--twitter card metadata -->
+	<meta name="twitter:card" value="">
+	<meta name="twitter:site" value="@">
+	<meta name="twitter:creator" value="@">
+	<meta name="twitter:title" value="The Datenbank Entartete Kunst (Degenerate Art Database)">
+    <meta name="twitter:description" value="The Nazi's attempt to control and or destroy the art they found to be degenerate resulted in a meticulous record keeping of that artwork. The Freie Universität Berlin has undertaken the process of turning these records into a publicly accessible database. I took a pass at collecting that data into a sqlite database and went over some of the readily available summary statistics. There are extreme gaps in this data due to some incompleteness of the online database itself as well as a lack of information for its artists currently available on services like DBpedia. As such I don't believe it is totally fit for deep analysis. But I think a surface report of some of its attributes is worth the while and provides a proof of concept for datasets in art history. The statistical accumulation of artistic works within a particular context could offer a interesting launch pad for researchers inquiring into that domain.">
+
+
+	<link href='/assets/themes/the-minimum/css/style.css' rel="stylesheet" media="all">
+
+	<!--subtxt.css-->
+	<link rel="stylesheet" href="/assets/css/subtxt.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<p class="logo"><a href="/">subtxt/in</a></p>
+				<nav class="nav-global">
+					<ul>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/projects.html">projects</a></li>
+						<li class="about"><a href="/about.html">whois?</a></li>
+						<li class="rss"><a href="/rss.xml">rss <span class="glyphicon glyphicon-bullhorn"></span></a></li>
+
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">The Datenbank Entartete Kunst (Degenerate Art Database)</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					
+<div class="figure">
+<img class="blog-post" src="/assets/images/posts/2014/05/degenerate_art_may_2014.png" alt="author's picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenerate art exhibit in 1937." />
+<div class="figcaption"> Large image of photograph from original Entartete Kunst Exhibition in 1937 displayed at the entrance to the Degenerate Art Exhibit at the Neue Galerie, May 2014.</div></div>
+
+<h4 id="introduction">Introduction</h4>
+
+<p>In 1937, the Nazis began the public exhibition of works of art which they had seized for being deemed degenerate. It was comprised of the new modern art of the time and was part of a campaign to deride and sanction artists who produced works that were “un-German, Jewish Bolshevist in nature”. [1]</p>
+
+<p>This is not a post, however, about the history or the art, as such. Rather it’s a brief discussion of the data generated around this art. For those interested in seeing some of these works in person, there is an exhibition of some of the works of art that survived from this period at the <a href="http://www.neuegalerie.org/">Neue Galerie</a> in New York through September 1, 2014.</p>
+
+<h4 id="the-data">The Data</h4>
+
+<p>A short while ago I came across <a href="http://www.vam.ac.uk/content/articles/e/entartete-kunst/">this</a> announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in the process of “collecting” these works of art. The meticulous record keeping appeared to make it possible to perform some analytics in the service of Art History research, to serve as a baseline for research into this period of modern art.</p>
+
+<p>At first I considered whether it would it be possible to get this information into a database for further analysis of what’s there? Though without access to some pretty heavy-duty OCR or a lot of money to throw at something like <a href="https://www.mturk.com/mturk/welcome">Amazon Mechanical Turk</a>, the answer was most likely no, for now.</p>
+
+<p>I was pleased to find, however, that the Freie Universität Berlin had undertaken a project to compile the information in these pages into an <a href="http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html" title="link to the degenerate art database at the Freie Universität Berlin">online, searchable database</a>, complete with full metadata (where available) for each work of art, as well as the status and current location of the work of art (were it not destroyed or gone missing). It is not a complete database and as of May 2014 has only 10,340 records of a total ~16,000 works of art in the original record. Though it is a good chunk of the original and, as such, still quite useful for running some numbers.</p>
+
+<p>Interested to dig in, I scraped off the basic metadata from the online database and put it into a <a href="https://github.com/dogrdon/entartete_scraper/tree/master/data/db" title="link to sqlite version of degenerate art database, with some additional data">SQLite database</a>. The related scripts and data can be found <a href="http://github.com/dogrdon/entartete_scraper" title="link to repository containing scraper and data files for the degenerate art database">here</a> in a fairly unkempt repository.</p>
+
+<h4 id="notes-on-getting-and-processing-the-data">Notes on Getting and Processing the Data</h4>
+
+<ul>
+  <li><b>Scraping the database</b> - <a href="https://github.com/dogrdon/entartete_scraper/blob/master/scripts/entartete_scraper.py">scraper here</a></li>
+</ul>
+
+<p>To save myself the headache of dealing with reinstalling <a href="http://lxml.de/">lxml</a> on a local machine, I opted to use <a href="http://scraperwiki.com">Scraperwiki</a>, so the script is not 100% plug and play.</p>
+
+<p>In scraping the database, I only took some of the primary metadata for the work; that which is reliably laid out in tabular format. There is additional, somewhat variable data below that (<a href="http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&amp;module=collection&amp;objectId=117011&amp;viewType=detailView">example here</a>) related to the provenance of particular artworks, biographical details about the artist, etc. However, these details were presented in sometimes unstructured formats and sometimes not done in consistent or predictable ways from artist to artist. So I felt it was not really imperative to grab this information, currently.</p>
+
+<ul>
+  <li><b>Adding Information to the artists table</b> - <a href="https://github.com/dogrdon/entartete_scraper/blob/master/scripts/artists_extend.py">ad hoc enrichment script here</a></li>
+</ul>
+
+<p>As I was originally interested in taking the artwork data and combining it with biographical data about the artists who made the work, I attempted to enrich the artist data with <a href="http://dbpedia.org" title="link to DBpedia">DBpedia</a>. Generally, the DBpedia resource for an individual follows the pattern of <code>http://dbpedia.org/resource/Firstname_Surname</code> (so artist Paul Klee is located at <code>http://dbpedia.org/resource/Paul_Klee</code>). I created a pretty naive DBpedia url generator using the artist name from the original database, switching the first name and last name and adding underscores for spaces.</p>
+
+<p>What I came to find was that many of these artists did not have resource pages (out of 663 artists in the database, only 168 appeared to have any kind of DBpedia resource page). Of the ones that did, it was possible that it was not identifying the correct person. For instance, the case of Robert Michel, who would be at <code>http://dbpedia.org/page/Robert_Michel_(K%C3%BCnstler)</code>, pointed to a different Robert Michel - <code>http://dbpedia.org/page/Robert_Michel</code>, an American politician). In the end, a much more dependable and thorough Named Entity Recognizer (NER) would have to be employed for a more complete set of artist biographical data.</p>
+
+<p>As a side note, I had first attempted to enrich this data by sticking strictly to the linked data practice of using an RDF graph. While pulling together the graph was very easy with <a href="https://github.com/RDFLib">RDFLib</a>, I found that SPARQL queries skewed towards only returning full records and passed over records that did not have all properties or values for an entity (read: artist). As such, I didn’t find it totally practical for this purpose and probably not the main virtue of using a graph database (though I could also be wrong about that.)</p>
+
+<ul>
+  <li><b>Geocoding</b> <a href="https://github.com/dogrdon/entartete_scraper/blob/master/scripts/geocoder.py">geocoder here</a></li>
+</ul>
+
+<p>The geocoding approach I used was the Bing API. This was due to the fact that Google has long since placed limits on its geocoding service unless you pay money for it. Out of ~10,000 records, only ~2,000 were geocoded based on whether there was a current location for the artwork (generally the name of a museum). Of the final geocoded results, there were also a few inaccuracies, particularly if the listed location was a private owner and not a well-known museum. At best the geocoded data (as depicted in the map below), is tenuous and not meant for serious research.</p>
+
+<iframe width="100%" height="600" frameborder="0" src="//droquo.cartodb.com/viz/e8e4e4a8-e228-11e3-ae87-0e73339ffa50/embed_map?title=true&amp;description=true&amp;search=false&amp;shareable=true&amp;cartodb_logo=true&amp;layer_selector=false&amp;legends=true&amp;scrollwheel=true&amp;fullscreen=true&amp;sublayer_options=1&amp;sql=&amp;zoom=2&amp;center_lat=22.59372606392931&amp;center_lon=368.43749999999994" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe>
+
+<pre><code>Translation of Legend
+DRUCKGRAPHIK = PRINTS
+GEMÄLDE = PAINTINGS
+AQUARELL = WATERCOLOR
+ZEICHNUNG = DRAWING
+SKULPTUR/PLASTIK = SCULPTURE / PLASTIC
+TEXTIL = TEXTILE
+MOSAIK = MOSAIC
+</code></pre>
+
+<h4 id="some-points-of-interest-in-the-data">Some Points of Interest in the Data</h4>
+
+<p>It’s worthwhile to note here that this post only goes so deep in its analysis. This being a fairly massive intersection of Art and World History, really getting at the core of it would require a deeper understanding of this point in time and its context. It would also require a much fuller, more complete dataset. So this is more of a quick and broad treatment, a proof of concept for future work.</p>
+
+<p>Some obvious points of entry now that we have a database we can query are some basic counts of selected columns. Let’s start with the overall, current status of works as reported in the database.</p>
+
+<pre><code>=== Top 10 work statuses ===
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">STATUS</th>
+      <th style="text-align: right">COUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Unknown</td>
+      <td style="text-align: right">5859</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">destroyed</td>
+      <td style="text-align: right">1722</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Rostock, Museum of Cultural History</td>
+      <td style="text-align: right">572</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Berlin, Prints and Drawings</td>
+      <td style="text-align: right">335</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Private property</td>
+      <td style="text-align: right">251</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Munich , Bavarian State Painting Collections - Pinakothek der Moderne</td>
+      <td style="text-align: right">147</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">In the NS - inventory as listed destroyed</td>
+      <td style="text-align: right">131</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Munich , State Graphic Collection</td>
+      <td style="text-align: right">99</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Erfurt, Anger Museum</td>
+      <td style="text-align: right">60</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Weimar, Weimar Classic Foundation</td>
+      <td style="text-align: right">57</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The current status of around half of the contents of the current database are <code>Unknown</code>. More dismaying, we have a reported 16.7% of the recorded online database having been destroyed.</p>
+
+<p>Next, perhaps we want a count of the art forms employed by the artists.</p>
+
+<pre><code>=== Top 10 art formats ===
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">FORMAT</th>
+      <th style="text-align: right">COUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Printmaking</td>
+      <td style="text-align: right">7019</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Paintings</td>
+      <td style="text-align: right">1298</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Watercolor</td>
+      <td style="text-align: right">1034</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Drawing</td>
+      <td style="text-align: right">796</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Sculpture / Sculpture</td>
+      <td style="text-align: right">155</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Book</td>
+      <td style="text-align: right">29</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Textile</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">General</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Mosaic</td>
+      <td style="text-align: right">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I was interested to see that an overwhelming majority of the works here were produced through some form of printmaking (woodcut, lithograph, etching, etc.). There might be a fairly obvious explanation for this. Printmaking, by its nature is far more reproducible of an art form. It is possible to churn out more representations in this format than something like oil painting or watercolor since with a template, you can easily make multiple copies. It is also possible that the works referred to might be reproductions of originals, increasing the representation of this artform in this dataset.</p>
+
+<div class="figure">
+<img class="blog-post-sm" src="http://upload.wikimedia.org/wikipedia/en/2/23/%27The_Prophet%27%2C_woodcut_by_Emil_Nolde%2C_1912.jpg" alt="author's picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenerate art exhibit in 1937." />
+<div class="figcaption"> Emil Nolde The Prophet, woodcut, 1912. via <a href="http://en.wikipedia.org/wiki/Emil_Nolde">Wikipedia</a> EK Inventory No.: <a href="http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&amp;module=collection&amp;objectId=121753&amp;viewType=detailView">16302</a></div></div>
+
+<p>On the other hand, it might be the basis for an interesting exploration by someone more familiar with this point in art history. For instance, what were the correlations between modern art and the techniques and technology inherent in printmaking? Was there an increase for any non-trivial reasons? How might application of this technology have facilitated or impacted artistic expression at this time?</p>
+
+<p>Another possibility that might be of interest to explore would be the implications or points of contact with Walter Benjamin’s famous essay, <i>The Work of Art in the Age of Mechanical Reproduction</i>. An essay he wrote in 1936, one year before the Nazi exhibition of degenerate art. In it, he concludes that art, where it is more possible to create works through mechanical reproduction (not simply through printmaking, but also through film and photography), is removed from its past as a ritualistic, almost cult-like traditions and becomes more couched in the practice of politics.[2]</p>
+
+<p>Interested in the breakdown of techniques employed by these artists (different from the forms of art), we can also count the materials/techniques category to find frequencies for the various modes of production employed.</p>
+
+<pre><code>=== Most frequent materials or techniques employed =====
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">TECHNIQUE</th>
+      <th style="text-align: right">COUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Lithograph</td>
+      <td style="text-align: right">2300</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Woodcut</td>
+      <td style="text-align: right">2250</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Etching</td>
+      <td style="text-align: right">1462</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Oil on canvas</td>
+      <td style="text-align: right">925</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Watercolor</td>
+      <td style="text-align: right">628</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NA</td>
+      <td style="text-align: right">497</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Colour lithograph</td>
+      <td style="text-align: right">284</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Ink</td>
+      <td style="text-align: right">180</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Color woodcut</td>
+      <td style="text-align: right">122</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Offset printing</td>
+      <td style="text-align: right">100</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Coal</td>
+      <td style="text-align: right">99</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Watercolor and ink</td>
+      <td style="text-align: right">93</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Lithograph, colored</td>
+      <td style="text-align: right">82</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Chalk</td>
+      <td style="text-align: right">74</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Pencil</td>
+      <td style="text-align: right">72</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>With lithography being the most widely used technique, we may be seeing some evidence that many of these works were copies of an artists original. Though here we see that the next most represented techniques are woodcuts and etchings, other forms of printmaking (like the Nolde work above), which may hint at something more interesting in the correlations between modern art, degenerate art, and this artistic technique. Again, a further exploration would probably require a deeper knowledge of this specific domain.</p>
+
+<p>Perhaps we want to see which artists are most widely represented in the database.</p>
+
+<pre><code>=== Artists with most work in the database ===
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>ARTIST</th>
+      <th style="text-align: right">COUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nolde, Emil</td>
+      <td style="text-align: right">878</td>
+    </tr>
+    <tr>
+      <td>Kirchner, Ernst Ludwig</td>
+      <td style="text-align: right">622</td>
+    </tr>
+    <tr>
+      <td>Barlach, Ernst</td>
+      <td style="text-align: right">590</td>
+    </tr>
+    <tr>
+      <td>Heckel, Erich</td>
+      <td style="text-align: right">587</td>
+    </tr>
+    <tr>
+      <td>Kokoschka, Oskar</td>
+      <td style="text-align: right">509</td>
+    </tr>
+    <tr>
+      <td>Mueller , Otto</td>
+      <td style="text-align: right">312</td>
+    </tr>
+    <tr>
+      <td>Pechstein, Max</td>
+      <td style="text-align: right">268</td>
+    </tr>
+    <tr>
+      <td>Schmidt- Rottluff , Karl</td>
+      <td style="text-align: right">174</td>
+    </tr>
+    <tr>
+      <td>Beckmann, Max</td>
+      <td style="text-align: right">159</td>
+    </tr>
+    <tr>
+      <td>Feininger, Lyonel</td>
+      <td style="text-align: right">138</td>
+    </tr>
+    <tr>
+      <td>Grosz , George</td>
+      <td style="text-align: right">134</td>
+    </tr>
+    <tr>
+      <td>Jansen, Franz Maria</td>
+      <td style="text-align: right">126</td>
+    </tr>
+    <tr>
+      <td>Kandinsky, Wassily</td>
+      <td style="text-align: right">113</td>
+    </tr>
+    <tr>
+      <td>Grossmann, Rudolf</td>
+      <td style="text-align: right">104</td>
+    </tr>
+    <tr>
+      <td>Marc, Franz</td>
+      <td style="text-align: right">99</td>
+    </tr>
+    <tr>
+      <td>Dix, Otto</td>
+      <td style="text-align: right">79</td>
+    </tr>
+    <tr>
+      <td>Klee, Paul</td>
+      <td style="text-align: right">73</td>
+    </tr>
+    <tr>
+      <td>Corinth, Lovis</td>
+      <td style="text-align: right">68</td>
+    </tr>
+    <tr>
+      <td>Seewald , Richard</td>
+      <td style="text-align: right">67</td>
+    </tr>
+    <tr>
+      <td>Ehmsen , Heinrich</td>
+      <td style="text-align: right">66</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We are not surprised to see these names here at the top. They are largely the most well-known artists to have been working at this time.[3]</p>
+
+<p>One thing that I find important and fascinating about this exhibition in the present context, however, is that it, unlike other contemporary exhibitions, was not drawn <i>entirely</i> from the most well-known artists of that time (or now, for that matter). Rather, the thread that brings them together is having all been selected for political and sociological reasons at a specific point in history. As such, well-known artists and not so-well-known artists are present in an exhibition as they were within the milieu of that time. In its current manifestation at the Neue Galerie, it is an exhibition somewhat frozen in time (though not without its present day interpretations and narrative). Thus we are able, in some fashion, to evaluate it more like we would our currently working, contemporary artists. With the latter, we don’t necessarily have the benefit of history to judge who are the most enduring contributors to a culture (a judgment that’s not entirely without it biases and problems, of course). In examining this exhibition as it was, we have a window to explore, perhaps, what it is that makes some artists stand out over others through the course of history.</p>
+
+<p>Speaking simplistically, the counts above may indicate that prolificness is a virtue for enduring in the cultural canon. Though on the other hand, it might be argued that the most prevalent artists in the database are those who were already the most influential at the time, where artists that were more well-known were perceived by the Nazis as posing a greater threat than the more obscure artists at the time.</p>
+
+<p>As another part of this exploration, and one that takes note of the linked data aspect of this data set, we might look at the most common subject terms associated with this set of artists.</p>
+
+<pre><code>=== Most frequent subject terms ===
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">SUBJECT TERM</th>
+      <th style="text-align: right">COUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">German_painters</td>
+      <td style="text-align: right">58</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Modern_painters</td>
+      <td style="text-align: right">39</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">German_artists</td>
+      <td style="text-align: right">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Expressionism</td>
+      <td style="text-align: right">20</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">French_painters</td>
+      <td style="text-align: right">18</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">German_sculptors</td>
+      <td style="text-align: right">18</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1887_births</td>
+      <td style="text-align: right">13</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1881_births</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">German_printmakers</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Jewish_painters</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">German_military_personnel_of_World_War_I</td>
+      <td style="text-align: right">11</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Modern_sculptors</td>
+      <td style="text-align: right">11</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">20th - century_painters</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Bauhaus</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">German_Jews</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">School_of_Paris</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Commanders_Crosses_of_the_Order_of_Merit_of_the_Federal_Republic_of_Germany</td>
+      <td style="text-align: right">9</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1889_births</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1945_deaths</td>
+      <td style="text-align: right">8</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This simple count is interesting in how succinctly it gives us a picture of what art and artists the Nazis targeted. Largely German painters and artists. We also see the artistic movements the Nazis targeted. It is certainly not surprising to see the movements that were most modern and unorthodox in their treatment of the human form and the form of objects like buildings and furniture (Expressionism, Bauhaus). We also see a number of artists born in 1887 and 1881. Were this a more complete dataset, we might take a look more deeply at that dimension.</p>
+
+<p>Interested in seeing which artists were awarded the Commanders Cross (an honor not created until 1951)[4], we can print those names out.</p>
+
+<pre><code>=== Commanders of the cross subject term ===
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Artist Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Dix, Otto</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Heckel, Erich</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Hofer, Karl</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Marcks , Gerhard</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Mataré , Ewald</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Meidner , Ludwig</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Pechstein, Max</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Pieper, Josef</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Sintenis , Renee</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We can also print out the most commonly used titles for artworks to see if there is anything interesting there.</p>
+
+<pre><code>=== Most frequent artwork titles ===
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">TITLE</th>
+      <th style="text-align: right">COUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Landscape</td>
+      <td style="text-align: right">65</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Self-portrait</td>
+      <td style="text-align: right">61</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Head of a Woman</td>
+      <td style="text-align: right">33</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Still life</td>
+      <td style="text-align: right">31</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Portrait of a Woman</td>
+      <td style="text-align: right">26</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Girls head</td>
+      <td style="text-align: right">26</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Illustration to Curt Hotzel “The City of a good conscience ,” Portfolio with 22 lithographs</td>
+      <td style="text-align: right">22</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Bathers</td>
+      <td style="text-align: right">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Head</td>
+      <td style="text-align: right">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Mother and child</td>
+      <td style="text-align: right">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Female Nude</td>
+      <td style="text-align: right">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Man’s head</td>
+      <td style="text-align: right">17</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Love couple</td>
+      <td style="text-align: right">16</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Postcard</td>
+      <td style="text-align: right">16</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Illustration to “ Woe to the world A black and white game in Marmorätzung to a poem by August Stramm . “</td>
+      <td style="text-align: right">15</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Here we notice how landscapes, self-portraits and representations of women were common subjects of these artworks. Though it might be that these titles were all of the same work (there are duplicates in the database based on different copies of the same painting, after all). Though in that case, perhaps we can group these by artist to get a better look.</p>
+
+<pre><code>=== Titles of works grouped by technique and Artist ===
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>TECHNIQUE</th>
+      <th style="text-align: center">TITLE</th>
+      <th style="text-align: left">ARTIST</th>
+      <th style="text-align: right">COUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lithographs</td>
+      <td style="text-align: center">Illustration Curt Hotzel “The City of a good conscience ,” Portfolio with 22 lithographs</td>
+      <td style="text-align: left">Hemp , Alfred</td>
+      <td style="text-align: right">22</td>
+    </tr>
+    <tr>
+      <td>NA</td>
+      <td style="text-align: center">Illustration to “ Woe to the world A black and white game in Marmorätzung to a poem by August Stramm . “</td>
+      <td style="text-align: left">Meier -Thur , Hugo</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Etching</td>
+      <td style="text-align: center">scribe</td>
+      <td style="text-align: left">Nolde, Emil</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Lithograph</td>
+      <td style="text-align: center">Walter Hasenclever</td>
+      <td style="text-align: left">Kokoschka, Oskar</td>
+      <td style="text-align: right">14</td>
+    </tr>
+    <tr>
+      <td>Drawing</td>
+      <td style="text-align: center">Postcard</td>
+      <td style="text-align: left">Heckel, Erich</td>
+      <td style="text-align: right">13</td>
+    </tr>
+    <tr>
+      <td>Woodcut</td>
+      <td style="text-align: center">Prophet</td>
+      <td style="text-align: left">Nolde, Emil</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td>Woodcut</td>
+      <td style="text-align: center">Tiger</td>
+      <td style="text-align: left">Marc, Franz</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td>Woodcut</td>
+      <td style="text-align: center">Drinking horse</td>
+      <td style="text-align: left">Marc, Franz</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td>Lithograph</td>
+      <td style="text-align: center">Maria Orska</td>
+      <td style="text-align: left">Kokoschka, Oskar</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td>Lithograph</td>
+      <td style="text-align: center">Max Reinhardt ( breast image )</td>
+      <td style="text-align: left">Kokoschka, Oskar</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td>NA</td>
+      <td style="text-align: center">Illustration</td>
+      <td style="text-align: left">Masereel , Frans</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td>Etching</td>
+      <td style="text-align: center">sheet from the portfolio “ Herbarium “ by Grossmann, Expl 13/100</td>
+      <td style="text-align: left">Grossmann, Rudolf</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td>Etching</td>
+      <td style="text-align: center">Saul and David</td>
+      <td style="text-align: left">Nolde, Emil</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td>Colour lithograph</td>
+      <td style="text-align: center">Two Bathers in Bach</td>
+      <td style="text-align: left">Mueller , Otto</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Woodcut</td>
+      <td style="text-align: center">The Bull</td>
+      <td style="text-align: left">Marc, Franz</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Woodcut</td>
+      <td style="text-align: center">Hundefängerin</td>
+      <td style="text-align: left">Barlach, Ernst</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Woodcut</td>
+      <td style="text-align: center">Candle Dancers</td>
+      <td style="text-align: left">Nolde, Emil</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Woodcut</td>
+      <td style="text-align: center">Kindertod</td>
+      <td style="text-align: left">Barlach, Ernst</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Lithograph</td>
+      <td style="text-align: center">Christ on the cross</td>
+      <td style="text-align: left">Kokoschka, Oskar</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Lithograph</td>
+      <td style="text-align: center">Christ on the Mount of Olives</td>
+      <td style="text-align: left">Kokoschka, Oskar</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Lithograph</td>
+      <td style="text-align: center">Two girls half- Nudes</td>
+      <td style="text-align: left">Mueller , Otto</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>NA</td>
+      <td style="text-align: center">figure study</td>
+      <td style="text-align: left">Lauterbach, Carl</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>NA</td>
+      <td style="text-align: center">Landscape</td>
+      <td style="text-align: left">Macke, Helmuth</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Etching</td>
+      <td style="text-align: center">Solomon and his Women</td>
+      <td style="text-align: left">Nolde, Emil</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td>Etching</td>
+      <td style="text-align: center">ships in the harbor , Flensburg</td>
+      <td style="text-align: left">Nolde, Emil</td>
+      <td style="text-align: right">8</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Doing so, we see that some of these were the same work, or a series, from one artist. But some of the more generic titles ‘Landscape’, we see are the work of more than one artist. The results are not conclusive (or terribly interesting), but we gain a further insight into the general priorities of these artists as well as a more nuanced contrast with these artworks having been deemed degenerate.</p>
+
+<h4 id="some-final-thoughts">Some Final Thoughts:</h4>
+
+<p>Lacking a firm background in this domain, I am not sure if the ideas expressed above are exceedingly obvious or not. I’d be interested to know if anyone with a background in this might find value in a dataset like this. For anyone who is interested, the database and its schema can be found <a href="https://github.com/dogrdon/entartete_scraper/tree/master/data/db" title="link to sqlite version of degenerate art database, with some additional data">here</a>. Again, I do not own this data as it was culled from the Freie Universität Berlin’s <a href="http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html" title="link to the degenerate art database at the Freie Universität Berlin">online database</a>. The collection of this data and its use here was strictly for educational purposes.</p>
+
+<h4 id="references">References</h4>
+
+<p>[1] <a href="http://en.wikipedia.org/wiki/Degenerate_art"> http://en.wikipedia.org/wiki/Degenerate_art </a></p>
+
+<p>[2] <a href="http://en.wikipedia.org/wiki/The_Work_of_Art_in_the_Age_of_Mechanical_Reproduction">http://en.wikipedia.org/wiki/The_Work_of_Art_in_the_Age_of_Mechanical_Reproduction</a></p>
+
+<p>[3] <a href="http://cla.calpoly.edu/~mriedlsp/history437/art/Entartete%20Kunst.htm">http://cla.calpoly.edu/~mriedlsp/history437/art/Entartete%20Kunst.htm</a></p>
+
+<p>[4] <a href="http://en.wikipedia.org/wiki/Order_of_Merit_of_the_Federal_Republic_of_Germany">http://en.wikipedia.org/wiki/Order_of_Merit_of_the_Federal_Republic_of_Germany</a></p>
+
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2014-05-29T00:00:00-04:00" datetime="2014-05-29T00:00:00-04:00" pubdate>
+							<span class="month"><abbr>May</abbr></span>
+							<span class="day">29</span>
+							<span class="year">2014</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#museums-ref">
+    		museums <span>2</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/tags.html#art-ref">art <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#database-ref">database <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#museums-ref">museums <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#data analysis-ref">data analysis <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Neue Galerie-ref">Neue Galerie <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#art history-ref">art history <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#python-ref">python <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#linked data-ref">linked data <span>2</span></a></li>
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li>
+						</ul>
+					</div>
+					
+					
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'subtxt'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+				</div><!-- misc-content -->
+				
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/museums/2014/04/22/archive-as-art" title="View The Archive as Artistic Spectacle">&laquo; The Archive as Artistic Spectacle</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/linked-data/2014/08/06/review_ld_for_lam" title="View Review: Linked Data for Libraries, Archives and Museums">Review: Linked Data for Libraries, Archives and Museums &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n">drew gordon</span> - <span class="fn email">drew@subtxt.in</span></address></li>
+						<li class="github"><a href="http://github.com/dogrdon/" rel="me">github.com/dogrdon</a></li>
+                                                <!--<li class="twitter"><a href="http://twitter.com//" rel="me">twitter.com/</a></li>-->
+
+					</ul>
+				</div><!-- misc -->
+				<p class="licence">
+					Theme: <a href="http://layouts-the.me">the_minimum</a> based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+	(function(d, s) {
+		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.src = url; js.id = id;
+		fjs.parentNode.insertBefore(js, fjs);
+		};
+	load('//platform.twitter.com/widgets.js', 'tweetjs');
+	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/museums/2014/05/29/analyzing_degenerate_art" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	}(document, 'script'));
+</script>
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+<!-- Jquery from CDN -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  
+</body>
+</html>
+
