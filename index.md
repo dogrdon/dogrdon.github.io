@@ -8,7 +8,7 @@ category: home
 
 ![spinning pentakisdodechahedron on wikipedia](http://upload.wikimedia.org/wikipedia/commons/f/fc/Pentakisdodecahedron02.gif "Spinning Pentakisdodecahedron")
 
-##Posts
+<h2>Posts</h2>
 
 <ul class="posts">
   {% for post in site.posts %}
