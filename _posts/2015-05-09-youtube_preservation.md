@@ -10,7 +10,7 @@ tags: [digital preservation, access, archives, personal, digital ephemera, video
 <div class="figure">
 <img class="blog-post" src="/assets/images/posts/2015/05/yt-unavailable-sorry.png" alt="Image of YouTube video when the video is unavailable (sorry)"/><div class="figcaption">Sorry, indeed.</div></div>
 
-####The Setup
+#### The Setup
 
 At the end of last month, I had the privilege of attending the [Personal Digital Archiving Conference](http://personaldigitalarchiving.com/){:target="_blank"} in New York. I came away from it wanting to revisit a small project I had long set aside. The process of pushing that through to some semblance of completion got me thinking more about what it means to select, share, and preserve stuff on the Internet. 
 
@@ -22,7 +22,7 @@ One reason why I think this is all worth noting is that this isn't the intended 
 
 In this case, though, each video was reliably listed in the order they were shared, all in one page. You could visit whenever you wanted and the items selected would not be drowned out by the countless other pieces of information you have had pushed upon you by your circle of friends and acquaintances. It's passive, sure. But it was effective for curating content for a very specific audience. Through this effort a quasi-dialog would emerge. After many weeks or months, the record of these selections were still intact. After much longer, it can show you how much or how little your tastes might have changed. 
 
-####The Plot Thickens
+#### The Plot Thickens
 
 In 2010 I made the decision to delete the YouTube account in an attempt to clean up my profile online. But before deleting, I retained a copy of the playlist by simply clicking "Save As..." from the browser. Not a great way to preserve anything on the Internet, but it was sufficient. After a while, I got an email from one of my friends asking what happened to the list. I told them it was gone, but I sent along the HTML file, and said maybe I could go back and download the clips, but that never happened. 
 
@@ -51,7 +51,7 @@ From there, I felt that it was important to take the step of downloading these c
 
 What is obvious to me now (though should not come as any surprise) is that YouTube is not really built with preservation in mind. Nor do I think it should be. But I think what I'd like to argue here is that maybe there is a case for developing the client-side tools for users to engage in their own preservation of online content. Allowing users to make decisions about storing content for safe keeping (and access) beyond the inevitable expiration date of these media might be a part of the solution to the explosion of digital content on a platform that does not prioritize long-term persistence. Though what that looks like is not certain. Additionally, the very copyright regulations that bring down content from places like YouTube in the first place would be a non-starter for any such tools being built by these companies in the first place.
 
-####What it all means
+#### What it all means
 
 But so what, right? What do a few silly and obscure video clips at low resolution have to do with preservation, or the future of digital content on the Internet?
 

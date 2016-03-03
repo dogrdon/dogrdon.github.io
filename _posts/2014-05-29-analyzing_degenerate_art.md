@@ -11,13 +11,13 @@ tags: [art, database, museums, data analysis, Neue Galerie, art history, python,
 <img class="blog-post" src="/assets/images/posts/2014/05/degenerate_art_may_2014.png" alt="author's picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenerate art exhibit in 1937."/>
 <div class="figcaption"> Large image of photograph from original Entartete Kunst Exhibition in 1937 displayed at the entrance to the Degenerate Art Exhibit at the Neue Galerie, May 2014.</div></div>
 
-####Introduction
+#### Introduction
 
 In 1937, the Nazis began the public exhibition of works of art which they had seized for being deemed degenerate. It was comprised of the new modern art of the time and was part of a campaign to deride and sanction artists who produced works that were "un-German, Jewish Bolshevist in nature". [1]
 
 This is not a post, however, about the history or the art, as such. Rather it's a brief discussion of the data generated around this art. For those interested in seeing some of these works in person, there is an exhibition of some of the works of art that survived from this period at the [Neue Galerie](http://www.neuegalerie.org/) in New York through September 1, 2014.
 
-####The Data
+#### The Data
 
 A short while ago I came across [this](http://www.vam.ac.uk/content/articles/e/entartete-kunst/) announcement that the Victoria and Albert Museum had made a digital, browse-able copy of the book the Nazis kept in the process of "collecting" these works of art. The meticulous record keeping appeared to make it possible to perform some analytics in the service of Art History research, to serve as a baseline for research into this period of modern art.
 
@@ -28,7 +28,7 @@ I was pleased to find, however, that the Freie Universität Berlin had undertake
 Interested to dig in, I scraped off the basic metadata from the online database and put it into a [SQLite database](https://github.com/dogrdon/entartete_scraper/tree/master/data/db "link to sqlite version of degenerate art database, with some additional data"). The related scripts and data can be found [here](http://github.com/dogrdon/entartete_scraper "link to repository containing scraper and data files for the degenerate art database") in a fairly unkempt repository.
 
 
-####Notes on Getting and Processing the Data
+#### Notes on Getting and Processing the Data
 
   - <b>Scraping the database</b> - [scraper here](https://github.com/dogrdon/entartete_scraper/blob/master/scripts/entartete_scraper.py)
 
@@ -60,7 +60,7 @@ Interested to dig in, I scraped off the basic metadata from the online database 
 	MOSAIK = MOSAIC
 
 
-####Some Points of Interest in the Data
+#### Some Points of Interest in the Data
 
 It's worthwhile to note here that this post only goes so deep in its analysis. This being a fairly massive intersection of Art and World History, really getting at the core of it would require a deeper understanding of this point in time and its context. It would also require a much fuller, more complete dataset. So this is more of a quick and broad treatment, a proof of concept for future work.
 
@@ -271,13 +271,13 @@ Here we notice how landscapes, self-portraits and representations of women were 
 Doing so, we see that some of these were the same work, or a series, from one artist. But some of the more generic titles 'Landscape', we see are the work of more than one artist. The results are not conclusive (or terribly interesting), but we gain a further insight into the general priorities of these artists as well as a more nuanced contrast with these artworks having been deemed degenerate.
 
 
-####Some Final Thoughts:
+#### Some Final Thoughts:
 
 Lacking a firm background in this domain, I am not sure if the ideas expressed above are exceedingly obvious or not. I'd be interested to know if anyone with a background in this might find value in a dataset like this. For anyone who is interested, the database and its schema can be found [here](https://github.com/dogrdon/entartete_scraper/tree/master/data/db "link to sqlite version of degenerate art database, with some additional data"). Again, I do not own this data as it was culled from the Freie Universität Berlin's [online database](http://www.geschkult.fu-berlin.de/en/e/db_entart_kunst/datenbank/index.html "link to the degenerate art database at the Freie Universität Berlin"). The collection of this data and its use here was strictly for educational purposes.
 
 
 
-####References
+#### References
 
 [1] <a href="http://en.wikipedia.org/wiki/Degenerate_art"> http://en.wikipedia.org/wiki/Degenerate_art </a>
 
