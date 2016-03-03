@@ -1,14 +1,14 @@
 
-http://subtxt.in/about.html
-http://subtxt.in/archive.html
+http://subtxt.in/about
+http://subtxt.in/archive
 http://subtxt.in/atom.xml
-http://subtxt.in/categories.html
-http://subtxt.in/index.html
-http://subtxt.in/pages.html
-http://subtxt.in/projects.html
+http://subtxt.in/categories
+http://subtxt.in/
+http://subtxt.in/pages
+http://subtxt.in/projects
 http://subtxt.in/rss.xml
 http://subtxt.in/sitemap.txt
-http://subtxt.in/tags.html
+http://subtxt.in/tags
 
 http://subtxt.in/digital-libraries/2015/05/09/youtube_preservation
 http://subtxt.in/linked-data/2014/08/06/review_ld_for_lam

@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Department of Justice Data Analysis</title>
+	<meta name="author" content="drew gordon">
+	<meta name="description" content="personal website for drew gordon. writings about technology in libraries and archives, culture, literature, language, and data">
+	<meta name="keywords" content="language, culture, data, libraries, archives, history, NLP">
+	<!--twitter card metadata -->
+	<meta name="twitter:card" value="">
+	<meta name="twitter:site" value="@">
+	<meta name="twitter:creator" value="@">
+	<meta name="twitter:title" value="Department of Justice Data Analysis">
+    <meta name="twitter:description" value="A course project from the University Of Michigan School of Information's Exploratory Data Analysis course. Using R to explore and make sense of a 1.3 million record Department of Justice dataset of the US prison population in 2004.">
+
+
+	<link href='/assets/themes/the-minimum/css/style.css' rel="stylesheet" media="all">
+
+	<!--subtxt.css-->
+	<link rel="stylesheet" href="/assets/css/subtxt.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<p class="logo"><a href="/">subtxt/in</a></p>
+				<nav class="nav-global">
+					<ul>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/projects.html">projects</a></li>
+						<li class="about"><a href="/about.html">whois?</a></li>
+						<li class="rss"><a href="/rss.xml">rss <span class="glyphicon glyphicon-bullhorn"></span></a></li>
+
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">Department of Justice Data Analysis</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					
+<h3>A Look at the US Prison System: Inmate Demographics circa 2004</h3>
+
+<p>The data we looked at below was pulled from the United States Department of Justice’s National Corrections Reporting Program, 2004, a survey that “gathers data on prisoners entering and leaving the custody or supervision of state and federal authorities.” [source: Department of Justice. National Corrections Reporting Program, 2004 [United States] Codebook. Inter-University Consortium for Political and Social Research, Ann Arbor, MI]</p>
+
+<p>The full data set contains 100 variables and ~1.3 million records. For this exploration, we pulled the following variables: Year of birth, Race, Gender, Hispanic Origin, Education (last year of school completed), prior jail time (in months), and prior prison time (also in months). Through this process, we wanted to get a better idea of the demographics of the US Prison system (as of 2004. Since they only do this survey once every 7 years, this is the most recent).</p>
+
+<p><a style="margin-left: 43%; padding: 4px; " class="source" href="https://explore.data.gov/Law-Enforcement-Courts-and-Prisons/National-Corrections-Reporting-Program-2004-United/v26k-cyk8">Get the dataset</a>
+<br /></p>
+
+<!-- TABBED CONTENT BELOW -->
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#tabs-1" data-toggle="tab">Exploration</a></li>
+    <li><a href="#tabs-2" data-toggle="tab">Two States</a></li>
+    <li><a href="#tabs-3" data-toggle="tab">Scale</a></li>
+    <li><a href="#tabs-4" data-toggle="tab">Final Pass</a></li>
+  </ul>
+
+<div class="tab-content">  
+<!--EXPLORATORY TAB-->
+	<div id="tabs-1" class="tab-pane active">
+
+<a class="internal-link" href="#r1">Jump to this section's R code</a><br /><br />
+    <strong>Race and Incarceration</strong>
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r1-1.png" />
+</div>
+    <p>Our first plot shows the number of incarcerated by race and gender. We see
+here the predominance of White and Black males in the US prison system.
+What is alarming, however is that Black inmates are almost equal in
+population to White inmates, despite the fact that the black population is
+only ~12% of the total US population as of 2004. [<a class="source" href=" 
+  http://www.census.gov/population/www/projections/downloadablefiles.html">source</a>]
+</p>
+<p> Another point of interest is the relatively low representation of females in the
+prison system for non-white or non-black populations.
+</p>
+
+<strong>Education and Incarceration</strong>
+
+<div class="crop">
+  <img class="project-image" src="/assets/images/projects/prison/r1-2.png" />
+</div>
+
+<p>The next dimension we wanted to explore was the education level of
+inmates.</p>
+<p>Here we see that a large concentration of the US Prison population stopping
+their education past the 6th grade. It would be interesting to explore in
+further detail why it is that this is such a turning point for most inmates and
+what correlation can be drawn here with other factors that lead to criminal
+lifestyles. We also see that a lot of inmates’ education ends in the 1st grade
+or the 3rd grade, but not in the 2nd grade. Again, an interesting place to
+focus with further exploration.</p>
+
+<strong>Age and Race</strong>
+<div class="crop"> 
+  <img class="project-image" src="/assets/images/projects/prison/r1-3.png" />
+</div>
+<p>Next we wanted to explore the distribution of age for each racial category.
+Below is a “box and whisker” plot that shows us that the highest
+concentration of inmates for any race are individuals born between 1960 and
+1980, though Black inmates represent some of the oldest inmates with
+Whites following closely behind.</p>
+
+<strong>Age and Gender</strong>
+<div class="crop">
+  <img class="project-image" src="/assets/images/projects/prison/r1-4.png" />
+</div>
+
+<p>We also wanted to observe the distribution of inmate age as it relates to
+gender. Here we see that the male population seems to represent a more
+even distribution of ages than women.</p>
+
+<strong>Visualization Failures</strong>
+<p>The above visualization is clearly not as compelling as the one preceding it. We
+wanted to create a “box and whisker” plot involving gender, trying first to
+incorporate all dimensions at once, but ran into a lot of complications and
+strange results:</p>
+
+<div class="crop">
+  <img class="project-image" src="/assets/images/projects/prison/r1-5.png" />
+</div>
+
+<p>Despite numerous attempts to manipulate the data in real time with R, we
+got far more errors and complications than visual products.
+As we also had data involving the prior years an inmate spent in prison, we
+wanted to map that against age of the prison population.</p>
+  
+  
+<p>This however, is fairly cluttered and any attempts to limit the data to
+meaningful categories were met with endless complaints from our R
+installation.</p>
+
+<div class="crop">
+  <img class="project-image" src="/assets/images/projects/prison/r1-6.png" />
+</div>
+
+<p>Here we see a higher concentration of inmates with less prior months of
+imprisonment, though we see a point where the concentration increases
+after a certain number of months. While the original data set the values of
+9999.5, 9999.8, and 9999.9 as NA data, the set was cleared of this
+information and there still remained a large number of records that appear
+to have values higher than that (which can be no less than ~833 years). We
+must assume that there is something wrong with the data we have collected
+here or some other factor that’s leading us to improbable results.</p>
+
+<hr />
+<h4>Intro Exploration R code:</h4>
+<a name="r1"></a>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+
+<span class="c1">#connect to the data</span>
+data <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> read.table<span class="p">(</span><span class="s">&quot;http://www-personal.umich.edu/~asgor/prison.txt&quot;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+<span class="kn">attach</span><span class="p">(</span>data<span class="p">)</span>
+
+<span class="c1">#open our car library because we&#39;ll need to recode some columns</span>
+<span class="kn">library</span><span class="p">(</span>car<span class="p">)</span>
+
+<span class="c1">#columns like race and gender are encoded as numbers and we want to also have a nominal encoding for them</span>
+
+nomgender <span class="o">=</span> recode<span class="p">(</span>gender<span class="p">,</span> <span class="s">&quot;c(1) = &#39;Male&#39;; c(2) = &#39;Female&#39;; else = NA&quot;</span><span class="p">)</span>
+nomrace <span class="o">=</span> recode<span class="p">(</span>race<span class="p">,</span> <span class="s">&quot;c(1) = &#39;White&#39;; c(2) = &#39;Black&#39;; c(3) = &#39;American Indian&#39;; c(4) = &#39;Asian&#39;; c(5) = &#39;Pacific Islander&#39;; c(6) = &#39;Other&#39;; else = NA&quot;</span><span class="p">)</span>
+
+<span class="c1">#and we want to recode the education column to replace their numerical encoding or NA to &#39;NA&#39; so as not to through the charting off.</span>
+
+newedu <span class="o">=</span> recode<span class="p">(</span>education<span class="p">,</span> <span class="s">&#39;c(98,99) = NA&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># 1 Highest grade completed and gender</span>
+qplot<span class="p">(</span>newedu<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> fill <span class="o">=</span> nomgender<span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Highest Grade of Completion in School&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2 Race and Gender</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> fill <span class="o">=</span> nomgender<span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Race of Inmate&quot;</span><span class="p">)</span>
+
+<span class="c1">#3 boxplot of race and birthyear</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span>  ylim <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">),</span> geom <span class="o">=</span> <span class="s">&quot;boxplot&quot;</span><span class="p">)</span>
+
+<span class="c1">#4   </span>
+qplot<span class="p">(</span>nomgender<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">)</span>
+
+<span class="c1">#some problematic input that got poor results</span>
+<span class="c1"># Would really like to lose the NA</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span>  ylim <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">),</span> fill <span class="o">=</span> nomgender<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;boxplot&quot;</span><span class="p">)</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span>  ylim <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">),</span> fill <span class="o">=</span> na.omit<span class="p">(</span>nomgender<span class="p">),</span> geom <span class="o">=</span> <span class="s">&quot;boxplot&quot;</span><span class="p">)</span>
+qplot<span class="p">(</span>nomrace<span class="p">,</span> birthyear<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span>  ylim <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">),</span> fill <span class="o">=</span> nomgender<span class="p">,</span> na.rm<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;boxplot&quot;</span><span class="p">)</span>
+
+<span class="c1"># previous jail time/prison time - R really complained about all of this, usually no product</span>
+priors_prison <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> recode<span class="p">(</span>prior_prison_months<span class="p">,</span> <span class="s">&#39;c(9999.9, 9999.8, 9999.5)=NA&#39;</span><span class="p">)</span>
+priors_jail <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> recode<span class="p">(</span>prior_jail_months<span class="p">,</span> <span class="s">&#39;c(9999.9, 9999.8, 9999.5)=NA&#39;</span><span class="p">)</span>
+priors_p <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> na.omit<span class="p">(</span>priors_prison<span class="p">)</span>
+priors_j <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> na.omit<span class="p">(</span>priors_jail<span class="p">)</span>
+priors_prison_less <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ddply<span class="p">(</span>data<span class="p">,</span> <span class="m">.</span><span class="p">(</span>nomgender<span class="p">),</span> <span class="kp">subset</span><span class="p">,</span> priors_prison <span class="o">&lt;</span> <span class="kp">mean</span><span class="p">(</span>priors_prison<span class="p">))</span>
+qplot<span class="p">(</span>priors_prison<span class="p">,</span> nomgender<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> xlim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1200</span><span class="p">))</span>
+qplot<span class="p">(</span>birthyear<span class="p">,</span> priors_prison<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> xlim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1900</span><span class="p">,</span><span class="m">2000</span><span class="p">))</span></code></pre></figure>
+
+
+  </div>
+
+<!--END OF EXPLORATORY TAB-->
+
+<!--TWO STATES TAB-->
+  <div id="tabs-2" class="tab-pane">
+<a class="internal-link" href="#r2">Jump to this section's R code</a><br /><br />
+<strong>Tale of Two Prison Systems: Georgia and Michigan</strong>
+
+<p>For this exploration, we wanted to take a look at what two different prison systems looked like compared to each other; Michigan State Prisons and Georgia State Prisons. We made this selection largely on an anecdotal suspicion that there might be a difference between prisons in the north and prisons in the south (Are Southern prisons “harsher”?).</p> 
+
+<p>We were lead to Michigan and Georgia because each state as a similar state population as of the time the data was collected (2004 – Mich: 10,112,620, Geog: 8,829,383) and both states mostly had data in all of the columns we were interested in (gender, race, Hispanic origin, education level, total months spent in prison – it was hard to find any two states that had at least 3 of 4). Finally, both states yielded roughly the same number of records each (Mich = 281,502 inmate records; Geog = 211104 inmate records).</p>
+
+<p>The first set of comparisons we wanted to see were if there were longer sentences in either prison system:</p>
+<h4> Georgia </h4>
+<div class="crop">
+  <img class="project-image" src="/assets/images/projects/prison/r2-1.png" />
+</div>
+<h4> Michigan </h4>
+<div class="crop">
+  <img class="project-image" src="/assets/images/projects/prison/r2-2.png" />
+</div>
+
+<p>However we ran into our first mismatch of data; while there appears to be longer sentences in general in Michigan, this is probably due to the fact that this data was not so well documented in the Georgia case.</p>
+
+<p>Next we figured we should gather some of the compared demographics before kludging dimensions together.</p>
+
+Next we look at <strong>gender distributions</strong> alone:
+
+<h4> Georgia </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-3.png" />
+</div>
+<h4> Michigan </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-4.png" />
+</div>
+
+<p>If you squint your eyes, there appears to be a larger percentage of women that make up the total population of the Georgia prisons over the Michigan prisons. Though we’d want to compare this further against the total population of each state.</p>
+
+<p>Next we look at how <strong>gender and total months</strong> of each prison sentence looked for each state.</p>
+
+
+<h4> Georgia </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-5.png" />
+</div>
+<h4> Michigan </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-6.png" />
+</div>
+
+
+<p>Again, overlooking the differences in data collected for total months, we see that in both cases, women tend to have shorter sentences than men in either state, at about the same proportion to the total of each state.</p>
+
+<p>Next we explored the dimensions of race and education as they mapped to the gender and total sentence dimensions we’ve already seen.</p>
+
+<strong>Education by Gender</strong>
+
+<h4> Georgia </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-7.png" />
+</div>
+<h4> Michigan </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-8.png" />
+</div>
+
+<p>Here we cannot help but notice that on the whole, and perhaps by a non-trivial amount, there seems to be far more individuals in the prison system who almost graduated from high school in Michigan. As we can see since the higher NA data in Georgia might not account for the difference, as was the case with total sentences, we might have a phenomenon of interest here. Though we would again want to take a look at numbers for the general population of each state, it is possible that Michigan has a higher education rate than Georgia on the whole. Or there are some discrepencies in the collection of the data in the first place.</p>
+
+<strong>Race and Gender Distributions</strong>
+
+<h4> Georgia </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-9.png" />
+</div>
+<h4> Michigan </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-10.png" />
+</div>
+
+<p>In both states we see a predominance of white and black populations, with rather similar proportions for women and men in each race category. Though what stands out is the higher ration of blacks to whites in Georgia prisons as opposed to Michigan prisons. Perhaps a result of the general demographics of each state, but a difference worth noting and could perhaps buck the general trend of race distributions in the general population. As we recall the national average was to have slightly more White prisoners than all other racial categories, and here that average is not reflected in either state.</p>
+
+<strong>Education, Total Months and Gender</strong>
+
+<h4> Georgia </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-11.png" />
+</div>
+<h4> Michigan </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-12.png" />
+</div>
+
+<p>Looking back at the factors that interested us in the first education plot, we notice that there are slightly longer sentences for Michigan individuals with the 11th grade education, though this could be a result of the higher number of records. Interesting to note here is the way in which the average of males with a college degree seem to get longer sentences and that women with only some High School in Michigan appear to have slightly longer sentences than men, which goes against the overwhelming trend of men having generally longer sentences.</p>
+
+<strong>Race, Total Months and Gender</strong> 
+
+<h4> Georgia </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-13.png" />
+</div>
+<h4> Michigan </h4>
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r2-14.png" />
+</div> 
+
+<p>While skewed again based on the imbalanced number of records. The only thing that really stands out here is that the small population of Asian Females imprisoned in Michigan had longer sentences than those in Georgia.</p> 
+
+<strong>Conclusion</strong>
+
+<p>While we might not have been able to pin down any set of narratives that cleanly separate the Michigan and Georgia prison systems. We did observe some interesting items we’d want to follow up on. Namely, are there more women and blacks, per capita, imprisoned in Georgia? As well as whether we can hunt down some data that let us know if there are longer sentences, shorter sentences or on the whole same sentence lengths in Georgia as compared to Michigan. Finally, we noticed that there was an interesting phenomenon in there being perhaps a more well-educated prison population in Michigan than Georgia, on the average. But further investgation of the data integrity is still needed.</p>
+
+
+<hr />
+<h4>Two States R code:</h4>
+<a name="r2"></a>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#Read Prison data in:</span>
+<span class="o">&gt;</span> data <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> read.table<span class="p">(</span><span class="s">&quot;/Users/&lt;yournamehere&gt;/desktop/618/prison.txt&quot;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="c1">#using the gdata library for modifying numeric unknowns to NA values for easier processing</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>gdata<span class="p">)</span>
+
+
+<span class="c1">##HW3 Key to Data:</span>
+
+V8 <span class="o">-</span> Birthyear
+V9 <span class="o">-</span> Gender
+V10 <span class="o">-</span> Race
+V11 <span class="o">-</span> Hispanic Origin
+V12 <span class="o">-</span> Education
+V15 <span class="o">-</span> Year of Prison Admission
+V60 <span class="o">-</span> Total Prison Time
+V57 <span class="o">-</span> Age at Admission
+V58 <span class="o">-</span> Age at Release 
+V94 <span class="o">-</span> State ID 
+V41 <span class="o">-</span> AWOL or Escape
+V36 <span class="o">-</span> Location of Sentences Served
+
+Georgia Pop. <span class="p">(</span><span class="m">2004</span><span class="p">)</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span><span class="m">829</span><span class="p">,</span><span class="m">383</span>
+Michigan Pop. <span class="p">(</span><span class="m">2004</span><span class="p">)</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span><span class="m">112</span><span class="p">,</span><span class="m">620</span>
+ggiaas Pop. <span class="p">(</span><span class="m">2004</span><span class="p">)</span> <span class="o">=</span> <span class="m">22</span><span class="p">,</span><span class="m">490</span><span class="p">,</span><span class="m">022</span>
+<span class="p">(</span><span class="kn">source</span> Infoplease.com<span class="p">)</span>
+
+<span class="c1">#get the data into two buckets, Michigan Data and </span>
+
+<span class="c1">##&quot;Georgia (211104 records) v. Michigan (281502 records)&quot;</span>
+
+<span class="c1">#subsetting the data by the two states</span>
+<span class="o">&gt;</span> michdata <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> data<span class="p">[</span>data<span class="o">$</span>V94 <span class="o">==</span> <span class="m">26</span><span class="p">,]</span> 
+<span class="o">&gt;</span> ggiadata <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> data<span class="p">[</span>data<span class="o">$</span>V94 <span class="o">==</span> <span class="m">13</span><span class="p">,]</span>
+
+<span class="c1">#processing the unknown numeric values to NA values</span>
+<span class="o">&gt;</span> totalmom<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V60<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">9999.5</span><span class="p">,</span> <span class="m">9999.8</span><span class="p">))</span>
+<span class="o">&gt;</span> totalmog<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>ggiadata<span class="o">$</span>V60<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">9999.5</span><span class="p">,</span> <span class="m">9999.8</span><span class="p">))</span>
+
+<span class="o">&gt;</span> educationm<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V12<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">95</span><span class="p">,</span><span class="m">98</span><span class="p">,</span><span class="m">99</span><span class="p">))</span>
+<span class="o">&gt;</span> educationg<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>ggiadata<span class="o">$</span>V12<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">95</span><span class="p">,</span><span class="m">98</span><span class="p">,</span><span class="m">99</span><span class="p">))</span>
+
+<span class="o">&gt;</span> michrace<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V10<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
+<span class="o">&gt;</span> ggiarace<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>ggiadata<span class="o">$</span>V10<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
+
+<span class="o">&gt;</span> genderm<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V9<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
+<span class="o">&gt;</span> genderg<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>ggiadata<span class="o">$</span>V9<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
+
+
+<span class="c1">#modifying the levels for the total months</span>
+<span class="o">&gt;</span> wtotalmom <span class="o">=</span> <span class="kp">cut</span><span class="p">(</span>totalmom<span class="p">,</span><span class="kp">pretty</span><span class="p">(</span>totalmom<span class="p">,</span><span class="m">3</span><span class="p">))</span>
+<span class="o">&gt;</span> wtotalmog <span class="o">=</span> <span class="kp">cut</span><span class="p">(</span>totalmog<span class="p">,</span><span class="kp">pretty</span><span class="p">(</span>totalmog<span class="p">,</span><span class="m">3</span><span class="p">))</span>
+
+<span class="o">&gt;</span> wtotalmog <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>wtotalmog<span class="p">)</span>
+<span class="o">&gt;</span> wtotalmom <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>wtotalmom<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>wtotalmog<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;0-50&quot;</span><span class="p">,</span> <span class="s">&quot;50-100&quot;</span><span class="p">,</span> <span class="s">&quot;100-150&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>wtotalmom<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;0-100&quot;</span><span class="p">,</span> <span class="s">&quot;100-200&quot;</span><span class="p">,</span> <span class="s">&quot;200-300&quot;</span><span class="p">,</span> <span class="s">&quot;300-400&quot;</span><span class="p">)</span>
+
+<span class="c1">#taking a look at those in table form</span>
+<span class="o">&gt;</span> <span class="kp">table</span><span class="p">(</span>wtotalmom<span class="p">)</span>
+wtotalmom
+  <span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">]</span> <span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">200</span><span class="p">]</span> <span class="p">(</span><span class="m">200</span><span class="p">,</span><span class="m">300</span><span class="p">]</span> <span class="p">(</span><span class="m">300</span><span class="p">,</span><span class="m">400</span><span class="p">]</span> 
+    <span class="m">28709</span>      <span class="m">3506</span>       <span class="m">481</span>         <span class="m">9</span> 
+<span class="o">&gt;</span> <span class="kp">table</span><span class="p">(</span>wtotalmog<span class="p">)</span>
+wtotalmog
+   <span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">50</span><span class="p">]</span>  <span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="m">100</span><span class="p">]</span> <span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">150</span><span class="p">]</span> 
+    <span class="m">18023</span>       <span class="m">150</span>        <span class="m">12</span> 
+
+<span class="c1">#and in plot form</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>wtotalmog<span class="p">,</span> data<span class="o">=</span>ggiadata<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Total Months in Prison per Inmate (Georgia)&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>wtotalmom<span class="p">,</span> data<span class="o">=</span>michdata<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Total Months in Prison per Inmate (Michigan)&quot;</span><span class="p">)</span>
+
+<span class="c1">#modifying the levels for the education vector</span>
+<span class="o">&gt;</span> weducationm <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>educationm<span class="p">)</span>
+<span class="o">&gt;</span> weducationg <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>educationg<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>weducationm<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;&amp;gt;= 8th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;Some High School&quot;</span><span class="p">,</span> <span class="s">&quot;9th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;10th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;11th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;12th or GED&quot;</span><span class="p">,</span> <span class="s">&quot;Some College&quot;</span><span class="p">,</span> <span class="s">&quot;College Degree&quot;</span><span class="p">,</span> <span class="s">&quot;Special/Ungraded&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>weducationg<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;&amp;gt;= 8th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;Some High School&quot;</span><span class="p">,</span> <span class="s">&quot;9th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;10th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;11th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;12th or GED&quot;</span><span class="p">,</span> <span class="s">&quot;Some College&quot;</span><span class="p">,</span> <span class="s">&quot;College Degree&quot;</span><span class="p">,</span> <span class="s">&quot;Special/Ungraded&quot;</span><span class="p">)</span>
+
+<span class="c1">#and for race</span>
+<span class="o">&gt;</span> fmichrace <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>michrace<span class="p">)</span>
+<span class="o">&gt;</span> fggiarace <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>ggiarace<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>fmichrace<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;White&quot;</span><span class="p">,</span> <span class="s">&quot;Black&quot;</span><span class="p">,</span> <span class="s">&quot;Native&quot;</span><span class="p">,</span> <span class="s">&quot;Asian&quot;</span><span class="p">,</span> <span class="s">&quot;Pacific&quot;</span><span class="p">,</span> <span class="s">&quot;Other&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>fggiarace<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;White&quot;</span><span class="p">,</span> <span class="s">&quot;Black&quot;</span><span class="p">,</span> <span class="s">&quot;Native&quot;</span><span class="p">,</span> <span class="s">&quot;Asian&quot;</span><span class="p">,</span> <span class="s">&quot;Pacific&quot;</span><span class="p">,</span> <span class="s">&quot;Other&quot;</span><span class="p">)</span>
+
+<span class="c1">#and gender</span>
+<span class="o">&gt;</span> fgenderm <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>genderm<span class="p">)</span>
+<span class="o">&gt;</span> fgenderg <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>genderg<span class="p">)</span>
+<span class="o">&gt;</span> fgenderg <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>genderg<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>fgenderm<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Male&quot;</span><span class="p">,</span> <span class="s">&quot;Female&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>fgenderg<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Male&quot;</span><span class="p">,</span> <span class="s">&quot;Female&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">table</span><span class="p">(</span>fgenderm<span class="p">)</span>
+fgenderm
+  Male Female 
+ <span class="m">34122</span>   <span class="m">2824</span> 
+<span class="o">&gt;</span> <span class="kp">table</span><span class="p">(</span>fgenderg<span class="p">)</span>
+fgenderg
+  Male Female 
+ <span class="m">34304</span>   <span class="m">4130</span>
+
+
+<span class="c1">#checking the Hispanic data</span>
+<span class="o">&gt;</span> michhisp<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V11<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">))</span>
+<span class="o">&gt;</span> ggiahisp<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>ggiadata<span class="o">$</span>V11<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">))</span>
+<span class="o">&gt;</span> fmichhisp <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>michhisp<span class="p">)</span>
+<span class="o">&gt;</span> fggiahisp <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>ggiahisp<span class="p">)</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>fmichhisp<span class="p">,</span> data<span class="o">=</span>michdata<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Inmates by Hispanic Pop. (Michigan)&quot;</span><span class="p">)</span>
+
+<span class="c1">#looks like our hispanic data for michigan is largely made up of NA</span>
+
+<span class="c1">#creating pie charts for gender distribution</span>
+
+<span class="o">&gt;</span>  pie <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ggplot<span class="p">(</span>michdata<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>genderm<span class="p">)))</span> <span class="o">+</span> geom_bar<span class="p">(</span>width <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="o">&gt;</span>  pie <span class="o">+</span> coord_polar<span class="p">(</span>theta <span class="o">=</span> <span class="s">&quot;y&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span>  pie <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ggplot<span class="p">(</span>michdata<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> fill <span class="o">=</span> fgenderm<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">(</span>width <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="o">&gt;</span> pie <span class="o">+</span> coord_polar<span class="p">(</span>theta <span class="o">=</span> <span class="s">&quot;y&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span>  pie <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ggplot<span class="p">(</span>michdata<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> fill <span class="o">=</span> fgenderm<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">(</span>width <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="o">&gt;</span> pie <span class="o">+</span> coord_polar<span class="p">(</span>theta <span class="o">=</span> <span class="s">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Michigan Inmate Gender Dist.&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span>  pie <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ggplot<span class="p">(</span>ggiadata<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> fill <span class="o">=</span> fgenderg<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">(</span>width <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="o">&gt;</span> pie <span class="o">+</span> coord_polar<span class="p">(</span>theta <span class="o">=</span> <span class="s">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Georgia Inmate Gender Dist.&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span>
+   
+<span class="c1">#creating new data frames out of our new data </span>
+
+<span class="o">&gt;</span> ggiadata2 <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">data.frame</span><span class="p">(</span>fgenderg<span class="p">,</span> totalmog<span class="p">,</span> fggiarace<span class="p">,</span> fggiahisp<span class="p">,</span> weducationg<span class="p">)</span>
+<span class="o">&gt;</span> michdata2 <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">data.frame</span><span class="p">(</span>fgenderm<span class="p">,</span> totalmom<span class="p">,</span> fmichrace<span class="p">,</span> fmichhisp<span class="p">,</span> weducationm<span class="p">)</span>
+
+<span class="c1">##getting two dimensional data: </span>
+
+<span class="c1">#gender&amp;totalmonths</span>
+qplot<span class="p">(</span>fgenderg<span class="p">,</span> totalmog<span class="p">,</span> data <span class="o">=</span> ggiadata2<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;boxplot&quot;</span><span class="p">,</span> fill<span class="o">=</span>fgenderg<span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Gender and Total Months in Prison (Georgia)&quot;</span><span class="p">)</span>
+qplot<span class="p">(</span>fgenderm<span class="p">,</span> totalmom<span class="p">,</span> data <span class="o">=</span> michdata2<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;boxplot&quot;</span><span class="p">,</span> fill<span class="o">=</span>fgenderm<span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Gender and Total Months in Prison (Michigan)&quot;</span><span class="p">)</span>
+
+<span class="c1">#education&amp;totalmonths w/ gender</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>weducationg<span class="p">,</span> totalmog<span class="p">,</span> data <span class="o">=</span> ggiadata2<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;boxplot&quot;</span><span class="p">,</span> fill<span class="o">=</span>fgenderg<span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;Total Months&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Highest Grade Completed in School&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Education, Gender and Total Months in Prison (Georgia)&quot;</span><span class="p">,</span> axis.text.x<span class="o">=</span>theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+<span class="o">&gt;</span> qplot<span class="p">(</span>weducationm<span class="p">,</span> totalmom<span class="p">,</span> data <span class="o">=</span> michdata2<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;boxplot&quot;</span><span class="p">,</span> fill<span class="o">=</span>fgenderm<span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;Total Months&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Highest Grade Completed in School&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Education, Gender and Total Months in Prison (Michigan)&quot;</span><span class="p">,</span> axis.text.x<span class="o">=</span>theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+<span class="c1">#Race, Gender and Totalmos</span>
+qplot<span class="p">(</span>fmichrace<span class="p">,</span> totalmom<span class="p">,</span> data <span class="o">=</span> michdata2<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;boxplot&quot;</span><span class="p">,</span> fill<span class="o">=</span>fgenderm<span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;Total Months&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Race Declared in Survey&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Race, Gender and Total Months in Prison (Michigan)&quot;</span><span class="p">,</span> axis.text.x<span class="o">=</span>theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+<span class="o">&gt;</span> qplot<span class="p">(</span>fggiarace<span class="p">,</span> totalmog<span class="p">,</span> data <span class="o">=</span> ggiadata2<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;boxplot&quot;</span><span class="p">,</span> fill<span class="o">=</span>fgenderg<span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;Total Months&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Race Declared in Survey&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Race, Gender and Total Months in Prison (Georgia)&quot;</span><span class="p">,</span> axis.text.x<span class="o">=</span>theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+<span class="c1">#Education Gender and Total Months</span>
+<span class="o">&gt;</span>qplot<span class="p">(</span>weducationg<span class="p">,</span> data <span class="o">=</span> ggiadata2<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> fill<span class="o">=</span>fgenderg<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Highest Grade Completed&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Education Categories by Gender (Georgia)&quot;</span><span class="p">,</span> axis.text.x<span class="o">=</span>theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+<span class="o">&gt;</span> qplot<span class="p">(</span>weducationm<span class="p">,</span> data <span class="o">=</span> michdata2<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> fill<span class="o">=</span>fgenderm<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Highest Grade Completed&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title <span class="o">=</span> <span class="s">&quot;Education Categories by Gender (Michigan)&quot;</span><span class="p">,</span> axis.text.x<span class="o">=</span>theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span></code></pre></figure>
+
+
+  </div>
+  <!-- END OF TWO STATES -->
+  <div id="tabs-3" class="tab-pane">
+    <a class="internal-link" href="#r3">Jump to this section's R code</a><br /><br />
+    <p>For this installment, we wanted to inspect the relationship between Total Years Michigan inmates spent prior to their current sentence and the total years of their current sentence against their level of education and race.</p>  
+
+
+    <strong>Scale</strong>
+
+    <p>One scale issue we had was that the total prior years data is in months, but the total current sentence is in years. We used simple arithmetic, dividing the months to years by dividing each entry by 12 (totalprior&gt;-(totalmom/12)). Next, we found that leaving the year values as they were lead to difficulty in separating out the most important data, the education and race trends: </p>
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r3-1.png" />
+</div>
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r3-2.png" />
+</div> 
+
+<p>So we altered the scale by removing some of the outliers of on the total current year axis (michdata2=michdata2[ttyr&lt;30,]).</p> 
+
+<strong>The Plots</strong>
+
+<p>On each plot, <strong>totalprior</strong> is the total years prior to the current sentence and <strong>ttyr</strong> is total years spent during the current sentence. </p>
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r3-3.png" />
+</div> 
+
+<p>As we see here, as the total prior years increase there is a general trend for less of a current sentence for each race, though this trend runs slightly differently for each race. For blacks and whites, there is a steeper decrease than for Asian and Native inmates.</p>
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r3-4.png" />
+</div> 
+
+<p>With respect to education, we see a more interesting trend: for inmates with some college, there is an increasing trend for total current years as total prior years increase, this is curious and we might want to know more as to why. For all other educational levels, there is a decreasing trend as we saw in the race plot.</p>
+<br />
+<hr />
+<h4>Scale R code:</h4>
+<a name="r3"></a>
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#Read Prison data in:</span>
+<span class="o">&gt;</span> data <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> read.table<span class="p">(</span><span class="s">&quot;/Users/&lt;thiscouldbeyou&gt;/desktop/618/prison.txt&quot;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+
+<span class="c1">#Libraries we&#39;ll use to prepare and plot data</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>gdata<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+
+<span class="c1">#get only the Michigan Data</span>
+<span class="o">&gt;</span> michdata <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> data<span class="p">[</span>data<span class="o">$</span>V94 <span class="o">==</span> <span class="m">26</span><span class="p">,]</span> 
+
+<span class="c1">#Clean out the unknowns *set them to NA*</span>
+<span class="o">&gt;</span> ageadmitm<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V57<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">99.5</span><span class="p">,</span> <span class="m">99.8</span><span class="p">))</span>
+<span class="o">&gt;</span> agereleasem<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V58<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">88.8</span><span class="p">,</span> <span class="m">99.5</span><span class="p">,</span> <span class="m">99.8</span><span class="p">))</span>
+<span class="o">&gt;</span> educationm<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V12<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">95</span><span class="p">,</span><span class="m">98</span><span class="p">,</span><span class="m">99</span><span class="p">))</span>
+<span class="o">&gt;</span> michrace<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V10<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
+<span class="o">&gt;</span> totalmom<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>michdata<span class="o">$</span>V60<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">9999.5</span><span class="p">,</span> <span class="m">9999.8</span><span class="p">))</span>
+
+<span class="c1">#prepare a couple extra columns</span>
+
+<span class="c1">#totalmom is the total # of months each prisoner served prior to current sentence, we want those in years to scale with our Total Current Sentence Data, so we divide each entry by 12.</span>
+<span class="o">&gt;</span> totalprior <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="p">(</span>totalmom<span class="o">/</span><span class="m">12</span><span class="p">)</span>
+
+<span class="c1">#total year is the age at release from prison - the age of admission to prison</span>
+ttyr<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="p">(</span>agereleasem <span class="o">-</span> ageadmitm<span class="p">)</span>
+
+
+<span class="c1">#factoring and creating levels for our categorical vectors, education and race</span>
+<span class="o">&gt;</span> weducationm <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>educationm<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>weducationm<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;&amp;gt;= 8th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;Some High School&quot;</span><span class="p">,</span> <span class="s">&quot;9th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;10th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;11th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;12th or GED&quot;</span><span class="p">,</span> <span class="s">&quot;Some College&quot;</span><span class="p">,</span> <span class="s">&quot;College Degree&quot;</span><span class="p">,</span> <span class="s">&quot;Special/Ungraded&quot;</span><span class="p">)</span>
+
+<span class="o">&gt;</span> fmichrace <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kp">factor</span><span class="p">(</span>michrace<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">levels</span><span class="p">(</span>fmichrace<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;White&quot;</span><span class="p">,</span> <span class="s">&quot;Black&quot;</span><span class="p">,</span> <span class="s">&quot;Native&quot;</span><span class="p">,</span> <span class="s">&quot;Asian&quot;</span><span class="p">,</span> <span class="s">&quot;Pacific&quot;</span><span class="p">,</span> <span class="s">&quot;Other&quot;</span><span class="p">)</span>
+
+
+<span class="c1">#create a new data frame of our new data</span>
+<span class="o">&gt;</span> michdata2<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kt">data.frame</span><span class="p">(</span>weducationm<span class="p">,</span> fmichrace<span class="p">,</span> ageadmitm<span class="p">,</span> agereleasem<span class="p">,</span> ttyr<span class="p">,</span> totalprior<span class="p">)</span>
+
+<span class="c1">#alter the scale by only taking records where total current years are less than 30, since beyond this point there are only a few outliers</span>
+michdata2<span class="o">=</span>michdata2<span class="p">[</span>ttyr<span class="o">&lt;</span><span class="m">30</span><span class="p">,]</span>
+
+<span class="c1">#our plots, how does Education plot w Total Current Years and Total prior years?</span>
+<span class="o">&gt;</span> plot<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>ggplot<span class="p">(</span>michdata2<span class="p">,</span> aes<span class="p">(</span>totalprior<span class="p">,</span> ttyr<span class="p">,</span> group<span class="o">=</span>weducationm<span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Total Prior Years&quot;</span><span class="p">,</span> ylab <span class="o">=</span> <span class="s">&quot;Total Current Years&quot;</span><span class="p">))</span> <span class="o">+</span> geom_point<span class="p">(</span>color<span class="o">=</span><span class="s">&quot;grey&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Total Years Prior, Total Current Sentence and Education - Michigan Prisons&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> plot<span class="o">+</span>geom_smooth<span class="p">(</span>aes<span class="p">(</span>color<span class="o">=</span>weducationm<span class="p">),</span> method<span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span> size<span class="o">=</span><span class="m">1</span><span class="p">,</span> se<span class="o">=</span><span class="bp">F</span><span class="p">)</span>
+
+<span class="c1">#same question with race</span>
+<span class="o">&gt;</span> plot<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>ggplot<span class="p">(</span>michdata2<span class="p">,</span> aes<span class="p">(</span>totalprior<span class="p">,</span> ttyr<span class="p">,</span> group<span class="o">=</span>fmichrace<span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Total Prior Years&quot;</span><span class="p">,</span> ylab <span class="o">=</span> <span class="s">&quot;Total Current Years&quot;</span><span class="p">))</span> <span class="o">+</span> geom_point<span class="p">(</span>color<span class="o">=</span><span class="s">&quot;grey&quot;</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Total Years Prior, Total Current Sentence and Race - Michigan Prisons&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> plot<span class="o">+</span>geom_smooth<span class="p">(</span>aes<span class="p">(</span>color<span class="o">=</span>fmichrace<span class="p">),</span> method<span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span> size<span class="o">=</span><span class="m">1</span><span class="p">,</span> se<span class="o">=</span><span class="bp">F</span><span class="p">)</span></code></pre></figure>
+
+  </div> 
+  <div id="tabs-4" class="tab-pane">
+
+    <a class="internal-link" href="#r4">Jump to this section's R code</a><br /><br />
+
+<p><strong>Data Processing Problem:</strong> Previously we’ve only been able to look at one or two states at a time. This is because our dataset is massive (1.3 million records) and a lot of the records have holes in some of the demographics we wanted to look at. We wanted to clean up our dataset such that we did not have so many records with holes in them. Previously, the size of this dataset has been a barrier to making nation wide visualizations that had any polish to them.</p>
+
+<p><strong>Data Processing Solution:</strong> Create a routine for cleaning out records that are incomplete and saving the new data frame to a new text file:</p>
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">data <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> read.table<span class="p">(</span><span class="s">&quot;http://www-personal.umich.edu/~asgor/prison.txt&quot;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+
+<span class="kn">library</span><span class="p">(</span>gdata<span class="p">)</span>
+
+birthyr<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V8<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">9995</span><span class="p">,</span> <span class="m">9998</span><span class="p">,</span> <span class="m">9999</span><span class="p">))</span> 
+gender<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V9<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span> 
+race<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V10<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span> 
+hispanic<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V11<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
+education<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V12<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">95</span><span class="p">,</span><span class="m">98</span><span class="p">,</span><span class="m">99</span><span class="p">))</span>  
+admissionyr<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V15<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8888</span><span class="p">,</span> <span class="m">9995</span><span class="p">,</span> <span class="m">9998</span><span class="p">,</span> <span class="m">9999</span><span class="p">))</span>  
+totpriormo<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V60<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">9999.5</span><span class="p">,</span> <span class="m">9999.8</span><span class="p">))</span>  
+admitage<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V57<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">99.5</span><span class="p">,</span> <span class="m">99.8</span><span class="p">))</span>  
+relage<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V58<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">88.8</span><span class="p">,</span> <span class="m">99.5</span><span class="p">,</span> <span class="m">99.8</span><span class="p">))</span> 
+stateID <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> data<span class="o">$</span>V94
+
+data2 <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">data.frame</span><span class="p">(</span>birthyr<span class="p">,</span> gender<span class="p">,</span> race<span class="p">,</span> hispanic<span class="p">,</span> education<span class="p">,</span> admissionyr<span class="p">,</span> totpriormo<span class="p">,</span> admitage<span class="p">,</span> relage<span class="p">,</span> stateID<span class="p">)</span>
+mydata <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> na.omit<span class="p">(</span>data2<span class="p">)</span>
+
+<span class="c1">#write new data to new file using MASS Library and write.matrix function</span>
+<span class="kn">library</span><span class="p">(</span>MASS<span class="p">)</span>
+write.matrix<span class="p">(</span>mydata<span class="p">,</span> file <span class="o">=</span> <span class="s">&quot;/Users/quomo/Desktop/618/prison_noNA.txt&quot;</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span></code></pre></figure>
+
+
+<p>Now we have a considerably smaller dataset that still represents each one of the states included in the data, about 160,000 records (keep in mind that a lot of states did not have any records in the original data, so there were only about 30 states included in the data set):
+
+    
+
+
+
+    <br /></p>
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="kp">table</span><span class="p">(</span>data<span class="o">$</span>stateID<span class="p">)</span>
+
+   Alabama                 California                   Colorado 
+   <span class="m">8591</span>                      <span class="m">27745</span>                       <span class="m">6831</span> 
+   Florida                    Georgia                     Hawaii 
+   <span class="m">121</span>                        <span class="m">299</span>                          <span class="m">2318</span> 
+   Iowa                       Kentucky                  Louisiana 
+   <span class="m">8192</span>                       <span class="m">1301</span>                       <span class="m">2060</span> 
+   Maryland                 Michigan                  Minnesota 
+   <span class="m">694</span>                        <span class="m">27407</span>                      <span class="m">23506</span> 
+  Missouri                   Nebraska                  Nevada 
+  <span class="m">41</span>                           <span class="m">6366</span>                        <span class="m">361</span> 
+  New Hampshire           New Jersey               New York 
+  <span class="m">9911</span>                          <span class="m">3366</span>                        <span class="m">7436</span> 
+  North Carolina             North Dakota           Oklahoma 
+  <span class="m">11030</span>                         <span class="m">2963</span>                       <span class="m">1431</span> 
+  Oregon                       Pennsylvania            Rhode Island 
+  <span class="m">9665</span>                          <span class="m">0</span>                             <span class="m">0</span> 
+  South Carolina            South Dakota            Tennessee 
+  <span class="m">0</span>                               <span class="m">0</span>                              <span class="m">0</span> 
+  Texas                        Utah                          Virginia 
+  <span class="m">0</span>                               <span class="m">0</span>                              <span class="m">0</span> 
+  Washington                West Virginia            Wisconsin 
+  <span class="m">0</span>                               <span class="m">0</span>                               <span class="m">0</span> 
+<span class="o">&gt;</span> </code></pre></figure>
+
+
+<p><strong>Metadata Problem:</strong> It is not a new problem for our data that all of the demographic data has been encoded numerically (1 = male, 2 = female, 1 = white, 2 = black etc.).</p>
+
+<p><strong>Metadata Solution:</strong> As with previous assignments, we went through the following steps to reassign nominal values to the demographic and state data:</p> 
+
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">data<span class="o">$</span>stateID<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>data<span class="o">$</span>stateID<span class="p">)</span>
+data<span class="o">$</span>race<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>data<span class="o">$</span>race<span class="p">)</span>
+data<span class="o">$</span>education<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>data<span class="o">$</span>education<span class="p">)</span>
+data<span class="o">$</span>gender<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>data<span class="o">$</span>gender<span class="p">)</span>
+
+<span class="kp">levels</span><span class="p">(</span>data<span class="o">$</span>stateID<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Alabama&quot;</span><span class="p">,</span> <span class="s">&quot;California&quot;</span><span class="p">,</span> <span class="s">&quot;Colorado&quot;</span><span class="p">,</span> <span class="s">&quot;Florida&quot;</span><span class="p">,</span> <span class="s">&quot;Georgia&quot;</span><span class="p">,</span> <span class="s">&quot;Hawaii&quot;</span><span class="p">,</span> <span class="s">&quot;Iowa&quot;</span><span class="p">,</span> <span class="s">&quot;Kentucky&quot;</span><span class="p">,</span> <span class="s">&quot;Louisiana&quot;</span><span class="p">,</span> <span class="s">&quot;Maryland&quot;</span><span class="p">,</span><span class="s">&quot;Michigan&quot;</span><span class="p">,</span> <span class="s">&quot;Minnesota&quot;</span><span class="p">,</span> <span class="s">&quot;Missouri&quot;</span><span class="p">,</span> <span class="s">&quot;Nebraska&quot;</span><span class="p">,</span><span class="s">&quot;Nevada&quot;</span><span class="p">,</span> <span class="s">&quot;New Hampshire&quot;</span><span class="p">,</span> <span class="s">&quot;New Jersey&quot;</span><span class="p">,</span> <span class="s">&quot;New York&quot;</span><span class="p">,</span><span class="s">&quot;North Carolina&quot;</span><span class="p">,</span> <span class="s">&quot;North Dakota&quot;</span><span class="p">,</span> <span class="s">&quot;Oklahoma&quot;</span><span class="p">,</span> <span class="s">&quot;Oregon&quot;</span><span class="p">,</span><span class="s">&quot;Pennsylvania&quot;</span><span class="p">,</span> <span class="s">&quot;Rhode Island&quot;</span><span class="p">,</span> <span class="s">&quot;South Carolina&quot;</span><span class="p">,</span> <span class="s">&quot;South Dakota&quot;</span><span class="p">,</span><span class="s">&quot;Tennessee&quot;</span><span class="p">,</span> <span class="s">&quot;Texas&quot;</span><span class="p">,</span> <span class="s">&quot;Utah&quot;</span><span class="p">,</span> <span class="s">&quot;Virginia&quot;</span><span class="p">,</span> <span class="s">&quot;Washington&quot;</span><span class="p">,</span> <span class="s">&quot;West Virginia&quot;</span><span class="p">,</span> <span class="s">&quot;Wisconsin&quot;</span><span class="p">,</span> <span class="s">&quot;California Youth Authority&quot;</span><span class="p">)</span>
+
+<span class="kp">levels</span><span class="p">(</span>data<span class="o">$</span>race<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;White&quot;</span><span class="p">,</span> <span class="s">&quot;Black&quot;</span><span class="p">,</span> <span class="s">&quot;Native&quot;</span><span class="p">,</span> <span class="s">&quot;Asian&quot;</span><span class="p">,</span> <span class="s">&quot;Pacific&quot;</span><span class="p">,</span> <span class="s">&quot;Other&quot;</span><span class="p">)</span>
+
+<span class="kp">levels</span><span class="p">(</span>data<span class="o">$</span>education<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Up to 8th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;Some High School&quot;</span><span class="p">,</span> <span class="s">&quot;9th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;10th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;11th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;12th or GED&quot;</span><span class="p">,</span> <span class="s">&quot;Some College&quot;</span><span class="p">,</span> <span class="s">&quot;College Degree&quot;</span><span class="p">,</span> <span class="s">&quot;Special/Ungraded&quot;</span><span class="p">)</span>
+
+<span class="kp">levels</span><span class="p">(</span>data<span class="o">$</span>gender<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Male&quot;</span><span class="p">,</span> <span class="s">&quot;Female&quot;</span><span class="p">)</span>
+
+<span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>data<span class="p">)</span>
+birthyr gender   race hispanic    education admissionyr totpriormo admitage relage
+<span class="m">1</span>    <span class="m">1940</span>   Male  Black        <span class="m">2</span> Some College        <span class="m">2004</span>        <span class="m">2.4</span>     <span class="m">63.8</span>   <span class="m">64.3</span>
+<span class="m">2</span>    <span class="m">1955</span> Female  Black        <span class="m">2</span>   <span class="m">10</span>th Grade        <span class="m">2000</span>       <span class="m">28.7</span>     <span class="m">44.8</span>   <span class="m">48.6</span>
+<span class="m">4</span>    <span class="m">1952</span>   Male  White        <span class="m">2</span>  <span class="m">12</span>th or GED        <span class="m">2002</span>       <span class="m">34.9</span>     <span class="m">50.1</span>   <span class="m">51.5</span>
+<span class="m">5</span>    <span class="m">1951</span>   Male Native        <span class="m">2</span>  <span class="m">12</span>th or GED        <span class="m">1999</span>        <span class="m">0.9</span>     <span class="m">48.3</span>   <span class="m">53.4</span>
+<span class="m">6</span>    <span class="m">1954</span>   Male  Black        <span class="m">2</span>  <span class="m">12</span>th or GED        <span class="m">2003</span>       <span class="m">60.7</span>     <span class="m">49.4</span>   <span class="m">49.9</span>
+<span class="m">7</span>    <span class="m">1954</span>   Male  Black        <span class="m">2</span>  <span class="m">12</span>th or GED        <span class="m">2004</span>       <span class="m">66.5</span>     <span class="m">50.1</span>   <span class="m">50.3</span>
+  stateID
+<span class="m">1</span> Alabama
+<span class="m">2</span> Alabama
+<span class="m">4</span> Alabama
+<span class="m">5</span> Alabama
+<span class="m">6</span> Alabama
+<span class="m">7</span> Alabama
+<span class="o">&gt;</span> </code></pre></figure>
+
+
+<p><strong>Summary Problem:</strong> Realizing that we have data that is not equally represented from state to state and that a lot of the inmate populations in each state have very disproportionate demographics (i.e. there are a lot of white and black males in prison, which tend to drown out women and other racial groups in absolute numbers), we wanted to take the approach of looking at our data nationwide, while being able to see more of the relative distribution rather than the absolute distribution.</p> 
+
+<p><strong>Solution:</strong> To do this, we decided to approach the data with applying a density analysis.</p> 
+
+<p>Our first attempt looking at distribution of race for each year and inmate is admitted to prison was interesting, but largely uninformative. While we see an interesting shape for each racial category, it’s still hard to tell exactly what we are looking at.</p>
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">p <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ggplot<span class="p">(</span>data<span class="p">,</span> aes<span class="p">(</span>admissionyr<span class="p">))</span>
+p <span class="o">+</span> stat_density<span class="p">(</span>aes<span class="p">(</span>ymax <span class="o">=</span> <span class="m">..</span>density..<span class="p">,</span> ymin <span class="o">=</span> <span class="m">0</span><span class="p">),</span> fill <span class="o">=</span> <span class="s">&quot;pink&quot;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&quot;grey40&quot;</span><span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;ribbon&quot;</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span></code></pre></figure>
+
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r4-1.png" />
+</div>
+
+<p>Conceptually, we wanted to see something more like a steam graph, where each race (or gender, or education level) were laid next to each other, reflecting the entire population and then the relative distribution of each demographic category to the full population as mapped against some continuous value such as the year of admission, the age of each inmate at their admission or the age of each inmate at their release.</p> 
+
+<p>We also saw that there was a considerable spike in each of the plots around the 1990s, so we decided to strip the years prior to 1992 off since there is low representation for those years in our data.</p>
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">data  <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> data<span class="p">[</span>data<span class="o">$</span>admissionyr <span class="o">&gt;</span> <span class="m">1991</span><span class="p">,]</span></code></pre></figure>
+
+
+<p>We then came up with the following using facet_wrap() to create small multiples of the data for each state:</p> 
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">qplot<span class="p">(</span>data<span class="o">$</span>admissionyr<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> race<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Year of Admission to Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Race per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span></code></pre></figure>
+
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r4-2.png" />
+</div>
+
+<p>Though not perfect, we rather liked this plot the most of all the plots we’ve generated so far. Clearly we end up seeing some of the holes in the data here; Florida, Georgia and Missouri seem to have rather unrepresentative data.</p> 
+
+<p>We decided to render similar charts for the different continuous and demographic data we had:</p>
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">qplot<span class="p">(</span>data<span class="o">$</span>admitage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> education<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Age of Inmate at Admission to Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Education per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span></code></pre></figure>
+
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r4-3.png" />
+</div>
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">qplot<span class="p">(</span>data<span class="o">$</span>relage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> gender<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Age of Inmate at Release from Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Gender per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span></code></pre></figure>
+
+
+<div class="crop">  
+  <img class="project-image" src="/assets/images/projects/prison/r4-4.png" />
+</div>
+
+<p><strong>Analysis of Stat and Geom used:</strong> Again, because we are dealing with states and dimensions that are not represented equally across the data, looking at what we have in terms of absolute numbers did not allow for easily being able to isolate trends and categories. </p>
+
+<p>The density approach, in R, is both geom and stat as it is a procedure of extracting and visualizing the relative distribution of a category within a defined population. In each of the above plots, the defined populations are the states.</p>
+
+<p>We added the <pre><code> position = “fill”</code></pre> so that we might be able to set each distribution next to each other, similar to a steam graph, instead of layering each category one on top of the other. This is because the number of categories we are comparing (especially for education) are too much to, again, be able to isolate and analyze in a single category if they are all piled one on top of another.</p>
+
+<p>Again, while this approach demonstrates a few gaping holes in the data we selected, we still get a view on some interesting trends. For example, in the education by age of admission above, we see that there is a tendency across states for there to be a larger distribution of inmates with an 8th grade or less education and that this population tends to make up a lot of the inmates that are admitted at age 60+. In the gender plot below it, we see that in general, male prisoners tend to be older on their release (excepting Maryland and Alabama; Maryland only has 694 records in this data, but there is a bit more for Alabama - ~8000).</p>
+
+<hr />
+<h4>Final Pass R code:</h4>
+<a name="r4"></a>
+
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">From Area Plot to Density Plot<span class="p">,</span> seeing distribution without absolute numbers getting <span class="kr">in</span> the way<span class="o">:</span> As we go through our data<span class="p">,</span> we realize that not all states are represented fully across all the dimensions we have decided to visualize. some states have more records than others and we can also assume that <span class="kr">in</span> each state<span class="p">,</span> there might be holes <span class="kr">in</span> the race<span class="p">,</span> education or gender data that are not the same as other states. So far we have also only seen at most <span class="m">2</span> states at a time. We now want to take a look at all the states at a glance.
+
+data <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> read.table<span class="p">(</span><span class="s">&quot;http://www-personal.umich.edu/~asgor/prison.txt&quot;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+
+
+birthyr<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V8<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">9995</span><span class="p">,</span> <span class="m">9998</span><span class="p">,</span> <span class="m">9999</span><span class="p">))</span> 
+gender<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V9<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span> 
+race<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V10<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span> 
+hispanic<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V11<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
+education<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V12<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">95</span><span class="p">,</span><span class="m">98</span><span class="p">,</span><span class="m">99</span><span class="p">))</span>  
+admissionyr<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V15<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">8888</span><span class="p">,</span> <span class="m">9995</span><span class="p">,</span> <span class="m">9998</span><span class="p">,</span> <span class="m">9999</span><span class="p">))</span>  
+totpriormo<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V60<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">9999.5</span><span class="p">,</span> <span class="m">9999.8</span><span class="p">))</span>  
+admitage<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V57<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">99.5</span><span class="p">,</span> <span class="m">99.8</span><span class="p">))</span>  
+relage<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>unknownToNA<span class="p">(</span>x<span class="o">=</span>data<span class="o">$</span>V58<span class="p">,</span> unknown<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">88.8</span><span class="p">,</span> <span class="m">99.5</span><span class="p">,</span> <span class="m">99.8</span><span class="p">))</span> 
+stateID <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> data<span class="o">$</span>V94
+
+data2 <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">data.frame</span><span class="p">(</span>birthyr<span class="p">,</span> gender<span class="p">,</span> race<span class="p">,</span> hispanic<span class="p">,</span> education<span class="p">,</span> admissionyr<span class="p">,</span> totpriormo<span class="p">,</span> admitage<span class="p">,</span> relage<span class="p">,</span> stateID<span class="p">)</span>
+mydata <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> na.omit<span class="p">(</span>data2<span class="p">)</span>
+
+<span class="c1">#write new data to new file using MASS Library and write.matrix function</span>
+
+write.matrix<span class="p">(</span>mydata<span class="p">,</span> file <span class="o">=</span> <span class="s">&quot;/Users/quomo/Desktop/618/prison_noNA.txt&quot;</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+
+<span class="c1">#now we can feed in our data already processed.</span>
+
+data <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> read.table<span class="p">(</span><span class="s">&quot;/Users/quomo/desktop/618/prison_noNA.txt&quot;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+
+<span class="c1">#make sure that our categorical data is represented in Nominal form</span>
+
+data<span class="o">$</span>stateID<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>data<span class="o">$</span>stateID<span class="p">)</span>
+data<span class="o">$</span>race<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>data<span class="o">$</span>race<span class="p">)</span>
+data<span class="o">$</span>education<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>data<span class="o">$</span>education<span class="p">)</span>
+data<span class="o">$</span>gender<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span><span class="kp">factor</span><span class="p">(</span>data<span class="o">$</span>gender<span class="p">)</span>
+
+<span class="kp">levels</span><span class="p">(</span>data<span class="o">$</span>stateID<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Alabama&quot;</span><span class="p">,</span> <span class="s">&quot;California&quot;</span><span class="p">,</span> <span class="s">&quot;Colorado&quot;</span><span class="p">,</span> <span class="s">&quot;Florida&quot;</span><span class="p">,</span> <span class="s">&quot;Georgia&quot;</span><span class="p">,</span> <span class="s">&quot;Hawaii&quot;</span><span class="p">,</span> <span class="s">&quot;Iowa&quot;</span><span class="p">,</span> <span class="s">&quot;Kentucky&quot;</span><span class="p">,</span> <span class="s">&quot;Louisiana&quot;</span><span class="p">,</span> <span class="s">&quot;Maryland&quot;</span><span class="p">,</span><span class="s">&quot;Michigan&quot;</span><span class="p">,</span> <span class="s">&quot;Minnesota&quot;</span><span class="p">,</span> <span class="s">&quot;Missouri&quot;</span><span class="p">,</span> <span class="s">&quot;Nebraska&quot;</span><span class="p">,</span><span class="s">&quot;Nevada&quot;</span><span class="p">,</span> <span class="s">&quot;New Hampshire&quot;</span><span class="p">,</span> <span class="s">&quot;New Jersey&quot;</span><span class="p">,</span> <span class="s">&quot;New York&quot;</span><span class="p">,</span><span class="s">&quot;North Carolina&quot;</span><span class="p">,</span> <span class="s">&quot;North Dakota&quot;</span><span class="p">,</span> <span class="s">&quot;Oklahoma&quot;</span><span class="p">,</span> <span class="s">&quot;Oregon&quot;</span><span class="p">,</span><span class="s">&quot;Pennsylvania&quot;</span><span class="p">,</span> <span class="s">&quot;Rhode Island&quot;</span><span class="p">,</span> <span class="s">&quot;South Carolina&quot;</span><span class="p">,</span> <span class="s">&quot;South Dakota&quot;</span><span class="p">,</span><span class="s">&quot;Tennessee&quot;</span><span class="p">,</span> <span class="s">&quot;Texas&quot;</span><span class="p">,</span> <span class="s">&quot;Utah&quot;</span><span class="p">,</span> <span class="s">&quot;Virginia&quot;</span><span class="p">,</span> <span class="s">&quot;Washington&quot;</span><span class="p">,</span> <span class="s">&quot;West Virginia&quot;</span><span class="p">,</span> <span class="s">&quot;Wisconsin&quot;</span><span class="p">,</span> <span class="s">&quot;California Youth Authority&quot;</span><span class="p">)</span>
+
+<span class="kp">levels</span><span class="p">(</span>data<span class="o">$</span>race<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;White&quot;</span><span class="p">,</span> <span class="s">&quot;Black&quot;</span><span class="p">,</span> <span class="s">&quot;Native&quot;</span><span class="p">,</span> <span class="s">&quot;Asian&quot;</span><span class="p">,</span> <span class="s">&quot;Pacific&quot;</span><span class="p">,</span> <span class="s">&quot;Other&quot;</span><span class="p">)</span>
+
+<span class="kp">levels</span><span class="p">(</span>data<span class="o">$</span>education<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Up to 8th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;Some High School&quot;</span><span class="p">,</span> <span class="s">&quot;9th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;10th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;11th Grade&quot;</span><span class="p">,</span> <span class="s">&quot;12th or GED&quot;</span><span class="p">,</span> <span class="s">&quot;Some College&quot;</span><span class="p">,</span> <span class="s">&quot;College Degree&quot;</span><span class="p">,</span> <span class="s">&quot;Special/Ungraded&quot;</span><span class="p">)</span>
+
+<span class="kp">levels</span><span class="p">(</span>data<span class="o">$</span>gender<span class="p">)</span> <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Male&quot;</span><span class="p">,</span> <span class="s">&quot;Female&quot;</span><span class="p">)</span>
+
+<span class="c1">#first plot</span>
+p <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ggplot<span class="p">(</span>data<span class="p">,</span> aes<span class="p">(</span>admissionyr<span class="p">))</span>
+p <span class="o">+</span> stat_density<span class="p">(</span>aes<span class="p">(</span>ymax <span class="o">=</span> <span class="m">..</span>density..<span class="p">,</span> ymin <span class="o">=</span> <span class="m">0</span><span class="p">),</span> fill <span class="o">=</span> <span class="s">&quot;pink&quot;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&quot;grey40&quot;</span><span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;ribbon&quot;</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="o">+</span> facet_grid<span class="p">(</span><span class="m">.</span> <span class="o">~</span> race<span class="p">)</span> <span class="o">+</span> coord_flip<span class="p">()</span>
+
+
+<span class="c1">#strip off the years prior to 1992 since we have very little data to support those years.</span>
+
+data<span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span>data<span class="p">[</span>data<span class="o">$</span>admissionyr <span class="o">&gt;</span> <span class="m">1991</span><span class="p">,]</span>
+
+
+<span class="c1">#plots we ended up with</span>
+qplot<span class="p">(</span>data<span class="o">$</span>admissionyr<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> race<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Year of Admission to Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Race per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+qplot<span class="p">(</span>data<span class="o">$</span>admitage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> race<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Age of Inmate at Admission to Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Race per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+qplot<span class="p">(</span>data<span class="o">$</span>relage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> race<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Age of Inmate at Release from Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Race per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+qplot<span class="p">(</span>data<span class="o">$</span>admissionyr<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> education<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Year of Admission to Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Education per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+qplot<span class="p">(</span>data<span class="o">$</span>admitage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> education<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Age of Inmate at Admission to Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Education per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+qplot<span class="p">(</span>data<span class="o">$</span>relage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> education<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Age of Inmate at Release from Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Education per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+qplot<span class="p">(</span>data<span class="o">$</span>admissionyr<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> gender<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Year of Admission to Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Gender per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+qplot<span class="p">(</span>data<span class="o">$</span>admitage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> gender<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Age of Inmate at Admission to Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Gender per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+qplot<span class="p">(</span>data<span class="o">$</span>relage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> gender<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Age of Inmate at Release from Prison&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span> opts<span class="p">(</span>title<span class="o">=</span><span class="s">&quot;Distribution of Inmate Gender per State 1992-2004&quot;</span><span class="p">,</span> axis.text.x <span class="o">=</span> theme_text<span class="p">(</span>angle<span class="o">=</span><span class="m">45</span><span class="p">,</span> hjust<span class="o">=</span><span class="m">1</span><span class="p">))</span>
+
+
+<span class="c1">#density plots, a start:</span>
+qplot<span class="p">(</span>admissionyr<span class="p">,</span> data <span class="o">=</span> data2<span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>gender<span class="p">))</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>admissionyr<span class="p">,</span> data <span class="o">=</span> data2<span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>gender<span class="p">),</span> alpha<span class="o">=</span><span class="kp">I</span><span class="p">(</span><span class="m">0.2</span><span class="p">))</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>admissionyr<span class="p">,</span> data <span class="o">=</span> data2<span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>race<span class="p">),</span> alpha<span class="o">=</span><span class="kp">I</span><span class="p">(</span><span class="m">0.2</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="m">5</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">5</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>admissionyr<span class="p">,</span> data <span class="o">=</span> data2<span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>race<span class="p">),</span> alpha<span class="o">=</span><span class="kp">I</span><span class="p">(</span><span class="m">0.5</span><span class="p">))</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>admissionyr<span class="p">,</span> data <span class="o">=</span> data2<span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>education<span class="p">),</span> alpha<span class="o">=</span><span class="kp">I</span><span class="p">(</span><span class="m">0.5</span><span class="p">))</span>
+
+
+<span class="c1">###something interesting, density @ http://had.co.nz/ggplot2/stat_density.html</span>
+
+p <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ggplot<span class="p">(</span>data2<span class="p">,</span> aes<span class="p">(</span>admissionyr<span class="p">))</span>
+p <span class="o">+</span> stat_density<span class="p">(</span>aes<span class="p">(</span>ymax <span class="o">=</span> <span class="m">..</span>density..<span class="p">,</span> ymin <span class="o">=</span> <span class="m">-..</span>density..<span class="p">),</span> fill <span class="o">=</span> <span class="s">&quot;grey50&quot;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&quot;grey50&quot;</span><span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;ribbon&quot;</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="o">+</span> facet_grid<span class="p">(</span><span class="m">.</span> <span class="o">~</span> race<span class="p">)</span> <span class="o">+</span> coord_flip<span class="p">()</span>
+
+<span class="o">&gt;</span> p <span class="o">&amp;</span>gt<span class="p">;</span><span class="o">-</span> ggplot<span class="p">(</span>data2<span class="p">,</span> aes<span class="p">(</span>admitage<span class="p">))</span>
+<span class="o">&gt;</span> p <span class="o">+</span> stat_density<span class="p">(</span>aes<span class="p">(</span>ymax <span class="o">=</span> <span class="m">..</span>density..<span class="p">,</span> ymin <span class="o">=</span> <span class="m">-..</span>density..<span class="p">),</span> fill <span class="o">=</span> <span class="s">&quot;grey50&quot;</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;ribbon&quot;</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;stack&quot;</span><span class="p">)</span>
+
+<span class="o">&gt;</span> qplot<span class="p">(</span>data2<span class="o">$</span>admitage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data2<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> race<span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>data2<span class="o">$</span>admitage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data2<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>race<span class="p">),</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">)</span>
+
+
+<span class="o">&gt;</span> ggplot<span class="p">(</span>data2<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>admitage<span class="p">))</span> <span class="o">+</span> stat_density<span class="p">(</span>aes<span class="p">(</span>ymax<span class="o">=</span><span class="m">..</span>density..<span class="p">,</span> ymin <span class="o">=</span> <span class="m">-..</span>density..<span class="p">),</span> fill <span class="o">=</span> <span class="s">&quot;grey50&quot;</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;stack&quot;</span><span class="p">)</span> <span class="o">+</span> facet_grid<span class="p">(</span><span class="m">.</span> <span class="o">~</span> stateID<span class="p">)</span>
+<span class="o">&gt;</span> ggplot<span class="p">(</span>data2<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>admitage<span class="p">))</span> <span class="o">+</span> geom_density<span class="p">(</span>aes<span class="p">(</span>ymax<span class="o">=</span><span class="m">..</span>density..<span class="p">,</span> ymin <span class="o">=</span> <span class="m">-..</span>density..<span class="p">),</span> fill <span class="o">=</span> <span class="s">&quot;grey50&quot;</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;stack&quot;</span><span class="p">)</span> <span class="o">+</span> facet_grid<span class="p">(</span><span class="m">.</span> <span class="o">~</span> stateID<span class="p">)</span>
+
+
+<span class="o">&gt;</span> ggplot<span class="p">(</span>data<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>admitage<span class="p">))</span> <span class="o">+</span> geom_density<span class="p">(</span>aes<span class="p">(</span>ymax<span class="o">=</span><span class="m">..</span>density..<span class="p">,</span> ymin <span class="o">=</span> <span class="m">-..</span>density..<span class="p">),</span> fill <span class="o">=</span> <span class="s">&quot;grey50&quot;</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;stack&quot;</span><span class="p">)</span> <span class="o">+</span> facet_grid<span class="p">(</span><span class="m">.</span> <span class="o">~</span> stateID<span class="p">)</span>
+<span class="o">&gt;</span> ggplot<span class="p">(</span>data<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>admitage<span class="p">))</span> <span class="o">+</span> geom_density<span class="p">(</span>aes<span class="p">(</span>ymax<span class="o">=</span><span class="m">..</span>density..<span class="p">,</span> ymin <span class="o">=</span> <span class="m">-..</span>density..<span class="p">),</span> fill <span class="o">=</span> <span class="s">&quot;grey50&quot;</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;stack&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol<span class="o">=</span><span class="m">7</span><span class="p">)</span>
+
+<span class="o">&gt;</span> qplot<span class="p">(</span>data<span class="o">$</span>admitage<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>race<span class="p">),</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+
+<span class="o">&gt;</span> qplot<span class="p">(</span>data<span class="o">$</span>admissionyr<span class="p">,</span> <span class="m">..</span>density..<span class="p">,</span> data <span class="o">=</span> data<span class="p">,</span> geom <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span>race<span class="p">),</span> position <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">)</span> <span class="o">+</span> facet_wrap<span class="p">(</span><span class="o">~</span> stateID<span class="p">,</span> ncol <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+<span class="o">&gt;</span></code></pre></figure>
+
+
+
+</div> <!-- I am what now? -->
+</div>
+<!-- end of tab content -->
+
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2011-03-22T00:00:00-04:00" datetime="2011-03-22T00:00:00-04:00" pubdate>
+							<span class="month"><abbr>March</abbr></span>
+							<span class="day">22</span>
+							<span class="year">2011</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#project-ref">
+    		project <span>3</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/tags.html#R-ref">R <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#data analysis-ref">data analysis <span>2</span></a></li>
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li>
+						</ul>
+					</div>
+					
+					
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'subtxt'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+				</div><!-- misc-content -->
+				
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/project/2012/06/15/wikisewer_project" title="View Wikisewer">Wikisewer &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n">drew gordon</span> - <span class="fn email">drew@subtxt.in</span></address></li>
+						<li class="github"><a href="http://github.com/dogrdon/" rel="me">github.com/dogrdon</a></li>
+                                                <!--<li class="twitter"><a href="http://twitter.com//" rel="me">twitter.com/</a></li>-->
+
+					</ul>
+				</div><!-- misc -->
+				<p class="licence">
+					Theme: <a href="http://layouts-the.me">the_minimum</a> based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+	(function(d, s) {
+		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.src = url; js.id = id;
+		fjs.parentNode.insertBefore(js, fjs);
+		};
+	load('//platform.twitter.com/widgets.js', 'tweetjs');
+	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/project/2011/03/22/prison-project" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	}(document, 'script'));
+</script>
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+<!-- Jquery from CDN -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  
+</body>
+</html>
+
