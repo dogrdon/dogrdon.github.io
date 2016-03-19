@@ -10,13 +10,13 @@ tags: [art, meta-art, museums, preservation, process, archives]
 
 Recently taking a trip to the 2014 Whitney Biennial, I was drawn in by [a piece](http://whitney.org/Exhibitions/2014Biennial/JosephGrigely "Whitney Biennial 2014 Joseph Grigely, The Gregory Battcock Archive, 2009-2014") prepared by Joseph Grigely and Rebecca Morris, which consists of archival materials from the Painter turned Art Critic and Historian [Gregory Battcock](http://www.dictionaryofarthistorians.org/battcockg.htm). Battcock, it is not trivial to mention, was found abruptly and insolvably [murdered](http://news.google.com/newspapers?nid=2506&dat=19801227&id=FVRJAAAAIBAJ&sjid=8wkNAAAAIBAJ&pg=3185,7689250) on Christmas day, 1980.
 
-<div class="figure">
+<figure>
 <img class="blog-post" src="/assets/images/posts/2014/04/Biennial_2014_battcock_1.jpg" alt="photograph by Sheldan C. Collins of Installation view The Gregory Battcock Archive, 2009-14 by Joseph Grigley and Rebecca Morris
 Installation view Whitney Biennial 2014 ( March 7 – May 25, 2014), 2nd floor.
 Whitney Museum of American Art, New York. Archival materials inside of wood cases."/>
-<div class="figcaption">  Installation view The Gregory Battcock Archive, 2009-14 by Joseph Grigley and Rebecca Morris
+<figcaption>  Installation view The Gregory Battcock Archive, 2009-14 by Joseph Grigley and Rebecca Morris
 Installation view Whitney Biennial 2014 ( March 7 – May 25, 2014), 2nd floor.
-Whitney Museum of American Art, New York. Photograph by Sheldan C. Collins <a href="http://artbooks.yupnet.org/2014/03/28/whitney-biennial-hoopla-david-ebony-interviews-the-curators-stuart-comer-anthony-elms-and-michelle-grabner/">from</a> </div></div>
+Whitney Museum of American Art, New York. Photograph by Sheldan C. Collins <a href="http://artbooks.yupnet.org/2014/03/28/whitney-biennial-hoopla-david-ebony-interviews-the-curators-stuart-comer-anthony-elms-and-michelle-grabner/">from</a></figcaption></figure>
 
 <a href="http://www.thevisualist.org/2009/12/joseph-grigley-the-gregory-battcock-archive/" target="_blank">Here</a> is a little more background and rumination on the narrative intent of exhibiting this archive, though my focus is more on the broader scope of archives embedded as public displays in museums. While this is not a new or rare approach, I think it is an interesting tactic in museum curation.
 
@@ -44,8 +44,8 @@ So the original thought that brought me to write this and meander through the ab
 
 So how might we display the digital sketches and notes left by an artist such that it communicates the impressions and opinions we have of their work? Do we exhibit personal harddrives connected to monitors with an interactive display? Do we allow museum patrons to browse diffs for edits in seminal works of an author (I am reminded of [this](http://benfry.com/traces/) amazing visualization of edits to Charles Darwin's Origin of the Species by Ben Fry)? Establish a flickr stream of all an artist's archival photographs? Create an interactive display for browsing the structured data pulled from any number of productivity apps that have come and gone through the course of an artist's working life?
 
-<div class="figure">
-<a href="/assets/images/posts/2014/04/darwin-ben-fry.png"><img class="blog-post" title="image of ben fry visualization of origin of the species edition visualization" src="/assets/images/posts/2014/04/darwin-ben-fry.png"/></a><div class="figcaption">Screen capture of a visualization of changes to editions of Charles Darwin's Origin of the Species. Which can be found <a href="http://benfry.com/traces/">here</a> </div>
-</div>
+<figure>
+<a href="/assets/images/posts/2014/04/darwin-ben-fry.png"><img class="blog-post" title="image of ben fry visualization of origin of the species edition visualization" src="/assets/images/posts/2014/04/darwin-ben-fry.png"/></a><figcaption>Screen capture of a visualization of changes to editions of Charles Darwin's Origin of the Species. Which can be found <a href="http://benfry.com/traces/">here</a></figcaption>
+</figure>
 
 Some of this leads me then to suggest a need for more data science at the point where the archive meets the museum. Though I am not recommending a complete replacement of Archival and Museum professionals with data scientists. However, it seems that being able to manipulate and communicate large sets of digital information will be a crucial skill set for those attempting to narrate in this space in the future (and currently, it doesn't hurt to have some of these skills currently). In the meantime, I'll be keeping an eye out for more and more interesting embeds of archives in the public art space.

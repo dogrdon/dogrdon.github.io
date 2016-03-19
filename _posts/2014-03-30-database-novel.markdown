@@ -38,9 +38,9 @@ As I read this book, I notice how modular it is. It is the story of an apartment
 
 If this were a book review (which it is not), I would note that throughout these stories, I often find it hard to follow the "plot" as each chapter seems to fixate more on the details of objects and these objects are overwhelmingly the focus of attention, the glue that pulls together quick snaps of history and the interactions between residents and their predecessors: a list, a recipe, a painting, a sign on a door, a section of a catalog. In all of this clutter, I am routinely brought back to the images of the recently discovered [Paris apartment locked in time](http://www.telegraph.co.uk/news/worldnews/europe/france/8042281/Parisian-flat-containing-2.1-million-painting-lay-untouched-for-70-years.html "Link to story about paris apartment locked in time"). But it is this interesting mosaic of objects and detailed descriptions of them that shores up its unique method of composition.
 
-<div class="figure">
+<figure>
 <img class="blog-post" src="http://cdn.thedailybeast.com/content/dailybeast/articles/2014/02/05/the-parisian-belle-epoque-time-capsule/jcr:content/image.crop.800.500.jpg/1393204098245.cached.jpg" alt="picture of cluttered parisian apartment that has not been inhabited or touched since 1942, looks dusty and the furniture is rather baroque."/>
-<div class="figcaption"> Image via Getty via The Telegraph</div></div>
+<figcaption> Image via Getty via The Telegraph</figcaption></figure>
 
 The question creeps up to me, then: is it possible to write a novel first as if filling out a spreadsheet or set of form fields that feed into a database? To conceive of the objects necessary for a plot, assign them numbers, hierarchies, and a taxonomic spot in line from which to create a presentation from and <em> then </em> write the book? Or better (or worse, perhaps) have an algorithm write the book?
 

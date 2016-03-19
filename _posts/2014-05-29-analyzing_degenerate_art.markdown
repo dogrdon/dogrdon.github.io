@@ -6,9 +6,9 @@ category: museums
 tags: [art, database, museums, data analysis, Neue Galerie, art history, python, linked data]
 ---
 
-<div class="figure">
+<figure>
 <img class="blog-post" src="/assets/images/posts/2014/05/degenerate_art_may_2014.png" alt="author's picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenerate art exhibit in 1937."/>
-<div class="figcaption"> Large image of photograph from original Entartete Kunst Exhibition in 1937 displayed at the entrance to the Degenerate Art Exhibit at the Neue Galerie, May 2014.</div></div>
+<figcaption> Large image of photograph from original Entartete Kunst Exhibition in 1937 displayed at the entrance to the Degenerate Art Exhibit at the Neue Galerie, May 2014.</figcaption></figure>
 
 #### Introduction
 
@@ -101,9 +101,9 @@ Next, perhaps we want a count of the art forms employed by the artists.
 
 I was interested to see that an overwhelming majority of the works here were produced through some form of printmaking (woodcut, lithograph, etching, etc.). There might be a fairly obvious explanation for this. Printmaking, by its nature is far more reproducible of an art form. It is possible to churn out more representations in this format than something like oil painting or watercolor since with a template, you can easily make multiple copies. It is also possible that the works referred to might be reproductions of originals, increasing the representation of this artform in this dataset.
 
-<div class="figure">
+<figure>
 <img class="blog-post-sm" src="http://upload.wikimedia.org/wikipedia/en/2/23/%27The_Prophet%27%2C_woodcut_by_Emil_Nolde%2C_1912.jpg" alt="author's picture of banner at the Neue Galerie Exhibition of Degenerate Art, New York City, 2014. Banner is picture of original degenerate art exhibit in 1937."/>
-<div class="figcaption"> Emil Nolde The Prophet, woodcut, 1912. via <a href="http://en.wikipedia.org/wiki/Emil_Nolde">Wikipedia</a> EK Inventory No.: <a href="http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&module=collection&objectId=121753&viewType=detailView">16302</a></div></div>
+<figcaption> Emil Nolde The Prophet, woodcut, 1912. via <a href="http://en.wikipedia.org/wiki/Emil_Nolde">Wikipedia</a> EK Inventory No.: <a href="http://emuseum.campus.fu-berlin.de/eMuseumPlus?service=ExternalInterface&module=collection&objectId=121753&viewType=detailView">16302</a></figcaption></figure>
 
 On the other hand, it might be the basis for an interesting exploration by someone more familiar with this point in art history. For instance, what were the correlations between modern art and the techniques and technology inherent in printmaking? Was there an increase for any non-trivial reasons? How might application of this technology have facilitated or impacted artistic expression at this time?
 
