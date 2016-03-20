@@ -1,6 +1,26 @@
 /**
  * Site header
  */
+.orange{
+    background-color: #FFD6AD;
+}
+
+.lavender{
+    background-color: #D6ADFF;
+}
+
+.pink{
+    background-color: #FFADD6;
+}
+
+.mint{
+    background-color: #A6F5CE;
+}
+
+.skyblue{
+    background-color: #85D6FF;
+}
+ 
 .site-header {
     border-top: 5px solid $grey-color-dark;
     border-bottom: 1px solid $grey-color-light;
@@ -254,4 +274,10 @@ figure img{
 
 figure figcaption {
     text-align: center;
+}
+
+.left{
+  width: 40%;
+  float: left;
+  padding: 8px;
 }

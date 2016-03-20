@@ -6,13 +6,13 @@ category: linked-data
 tags: [linked data, rdf, n-triples, review, SPARQL, reference, libraries, museums, archives]
 ---
 
-<div class="figure float_left"><img class="blog_post" src="/assets/images/posts/2014/08/ldlam.jpg" title="Image of book cover for Linked Data for Libraries, Archives and Museums" alt="Image of book cover for Linked Data for Libraries, Archives and Museums"/>
-<div class="figcaption" style="text-align: left;"><b>Linked Data for Libraries, Archives and Museums: How to Clean, Link and Publish your Metadata</b><br/><br/>
+<figure class="left"><img class="blog_post" src="/assets/images/posts/2014/08/ldlam.jpg" title="Image of book cover for Linked Data for Libraries, Archives and Museums" alt="Image of book cover for Linked Data for Libraries, Archives and Museums"/>
+<figcaption style="text-align: left;"><b>Linked Data for Libraries, Archives and Museums: How to Clean, Link and Publish your Metadata</b><br/><br/>
 <b>Authors:</b> Seth van Hooland and Ruben Verborgh <br/>
 <b>Paperback:</b> 272 pages <br/>
 <b>Publisher:</b> ALA Editions (07/08/2014) <br/>
 <b>Language:</b> English<br/>
-<b>ISBN-13:</b> 978-0-8389-1251-5 </div></div>
+<b>ISBN-13:</b> 978-0-8389-1251-5 </figcaption></figure>
 
 ### I.
 There are a lot of great resources that document linked data fundamentals and best practices out there ([here](http://lodlam.net), [here](http://kcoyle.net/presentations/links.html), [here](http://www.w3.org/standards/semanticweb/), and [here](http://www.clir.org/pubs/reports/pub152/LinkedDataWorkshop.pdf) to name a few).  
