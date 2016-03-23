@@ -8,7 +8,7 @@ layout: default
 
   <ul class="post-list">
     {% for post in site.posts %}
-      {% if post.category contains 'project' %}
+      {% unless post.category contains 'project' %}
         <li>
           <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
   
@@ -17,7 +17,7 @@ layout: default
           </h2>
           <p> {{post.description}}</p>
         </li>
-      {% endif %}
+      {% endunless %}
     {% endfor %}
   </ul>
   
