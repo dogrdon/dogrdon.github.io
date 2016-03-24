@@ -1,7 +1,7 @@
 ---
 layout: project_post
 title: "Historical GIFs (AKA dpla.gif)"
-description: "A twitter bot that plumbs the Digital Public Library of America's collection of moving images and posts GIF image excerpts as it goes."
+description: "A twitter bot that pops into the Digital Public Library of America's collection of moving images and posts GIF image excerpts as it goes."
 category: project 
 comments: false
 tags: [ffmpeg, ruby, video, GIF, mongodb]
