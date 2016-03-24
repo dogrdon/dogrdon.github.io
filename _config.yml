@@ -5,6 +5,10 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+
+permalink: /:year/:month/:day/:title/index.html
+
+
 # Site settings
 title: subtxt/in
 email: drew@subtxt.in
