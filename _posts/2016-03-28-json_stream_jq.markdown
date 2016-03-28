@@ -9,17 +9,17 @@ tags: [json, metadata, jq, streaming, DPLA, data]
 <figure>
 <img class="blog-post" src="/assets/images/posts/2016/03/stream.gif" alt="gif of json data streaming through jq"/><figcaption>Probably going to want to scroll down before you start reading</figcaption></figure>
 
-### Working With Large JSON 
+### Working With Large JSON Files
 
-JSON is the format for moving around data on the web. [jq](https://stedolan.github.io/jq/) is a great command line tool for parsing and querying JSON either from a web resource or a locally stored file. It allows you to query, filter, and transform JSON with very little overhead or setup. It's perfect for quickly finding what you want, or exploring and anylzing data returned from a web service. 
+JSON is the preferred format for moving data around on the web. [jq](https://stedolan.github.io/jq/) is a great command line tool for parsing and querying JSON either from a web resource or a locally stored file. It allows you to query, filter, and transform JSON with very little overhead or setup. It's perfect for quickly exploring and analyzing data returned from a web service. 
 
 But what if the JSON you want to work with is in a very large file, maybe 500mb or more?
 
 There are a number of reasons why you might be working with a large JSON file rather than pulling it from an API. Perhaps a service provides a full data dump, such as the [Digital Public Library of America](http://dp.la), which provides a [5gb (and expanding) compressed JSON file](http://dp.la/info/developers/download/) of all of its metadata. 
 
-Serving up the entire data store over HTTP is not desirable for many reasons. The ability to provide a full export to JSON is a quick and easy way for a service to provide all its open data to its consumers at once for analysis or building applications.
+Serving up an entire data store over HTTP is not desirable for many reasons. The ability to provide a full export to JSON is a quick and easy way for a service to provide all of its open data to its consumers at once for analysis or building applications.
 
-The default behavior for any utility or software that parses JSON might be to load the entire JSON array into RAM first before being able to parse it. If you've ever tried to do this with a very large JSON file, you know that it will never complete because it will end up hammering your computer's RAM and swap, rendering it unuasable before it can even start parsing the data.
+The default behavior for any utility or software that parses JSON generally is to load the entire JSON array into RAM first before being able to parse it. If you've ever tried to do this with a very large JSON file, you know that it will never complete because it will end up hammering your computer's RAM and swap, rendering it unuasable before it can even start parsing the data.
 
 <figure>
 <img class="blog-post" src="/assets/images/posts/2016/03/maccrash.jpg" alt="Image of macintosh crash screen"/><figcaption>5gb of JSON to load into RAM? I'll just be over here crashing.</figcaption></figure>
@@ -32,9 +32,9 @@ Below are examples for selecting a particular value from each record and for ext
 
 #### Quick Introduction to jq
 
-Without streaming, say I wanted to use jq to select all of the titles from an API call to the DPLA for the search term 'computers'.
+Without streaming, say I want to use jq to select all of the titles from an API call to the DPLA for the search term 'computers'.
 
-I can request this from: `http://api.dp.la/v2/items?q=computers&api_key=[API KEY HERE]`. 
+I can request this using: `http://api.dp.la/v2/items?q=computers&api_key=[API KEY HERE]`. 
 
 From this, I get in return: 
 
@@ -300,7 +300,7 @@ From this, I get in return:
 }
 {% endhighlight %}
 
-If I wanted to get all of the titles only from that request, I might use:
+If I wanted to get only the titles from that request, I might use:
 
 {% highlight shell %}
 curl 'http://api.dp.la/v2/items?q=computers&api_key=[API KEY HERE]' | jq '.docs[].sourceResource.title'`
@@ -338,7 +338,7 @@ This is great, but what if I wanted to pull every title for <b>every</b> item in
 zcat < all.json.gz | jq '.[]._source.sourceResource.title' 
 {% endhighlight %}
 
-we would have the scenario as described above that our computer's memory would overload and it would probably freeze up indefinitely <b><a href="#notes">[1]</a></b>.
+we would have the scenario as described above that our computer's memory would overload and it would probably freeze up indefinitely before completing <b><a href="#notes">[1]</a></b>.
 
 Instead, I can use the `--stream` argument. Though what jq sees when the data are streamed is a little different. I will show the stream equivalent command and then try to explain a little bit of the differences.
 
@@ -379,7 +379,7 @@ With streamimg, a record ends up looking more like this to the parser:
 ...<<TRUNCATED FOR SPACE>>
 {% endhighlight %}
 
-As we can see here, it no longer <i>looks</i> like a JSON obect. Each property of a record gets turned into `[<path>, <leaf-value>]` as an input for the jq parser. That is, each line is a path to a value in the JSON, which can get rather verbose for very nested values.
+As we can see here, it no longer <i>looks</i> like a JSON obect. Each property of a record gets turned into `[<path>, <leaf-value>]` as an input for the jq parser. That is, each line in the above is a path to a value in the JSON, which can get rather verbose for very nested values.
 
 So if we are looking for the `title` for each record, we would be interested only in the input: 
 {% highlight shell %}
@@ -392,7 +392,7 @@ Written out, it is not compelling as a set of instructions, but hopefully demons
 
 #### Filtering a Stream
 
-But say that, instead of picking out a particular value, we would rather return only the whole records that have a particular value for one of its properties. In this example, we only want to return the items in the DPLA that are sound recordings, ignoring any thing else that is an image, text, moving image, or physical object. We could do that with: 
+But say that, instead of picking out a particular value, we would rather return only the whole records that have a particular value for one of its properties. In this example, we only want to return the items in the DPLA that are sound recordings, ignoring anything else that is an image, text, moving image, or physical object. We could do that with: 
 
 {% highlight shell %}
 zcat < all.json.gz | jq --stream "fromstream(1|truncate_stream(inputs))" | jq "select(any(._source.sourceResource; .type=="sound"))"`
@@ -663,16 +663,16 @@ If we look at first item that comes out of this initial transformation, we see t
 }
 {% endhighlight %}
 
-As this is now the input for the `select()` using `any()`, we evaluate the `type` property of the `sourceResource` object from each DPLA item in the stream and only return the items that have a `type` that equals "sound". And we don't crash our systems doing so!
+It looks like JSON again. As this is now the input for the `select()` using `any()`, we evaluate the `type` property of the `sourceResource` object from each DPLA item in the stream and only return the items that have a `type` that equals "sound". And we don't crash our system doing so!
 
 ### Conclusion
 
-Streaming serialized data so it can be acted on dynamically, without stressing our RAM is [nothing new](https://en.wikipedia.org/wiki/Simple_API_for_XML). And there are plenty of other tools that can be used to stream JSON data in particular. Libraries in [Python](https://pypi.python.org/pypi/ijson/) and [Ruby](https://github.com/brianmario/yajl-ruby), for example, implement the [YAJL streaming JSON parsing library](https://github.com/lloyd/yajl) from C. But jq is a great tool because it is easily and quickly accessible from the command line, making it perfect for exploring and shaping JSON data on the fly or in a pinch.
+Streaming serialized data so it can be acted on dynamically, without stressing our RAM, is [nothing new](https://en.wikipedia.org/wiki/Simple_API_for_XML). And there are plenty of other tools that can be used to stream JSON data in particular. Libraries in [Python](https://pypi.python.org/pypi/ijson/) and [Ruby](https://github.com/brianmario/yajl-ruby), for example, implement the [YAJL streaming JSON parsing library](https://github.com/lloyd/yajl) from C. But jq is a great tool because it is easily and quickly accessible from the command line, making it perfect for exploring and shaping JSON data on the fly or in a pinch.
 
 The above is only the tip of the iceberg. There is plenty more that can be done with jq and you can explore all of its capabilities at [the documentation](https://stedolan.github.io/jq/manual).
 
 ### Notes
 <section id="notes"/>
-<b>[1]</b> Here I am using the full data dump and I am accessing it locally, so there's a few differences in the command syntax from the intro command. First, I am using a utility called `zcat` on the compressed json file because I just want to send the JSON content to jq, rather than uncompress it to a new file first. Also, the structure for the bulk data download is a little different from what is returned from the DPLA API in that the `sourceResource` object is nested within a `_source` object. More information about the format of the bulk downloads can be found [here](https://digitalpubliclibraryofamerica.atlassian.net/wiki/display/TECH/Database+export+files) [<a href="#back_1">back</a>]
+<b>[1]</b> Here I am using the full data download and I am accessing it locally, so there's a few differences in the command syntax from the intro command. First, I am using a utility called `zcat` on the compressed json file because I just want to send the JSON content to jq, rather than uncompress it to a new file first. Also, the structure for the bulk data download is a little different from what is returned from the DPLA API in that the `sourceResource` object is nested within a `_source` object. More information about the format of the bulk downloads can be found [here](https://digitalpubliclibraryofamerica.atlassian.net/wiki/display/TECH/Database+export+files) [<a href="#back_1">back</a>]
 
 <b>[2]</b> The developers of jq provide a bit of a more technical explanation of streaming in jq [here](https://stedolan.github.io/jq/manual/#Streaming), though I found this a little hard to grasp. I've attempted to describe it here in a bit more casually, but it admitedly lacks technical detail and rigor. [<a href="#back_2">back</a>]
