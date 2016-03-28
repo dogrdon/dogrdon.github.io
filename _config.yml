@@ -18,6 +18,7 @@ url: "http://subtxt.in" # the base hostname & protocol for your site
 twitter_username: dogrdon
 github_username:  dogrdon
 
+future: true
 # Build settings
 markdown: kramdown
 
