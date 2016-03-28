@@ -34,7 +34,7 @@ Below are examples for selecting a particular value from each record and for ext
 
 Without streaming, say I wanted to use jq to select all of the titles from an API call to the DPLA for the search term 'computers'.
 
-I can request this from: `http://api.dp.la/v2/items?q=computers&api_key=[PLUS API KEY HERE]`. 
+I can request this from: `http://api.dp.la/v2/items?q=computers&api_key=[API KEY HERE]`. 
 
 From this, I get in return: 
 
@@ -303,7 +303,7 @@ From this, I get in return:
 If I wanted to get all of the titles only from that request, I might use:
 
 {% highlight shell %}
-curl 'http://api.dp.la/v2/items?api_key=b2e5bb78379ad55ead9a148202c8e5fd&q=computers' | jq '.docs[].sourceResource.title'`
+curl 'http://api.dp.la/v2/items?q=computers&api_key=[API KEY HERE]' | jq '.docs[].sourceResource.title'`
 {% endhighlight %}
 
 The result of which would be:
@@ -325,14 +325,14 @@ The result of which would be:
 "Computers, 1958"
 {% endhighlight %}
 
-Here I am using a command line utility `curl` to request the resource and then I'm using the `|` or pipe to tell it that I want to send the results of that request to the jq utility for grabbing only the title. 
+Here I am using the command line utility `curl` to request the resource and then I'm using the `|` (or "pipe") to tell it that I want to send the results of that request to the jq utility for grabbing only the title. 
 
-The grabbing is acommplished by using `.docs[]` to access the entire docs array where the results are provided and then specifying that I want only values for the `title` property of the `sourceResource` object for each item returned from the DPLA for this request. There is a [good tutorial](https://stedolan.github.io/jq/tutorial/) for getting started with jq if you are interested in knowing more.
+The grabbing is acommplished by using `.docs[].sourceResource.title` to access the entire "docs" array where the results are provided and then specifying that I want only values for the `title` property of the `sourceResource` object for each item returned from the DPLA for this request. There is a [good tutorial](https://stedolan.github.io/jq/tutorial/) for getting started with jq if you are interested in knowing more.
 
 #### Selecting Using a Stream
 
 <section id="back_1"/>
-This is great, but what if I wanted to pull every title for every item in the DPLA and perform some sort of text analysis on it? If I were to download the entire dataset and use jq to extract only the titles with something like 
+This is great, but what if I wanted to pull every title for <b>every</b> item in the DPLA and perform some sort of text analysis on it? If I were to download the entire dataset (again, about 5gb compressed) and use jq to extract only the titles with something like: 
 
 {% highlight shell %}
 zcat < all.json.gz | jq '.[]._source.sourceResource.title' 
@@ -340,7 +340,7 @@ zcat < all.json.gz | jq '.[]._source.sourceResource.title'
 
 we would have the scenario as described above that our computer's memory would overload and it would probably freeze up indefinitely <b><a href="#notes">[1]</a></b>.
 
-Rather, I can use the `--stream` argument. Though what jq sees when the data are streamed is a little different. I will show the stream equivalent command and then try to explain a little bit of the differences.
+Instead, I can use the `--stream` argument. Though what jq sees when the data are streamed is a little different. I will show the stream equivalent command and then try to explain a little bit of the differences.
 
 {% highlight shell %}
 zcat < all.json.gz | jq --stream 'select(.[0][1] == "_source" and .[0][2] == "sourceResource" and .[0][3] == "title") | .[1]'
@@ -379,31 +379,30 @@ With streamimg, a record ends up looking more like this to the parser:
 ...<<TRUNCATED FOR SPACE>>
 {% endhighlight %}
 
-
-As we can see here it no longer <i>looks</i> like a JSON obect. Each property of a record gets turned into a `[<path>, <leaf-value>]` as an input for the jq parser. That is, each line is a path to a value in the JSON, which can get rather verbose for very nested values.
+As we can see here, it no longer <i>looks</i> like a JSON obect. Each property of a record gets turned into `[<path>, <leaf-value>]` as an input for the jq parser. That is, each line is a path to a value in the JSON, which can get rather verbose for very nested values.
 
 So if we are looking for the `title` for each record, we would be interested only in the input: 
 {% highlight shell %}
 [[0,"_source","sourceResource","title",0],"Blindman's bluff, c. 1750-1800"]
 {% endhighlight %}
 
-Our jq streaming query above then does just that. in the `select()` function that we use to query the stream, we are asking: "check if the element at index 1 of the 0 index of the input equals '_source' and index 2 of the 0 index of the input equals 'sourceResource' and index 3 of the 0 index of the input equals 'title' then return the leaf value of that path, which should be 'Blindman's bluff, c. 1750-1800'". 
+Our jq streaming query above then does just that. In the `select()` function that we use to query the stream, we are asking: "check if the element at index 1 of the 0 index of the input equals '_source' and index 2 of the 0 index of the input equals 'sourceResource' and index 3 of the 0 index of the input equals 'title' then return the leaf value of that path" For this item, it should be "Blindman's bluff, c. 1750-1800". 
 
-Written out, it is not compelling as a set of instructions, but hopefully demonstrating what the parser is seeing in streaming mode is helpful to understand why the query is so different.
+Written out, it is not compelling as a set of instructions, but hopefully demonstrating what the parser is seeing in streaming mode above is helpful to understand why the query logic is so different.
 
 #### Filtering a Stream
 
-But say that, instead of picking out a particular value, we would rather return only the whole records that have a particular value for one of its properties. In this example, we only want to return the items in the DPLA that are sound recordings, ignoring any thing else that is and image, text, moving image, or physical object. We could do that with: 
+But say that, instead of picking out a particular value, we would rather return only the whole records that have a particular value for one of its properties. In this example, we only want to return the items in the DPLA that are sound recordings, ignoring any thing else that is an image, text, moving image, or physical object. We could do that with: 
 
 {% highlight shell %}
 zcat < all.json.gz | jq --stream "fromstream(1|truncate_stream(inputs))" | jq "select(any(._source.sourceResource; .type=="sound"))"`
 {% endhighlight %}
 
-In this example I am using one more pipe before selecting the items that I want. I am also using a the `any(generator; condition)` [built-in function](https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions), which allows for quickly applying a specific condition (in this case the `type` of the item returned must be 'sound') to a specified input (in this case the `sourceResource` object in the item). 
+In this example, I am using one more pipe before selecting the items that I want. I am also using the `any(generator; condition)` [built-in function](https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions) in the second invocation of jq, which allows for quickly applying a specific condition (in this case the `type` of the item returned must be 'sound') to a specified input (in this case the `sourceResource` object in the item). 
 
-But before I do that, I want to utilize the `fromstream()` and `truncate_stream()` functions in order to first turn the stream of paths and leaves back into something more like the original JSON object. 
+But before I do that, in the first jq invocation, I want to utilize the `fromstream()` and `truncate_stream()` functions in order to first turn the stream of paths and leaves back into a stream of JSON objects. 
 
-If we look at first item outcome of just this part of the command--before making the select--we see the output as:
+If we look at first item that comes out of this initial transformation, we see the output as:
 
 {% highlight shell %}
 {
@@ -664,11 +663,11 @@ If we look at first item outcome of just this part of the command--before making
 }
 {% endhighlight %}
 
-As this is now the input for the `select()` using `any()`, we evaluate the `type` property of the `sourceResource` object from each DPLA item in the stream and only return the items that have a `type` that equals "sound". And we don't crash our systems doing so.
+As this is now the input for the `select()` using `any()`, we evaluate the `type` property of the `sourceResource` object from each DPLA item in the stream and only return the items that have a `type` that equals "sound". And we don't crash our systems doing so!
 
 ### Conclusion
 
-Streaming serialized data so it can be acted on even if there is a lot of it is [not new](https://en.wikipedia.org/wiki/Simple_API_for_XML). And there are plenty of other tools that can be used to stream JSON data in particular. Libraries in [Python](https://pypi.python.org/pypi/ijson/) and [Ruby](https://github.com/brianmario/yajl-ruby), for example, implement the [YAJL streaming JSON parsing library](https://github.com/lloyd/yajl) from C. But jq is a great tool because it is easily and quickly accessible from the command line, making it perfect for exploring and shaping JSON data on the fly or in a pinch.
+Streaming serialized data so it can be acted on dynamically, without stressing our RAM is [nothing new](https://en.wikipedia.org/wiki/Simple_API_for_XML). And there are plenty of other tools that can be used to stream JSON data in particular. Libraries in [Python](https://pypi.python.org/pypi/ijson/) and [Ruby](https://github.com/brianmario/yajl-ruby), for example, implement the [YAJL streaming JSON parsing library](https://github.com/lloyd/yajl) from C. But jq is a great tool because it is easily and quickly accessible from the command line, making it perfect for exploring and shaping JSON data on the fly or in a pinch.
 
 The above is only the tip of the iceberg. There is plenty more that can be done with jq and you can explore all of its capabilities at [the documentation](https://stedolan.github.io/jq/manual).
 
