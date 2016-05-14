@@ -24,7 +24,7 @@ The default behavior for any utility or software that parses JSON generally is t
 <figure>
 <img class="blog-post" src="/assets/images/posts/2016/03/maccrash.jpg" alt="Image of macintosh crash screen"/><figcaption>5gb of JSON to load into RAM? I'll just be over here crashing.</figcaption></figure>
 
-Fortunately jq implemented [the capacity to stream your JSON file](https://stedolan.github.io/jq/manual/#Streaming) to the parser. Instead of loading the entire file up at once, streaming sends the contenst of the file through the parser one item at a time in an "event driven" fashion. As the items pass through, you can filter and select as you go, without compromising your computer's memory. 
+Fortunately jq implemented [the capacity to stream your JSON file](https://stedolan.github.io/jq/manual/#Streaming) to the parser. Instead of loading the entire file up at once, streaming sends the contents of the file through the parser one item at a time in an "event driven" fashion. As the items pass through, you can filter and select as you go, without compromising your computer's memory. 
 
 ### Example Usage
 
