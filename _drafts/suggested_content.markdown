@@ -11,21 +11,25 @@ tags: [native ad networks, suggested content, spam, data analysis, web archiving
 
 ### What is it?
 
-Suggestions from native ad networks like Taboola, Outbrain, Revcontent, Content.Ad, Adblade, AdsWift, SiteAd, ContentDing (I've made up a couple) often serve the purpose of connecting site users with articles or 'content' on other web domains. They are generally found bundled up in rows of three somewhere around the end of the article and the comments section. These services operate by providing their clients a source of ad revenue. And so the content is engineered to maximize numbers of clicks.
+Suggestions from native ad networks like Taboola, Outbrain, Revcontent, Content.Ad, Adblade, AdsWift, SiteBooster, ContentBling (I've made up a couple) generally serve the purpose of connecting site users (read: content consumers) with articles or 'content' on other web domains. Whether those domains (examples) are legitimate, reliable, or 'real' is uncertain. 
 
-The content is often arbitrary, false, or otherwise meant almost exclusively to render clicks without regard for the quality, value, or existential merit of the target content.
+They are generally found bundled up in rows of two or three somewhere around the end of the article and the comments section. These exist by providing their clients (the content providers which deploy them) a source of ad revenue. The content is engineered to maximize numbers of clicks.
 
-More notable are the images used for this content. The can be titilating, bizarre, nightmarish, or otherwise completely unrelated to their titles.
+Depending on the client, it might point towards other related content within that clients website or network, but more often it seems to point towards content that is absurd, false, or otherwise meant almost exclusively to render clicks without regard for the quality, value, or existential merit of the target content.
 
 [Examples]
 
-[How does this stuff actually work?] 
+Most notable are the images used for this content. They migth be titilating, bizarre, nightmarish, or otherwise completely unrelated to their titles.
+
+[Examples]
+
+But these are all observations from the outside. How does it actually work? Well, it's unclear. And I think I will defer to not being able to get too far into that in this first pass. Future work might take a pass at it's inner workings. Reverse engineering it from the output. But for now I think we just want to say that it's interesting and get on with it.
 
 ### Why it's interesting
 
-It's interesting because it's everywhere. It's interesting because it's engineered to be interesting. It's interesting because it's so extremely lowbrow, and it facinates me that anyone would click on these links at all (anyone who has ever done so should have learned their lesson). Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly.  
+It's interesting because it's everywhere. It's interesting because it's engineered to be interesting. It's interesting because it's so extremely lowbrow, and it facinates in that anyone would click on these links at all (anyone who has ever done so should have learned their lesson). Why would this type of garbage be so ubiquitous if it didn't work? Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly and anywhere that a content provider can't seem to advertise or build a subscription base otherwise.  
 
-Therefore, I wanted to collect it. And to do so I needed to have a process that would browse the internet for me and collect these absurd nuggest of information.
+Because I found it interesting, I wanted to collect it. And to do so I needed to have a process that would browse the internet for me and collect these absurd nuggest of information.
 
 
 ### What did I do?
@@ -75,11 +79,7 @@ Well, it's possible that we could learn something about about how these services
 
 
 
-TOINCLUDE
-=========
-
-
-#### Bibliography
+#### Suggested Reading
 
 
 - http://www.wired.co.uk/article/fake-news-outbrain-taboola-hillary-clinton
