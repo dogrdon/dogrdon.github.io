@@ -31,7 +31,6 @@ It's interesting because it's everywhere. It's interesting because it's engineer
 
 Because I found it interesting, I wanted to collect it. And to do so I needed to have a process that would browse the internet for me and collect these absurd nuggest of information.
 
-
 ### What did I do?
 
 1. scraped selected websites with know "suggested content" on them for 30 days, the more absurd, the better
@@ -53,9 +52,12 @@ Well, it's possible that we could learn something about about how these services
 
 ### Some main challenges:
 
-- The web is still not a good API, and content does not abide by much of a standard (the web is shit), "content" is destroying our chances at this. Sometimes there's just too much going on: overlays...
-- PhantomJS is great, but has issues. Namely that it might fail or suceed inconsistenly. I found that even though I had it running quite well and reliably on my laptop (with OSX), it was much less reliable when run on an Ubuntu server running the exact same version of everything in the script.
-- Sites and content providers are finicky, they change their layout, they change native ad services regularly. It's hard to keep up with it.
+The web is still not a great API, particularly for this use case. Because the scraper relies on pulling top n articles and then scraping the third party content from a sampling of those, it will stop working for sites where the layout has changed. Or they might drop an ad content provider. All of these things might be tested for and logged properly. But to some extent, it's not worth that much effort for an experiment like this.
+
+Sometimes they change their marketing strategy and the site begins to show the user overlays (subscribe to get this content, additional ads that users have to click off of to get to site content, etc.)
+
+In many ways PhantomJS is great, but it has issues. Namely that it might fail or suceed inconsistenly. I found that even though I had it running quite well and reliably on my laptop (with OSX), it was much less reliable when run on an Ubuntu server running the exact same version of everything in the script.
+
 
 ### Where to next?
 
@@ -69,13 +71,11 @@ Well, it's possible that we could learn something about about how these services
 
 
 
-
 ### Notes
 <section id="notes"/>
 <b>[1]</b> [<a href="#back_1">back</a>]
 
 <b>[2]</b> [<a href="#back_2">back</a>]
-
 
 
 
