@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Recommended Content on the Web Pt. 1: The Web is not an API"
+title: "Introduction to Internet Marketing Content Studies Pt. 1: The Web is (still) not an API"
 description: "Suggested content on the web, often ignored or blocked, is both ubiquitous and invisible. Information can take on a different value when aggregated and presented outside of its original context. This post details how I originally sought to take on the collection, analysis, and showcasing those clickbait, suggested content articles that accompany most commercial, high traffic web sites. What I found out is how fragile, bloated, and unpredictable the web is and how it is not anything close to an API if you seek to handle its content like structured data."
 category: web
 tags: [native ad networks, suggested content, spam, data analysis, web archiving]
@@ -27,14 +27,16 @@ But these are all observations from the outside. How does it actually work? Well
 
 ### Why it's interesting
 
-It's interesting because it's everywhere. It's interesting because it's engineered to be interesting. It's interesting because it's so extremely lowbrow, and it facinates in that anyone would click on these links at all (anyone who has ever done so should have learned their lesson). Why would this type of garbage be so ubiquitous if it didn't work? Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly and anywhere that a content provider can't seem to advertise or build a subscription base otherwise.  
+It's interesting because it's everywhere. It's interesting because it's engineered to be interesting. It's interesting because it's so extremely lowbrow, and it facinates in that anyone would click on these links at all (anyone who has ever done so should have learned their lesson). Why would this type of garbage be so ubiquitous if it didn't work? Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly and anywhere that a content provider can't seem to advertise or build a subscription base otherwise. 
 
-Because I found it interesting, I wanted to collect it. And to do so I needed to have a process that would browse the internet for me and collect these absurd nuggest of information.
+It is also potentially has a role to play in the recent phenomena of "fake news", which has had consequences far outside of its expectation simply to serve as a spot light for sponsored content on the web.  
+
+Because I found it interesting and because it is not a trivial matter (anymore), I wanted to collect it. But I certainly did not want to waste my time browsing the internet manually to gather these bits of content. So I needed to have a process that would browse the internet for me and collect these absurd nuggest of information. 
 
 ### What did I do?
 
-1. scraped selected websites with know "suggested content" on them for 30 days, the more absurd, the better
-2. On any given capture made sure to avoid duplicates (defined by: ), but left duplicates across harvestings as there might be good information about frequency of a certain link. Of course they could also be more widely deduped later.
+1. Scraped selected websites with know "suggested content" on them for __ days, the more absurd, the better. But I also wanted a sampling of sites that had different political leanings (the list can be found here - you can determine the implicit political leanings yourself). 
+2. On any given capture made sure to avoid duplicates (defined by: ____), but left duplicates across harvestings as there might be good information about frequency of a certain link. Of course they could also be more widely deduped later.
 3. Wanted to make the resource available to others (for research?) e.g., what content comes up at what times (correlation with news stories?)
 
 ### Why?
@@ -48,7 +50,6 @@ Well, it's possible that we could learn something about about how these services
 - would want to analyze how these services differ between each other and how they themselves change over time
 - ontology of suggested content
 - how it makes web pages bloated (way to visualize)
-
 
 ### Some main challenges:
 
@@ -68,6 +69,7 @@ In many ways PhantomJS is great, but it has issues. Namely that it might fail or
 - probably have a little bit of analysis on what is already there (PT.2)
 - provide access to data
 
+So stay tuned for part 2, coming this summer. In the meantime, you can preview the analysis here: ____
 
 
 
@@ -79,9 +81,9 @@ In many ways PhantomJS is great, but it has issues. Namely that it might fail or
 
 
 
-#### Suggested Reading
+#### Internet Marketing Content Studies Bibliography
 
-
+- https://en.wikipedia.org/wiki/Native_advertising
 - http://www.wired.co.uk/article/fake-news-outbrain-taboola-hillary-clinton
 - https://digiday.com/media/underbelly-internet-fake-news-gets-funded/
 - https://theoutline.com/post/1165/the-web-looks-like-shit
