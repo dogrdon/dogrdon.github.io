@@ -11,11 +11,11 @@ tags: [native ad networks, suggested content, spam, data analysis, web archiving
 
 ### What is it?
 
-Suggestions from native ad networks like Taboola, Outbrain, Revcontent, Content.Ad, Adblade, AdsWift, SiteBooster, ContentBling (I've made up a couple) generally serve the purpose of connecting site users (read: content consumers) with articles or 'content' on other web domains. Whether those domains (examples) are legitimate, reliable, or 'real' is uncertain. 
+Suggestions from native ad networks like Taboola, Outbrain, Revcontent, Content.Ad, Adblade, AdsWift, SiteBooster, ContentBling (I've made up a couple) supply users of popular news sites with articles or 'content' on other web domains. Whether that content is valuable, authentic, "true", or worth consuming is unclear. Whether the domains (examples) they point to are legitimate, reliable, or 'real' is also unclear. 
 
-They are generally found bundled up in rows of two or three somewhere around the end of the article and the comments section. These exist by providing their clients (the content providers which deploy them) a source of ad revenue. The content is engineered to maximize numbers of clicks.
+Native ad content (also called "From around the web", "Suggested content", or "Sponsored content" is generally found bundled up in rows of two or three somewhere around the end of the article right near the comments section. These exist by the virtue of providing their clients (the content providers which deploy them) a source of ad revenue. The content is engineered to maximize numbers of clicks.
 
-Depending on the client, it might point towards other related content within that clients website or network, but more often it seems to point towards content that is absurd, false, or otherwise meant almost exclusively to render clicks without regard for the quality, value, or existential merit of the target content.
+Depending on the client, it might point towards other related content within that client's website or network. More often it seems to point towards content that is absurd, false, or otherwise meant almost exclusively to render clicks without regard for the quality, value, or existential merit of the target content.
 
 [Examples]
 
@@ -23,11 +23,13 @@ Most notable are the images used for this content. They migth be titilating, biz
 
 [Examples]
 
-But these are all observations from the outside. How does it actually work? Well, it's unclear. And I think I will defer to not being able to get too far into that in this first pass. Future work might take a pass at it's inner workings. Reverse engineering it from the output. But for now I think we just want to say that it's interesting and get on with it.
+The headlines are also pretty good:
+
+[Examples]
 
 ### Why it's interesting
 
-It's interesting because it's everywhere. It's interesting because it's engineered to be interesting. It's interesting because it's so extremely lowbrow, and it facinates in that anyone would click on these links at all (anyone who has ever done so should have learned their lesson). Why would this type of garbage be so ubiquitous if it didn't work? Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly and anywhere that a content provider can't seem to advertise or build a subscription base otherwise. 
+It's interesting because it's everywhere. It's interesting because it's engineered to be interesting. It's interesting because it's so extremely lowbrow, trashy, and it's baffling that anyone would click on these links at all. Why would this type of garbage be so ubiquitous if it didn't work? Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly and anywhere that a content provider can't seem to advertise or build a subscription base otherwise. 
 
 It is also potentially has a role to play in the recent phenomena of "fake news", which has had consequences far outside of its expectation simply to serve as a spot light for sponsored content on the web.  
 
@@ -41,7 +43,24 @@ Because I found it interesting and because it is not a trivial matter (anymore),
 
 ### Why?
 
-Well, it's possible that we could learn something about about how these services work by laying out a large number of their products in a searchable database. Also wanted to explore the connection between types of websites and the types of ads that were served up (e.g., which sites had more quasi-true ads as opposed to others). Finally, I wanted the longitudinal view. That is, to see which ads came and went, for how long, and in what intensities. Also could the same headline be applied to a number of differen images or vice versa the same image applied to many different headlines.
+It is possible that we could learn something about about how these services work by laying out a large number of their products in a searchable database and analyzing them for patterns. I also wanted to explore the connection between types of websites and the types of ads that were served up (e.g., which sites had more quasi-true ads as opposed to others). Finally, I wanted the longitudinal view. That is, to see which ads came and went, for how long, and in what intensities. Also could the same headline be applied to a number of different images or vice versa the same image applied to many different headlines?
+
+That analysis is forthcoming...stay tune for part 2.
+
+### Some main challenges:
+
+The web is still not a great API, particularly for this use case. Because the scraper relies on pulling top n articles and then scraping the third party content from a sampling of those, it will stop working for sites where the layout has changed. Or they might drop an ad content provider. All of these things might be tested for and logged properly. But to some extent, it's not worth that much effort for an experiment like this.
+
+Sometimes they change their marketing strategy and the site begins to show the user overlays (subscribe to get this content, additional ads that users have to click off of to get to site content, etc.)
+
+In many ways PhantomJS is great, but it has issues. Namely that it might fail or suceed inconsistenly. I found that even though I had it running quite well and reliably on my laptop (with OSX), it was much less reliable when run on an Ubuntu server running the exact same version of everything in the script. 
+
+It had a much less greater rate of success scraping native ad content from the article pages on th Ubuntu setup than on the mac setup (hovering around dropping 50% of pages on the former most likely on account of the third party javascript not loading up properly before attempting to scrape -- no matter how long it was set to wait before scraping). It is not clear why this was the case, and I think after a bit of troubleshooting, I just get the sense that PhantomJS is trying to do some complicated stuff, and can't be relied on to give a consistent headless browser experience across the board. 
+
+For the purposes of this experiment, the workaround just forced the scraper to grab more than it probably would be able to properly ingest, in the hopes that it's yield scrape for scrape would be sufficient for a longitudinal analysis even though it errored out on half of the attempts it made every pass.
+
+
+### Where to next?
 
 - Understand content on a site per site basis or across sites?
 - Image analysis, are these images in possession of some clickbaitability?
@@ -50,27 +69,12 @@ Well, it's possible that we could learn something about about how these services
 - would want to analyze how these services differ between each other and how they themselves change over time
 - ontology of suggested content
 - how it makes web pages bloated (way to visualize)
-
-### Some main challenges:
-
-The web is still not a great API, particularly for this use case. Because the scraper relies on pulling top n articles and then scraping the third party content from a sampling of those, it will stop working for sites where the layout has changed. Or they might drop an ad content provider. All of these things might be tested for and logged properly. But to some extent, it's not worth that much effort for an experiment like this.
-
-Sometimes they change their marketing strategy and the site begins to show the user overlays (subscribe to get this content, additional ads that users have to click off of to get to site content, etc.)
-
-In many ways PhantomJS is great, but it has issues. Namely that it might fail or suceed inconsistenly. I found that even though I had it running quite well and reliably on my laptop (with OSX), it was much less reliable when run on an Ubuntu server running the exact same version of everything in the script.
-
-
-### Where to next?
-
-#### PRESENTATION, INVITING OTHERS
 - An exhibit resource (gallery) drawing connections btw items. Ways to grab subjects or topic modeling for things (food, celebrities, health, crime, sex, sex)
 - A microcosm of the internet itself, the extreme end if "content". This is the distilled result of these companies best guess of what will draw attention.
 - "As a discourse, it's watching machines and reptilian minded marketing initiatives talking to sometime the interests of a specific user (cookies) or perhaps the basest desires of a composite sketch of your average web user."
 - probably have a little bit of analysis on what is already there (PT.2)
-- provide access to data
 
-So stay tuned for part 2, coming this summer. In the meantime, you can preview the analysis here: ____
-
+So stay tuned for part 2, coming this summer. In the meantime, you can preview the analysis here: ____. And the data, refreshed nightly, may be accessed here.
 
 
 ### Notes
