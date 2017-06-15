@@ -11,17 +11,17 @@ tags: [native ad networks, suggested content, spam, data analysis, web archiving
 
 ### What is it?
 
-Suggestions from native ad networks like Taboola, Outbrain, Revcontent, Content.Ad, Adblade, AdsWift, SiteBooster, ContentBling (I've made up a couple) supply users of popular news sites with articles or 'content' on other web domains. Whether that content is valuable, authentic, "true", or worth consuming is unclear. Whether the domains (examples) they point to are legitimate, reliable, or 'real' is also unclear. 
+Suggestions from native ad networks like Taboola, Outbrain, Revcontent, Content.Ad, and Adblade supply users of popular news sites with promoted articles or 'content' on other web domains. Whether that content is valuable, authentic, "true", or worth consuming is unclear. Whether the domains (examples) they point to are legitimate, reliable, or 'real' is also unclear. 
 
-Native ad content (also called "From around the web", "Suggested content", or "Sponsored content" is generally found bundled up in rows of two or three somewhere around the end of the article right near the comments section. These exist by the virtue of providing their clients (the content providers which deploy them) a source of ad revenue. The content is engineered to maximize numbers of clicks.
+Native ad content (also called "promoted links from around the web", "sponsored links", or "sponsored content" is generally found bundled up in rows of two or three somewhere around the end of the article somewhere near the comments section. They provide their clients (the content providers which deploy them on their sites) a source of ad revenue. The content, it seems, is engineered to maximize numbers of clicks. And it points to sites that do not seem to provide anything else other than additional advertisments and promoted content.
 
 Depending on the client, it might point towards other related content within that client's website or network. More often it seems to point towards content that is absurd, false, or otherwise meant almost exclusively to render clicks without regard for the quality, value, or existential merit of the target content.
 
-[Examples]
+<img class="blog-post" src="" alt=""/><figcaption></figcaption></figure>
 
-Most notable are the images used for this content. They migth be titilating, bizarre, nightmarish, or otherwise completely unrelated to their titles.
+Most notable are the images used for this content. They migth be titilating, provacative, bizarre, nightmarish, or otherwise completely unrelated to their titles.
 
-[Examples]
+<img class="blog-post" src="" alt=""/><figcaption></figcaption></figure>
 
 The headlines are also pretty good:
 
@@ -29,31 +29,37 @@ The headlines are also pretty good:
 
 ### Why it's interesting
 
-It's interesting because it's everywhere. It's interesting because it's engineered to be interesting. It's interesting because it's so extremely lowbrow, trashy, and it's baffling that anyone would click on these links at all. Why would this type of garbage be so ubiquitous if it didn't work? Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly and anywhere that a content provider can't seem to advertise or build a subscription base otherwise. 
+It's interesting because it's everywhere. It's interesting because it's engineered to be interesting. It's interesting because it's so extremely lowbrow, trashy, and it's absurd to believe that anyone would click on these links at all. Their analog is supermarket tabloids like the Weekly World News found in the checkout line.
+
+<img class="blog-post" src="" alt=""/><figcaption></figcaption></figure>
+
+Though why would this type of content be so ubiquitous if it didn't work? Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly and anywhere that a content provider can't seem to advertise or build a subscription base otherwise. 
 
 It is also potentially has a role to play in the recent phenomena of "fake news", which has had consequences far outside of its expectation simply to serve as a spot light for sponsored content on the web.  
 
 Because I found it interesting and because it is not a trivial matter (anymore), I wanted to collect it. But I certainly did not want to waste my time browsing the internet manually to gather these bits of content. So I needed to have a process that would browse the internet for me and collect these absurd nuggest of information. 
 
-### What did I do?
+### The collection process
 
-1. Scraped selected websites with know "suggested content" on them for __ days, the more absurd, the better. But I also wanted a sampling of sites that had different political leanings (the list can be found here - you can determine the implicit political leanings yourself). 
-2. On any given capture made sure to avoid duplicates (defined by: ____), but left duplicates across harvestings as there might be good information about frequency of a certain link. Of course they could also be more widely deduped later.
-3. Wanted to make the resource available to others (for research?) e.g., what content comes up at what times (correlation with news stories?)
+1. I ran ()[a script using headless PhantomJS and Selenium as a driver] that scraped about 20 selected US websites (see list here) with known "suggested content" on them once every 7 hours for about 60 days. The more absurd, the better. Also, I tried to select a diversity of editorial perspectives across these sites. I wanted a sampling of sites that had different political views o see if there was any correclation between the political inclinations of the site producers and the content that appeared via third parties (i.e., would the native content on each site support, more or less, the same political agenda, where applicable?) 
+
+2. On any given capture, I tried to avoid duplicates (defined by checking the headline of the content and the site it came from, to ensure we only got one of each unique piece of promoted content per site per scrape). But I left duplicates across different scrapes (or harvestings() as there might be good information about frequency of a certain piece of content such as which content appeared the most across multiple sites and scrapes.
+
+3. Finally, I wanted to make the resource available to others (for research?) e.g., what content comes up at what times (correlation with news stories?)[1]
 
 ### Why?
 
 It is possible that we could learn something about about how these services work by laying out a large number of their products in a searchable database and analyzing them for patterns. I also wanted to explore the connection between types of websites and the types of ads that were served up (e.g., which sites had more quasi-true ads as opposed to others). Finally, I wanted the longitudinal view. That is, to see which ads came and went, for how long, and in what intensities. Also could the same headline be applied to a number of different images or vice versa the same image applied to many different headlines?
 
-That analysis is forthcoming...stay tune for part 2.
+That analysis is forthcoming...
 
 ### Some main challenges:
 
-The web is still not a great API, particularly for this use case. Because the scraper relies on pulling top n articles and then scraping the third party content from a sampling of those, it will stop working for sites where the layout has changed. Or they might drop an ad content provider. All of these things might be tested for and logged properly. But to some extent, it's not worth that much effort for an experiment like this.
+The final purpose of this post is to catalog some of the difficulties in gathering this content. Primarily, it is evidence that the web is still not a great API. Because the scraper relies on pulling top n articles and then scraping the third party content from a sampling of those, it will stop working for sites where the layout has changed. Or they might drop an ad content provider. All of these things might be tested for and logged properly. But to some extent, it's not worth that much effort for an experiment like this.
 
 Sometimes they change their marketing strategy and the site begins to show the user overlays (subscribe to get this content, additional ads that users have to click off of to get to site content, etc.)
 
-In many ways PhantomJS is great, but it has issues. Namely that it might fail or suceed inconsistenly. I found that even though I had it running quite well and reliably on my laptop (with OSX), it was much less reliable when run on an Ubuntu server running the exact same version of everything in the script. 
+In many ways PhantomJS is great, but it still has a few issues. Namely that it fails or suceed inconsistenly depending where it is run from and what version you are using. I found that even though I had it running quite well and reliably on my laptop (with OSX), it was much less reliable when run on an Ubuntu server running the exact same version of everything in the script. 
 
 It had a much less greater rate of success scraping native ad content from the article pages on th Ubuntu setup than on the mac setup (hovering around dropping 50% of pages on the former most likely on account of the third party javascript not loading up properly before attempting to scrape -- no matter how long it was set to wait before scraping). It is not clear why this was the case, and I think after a bit of troubleshooting, I just get the sense that PhantomJS is trying to do some complicated stuff, and can't be relied on to give a consistent headless browser experience across the board. 
 
@@ -62,24 +68,21 @@ For the purposes of this experiment, the workaround just forced the scraper to g
 
 ### Where to next?
 
-- Understand content on a site per site basis or across sites?
-- Image analysis, are these images in possession of some clickbaitability?
-- Plumbing the evil depths (what happens when you get robots to click on the clicks)
-- capture cookie information as part of the SIP
-- would want to analyze how these services differ between each other and how they themselves change over time
-- ontology of suggested content
-- how it makes web pages bloated (way to visualize)
-- An exhibit resource (gallery) drawing connections btw items. Ways to grab subjects or topic modeling for things (food, celebrities, health, crime, sex, sex)
-- A microcosm of the internet itself, the extreme end if "content". This is the distilled result of these companies best guess of what will draw attention.
-- "As a discourse, it's watching machines and reptilian minded marketing initiatives talking to sometime the interests of a specific user (cookies) or perhaps the basest desires of a composite sketch of your average web user."
-- probably have a little bit of analysis on what is already there (PT.2)
+With a good sampling of promoted content from different domains, sites with different political inclinations (or none at all), and over time, we might pursue some of the following:
 
-So stay tuned for part 2, coming this summer. In the meantime, you can preview the analysis here: ____. And the data, refreshed nightly, may be accessed here.
+- Understand content on a site per site basis or across sites?
+- Image analysis, are these images in possession of some clickbaitability? What happens if we incorporate a nueral network to ___?
+- Plumbing the evil depths (what happens when you get robots to click on the clicks)
+- Analyze how these services differ between each other and how they themselves change over time
+- Develop an "ontology" of suggested content
+- Perform topic modeling, language analaysis, and perhaps use as the basis for generating artificial image and headline pairs.
+
+So stay tuned for part 2. In the meantime, you can preview the analysis here: ____. And the data, refreshed nightly, may be accessed here.
 
 
 ### Notes
 <section id="notes"/>
-<b>[1]</b> [<a href="#back_1">back</a>]
+<b>[1]</b> I should not here that it was not until 30 days into the experiment that I remembered to collect also the specific news article from which a set of content items were pulled. So the data by that dimension is not entirely complete. [<a href="#back_1">back</a>]
 
 <b>[2]</b> [<a href="#back_2">back</a>]
 
