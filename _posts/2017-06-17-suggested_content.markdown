@@ -17,13 +17,13 @@ Native ad content (also called "promoted links from around the web", "sponsored 
 
 Depending on the client, it might point towards other related content within that client's website or network. More often it seems to point towards content that is absurd, false, or otherwise meant almost exclusively to render clicks without regard for the quality, value, or existential merit of the target content.
 
-<img class="blog-post" src="/assets/images/posts/2017/06/seriously-what.png" alt=""/><figcaption></figcaption></figure>
+<figure><img class="blog-post" src="/assets/images/posts/2017/06/seriously-what.png" alt=""/><figcaption></figcaption></figure>
 
 ### Why it's interesting
 
 It's interesting because it's everywhere. It's interesting because it's engineered to be "interesting". It's interesting because it's often so extremely lowbrow, trashy, and it's a spectacle in itself to believe that anyone would click on these links at all. Their analog is supermarket tabloids like the Weekly World News found in the checkout line. Who buys those and why might give insight into who clicks on the clickbait.
 
-<img class="blog-post" src="/assets/images/posts/2017/06/worlds-smallest-face.jpeg" alt="Image of woman with shrunken face from the cover of a Weekly World News Tabloid"/><figcaption>Why?</figcaption></figure>
+<figure><img class="blog-post" src="/assets/images/posts/2017/06/worlds-smallest-face.jpeg" alt="Image of woman with shrunken face from the cover of a Weekly World News Tabloid"/><figcaption>Why?</figcaption></figure>
 
 Though why would this type of content be so ubiquitous if it didn't provide results? Proof that people actually do click on this content is evident in the simple fact that these content seem to be proliferating rapidly. 
 
@@ -53,7 +53,7 @@ The final purpose of this post is to detail some of the difficulties in gatherin
 
 2) <b>Idiosyncratic JavaScript</b>: Sometimes a sites marketing strategy involves overlays on top of the content before entering the site (e.g., subscribe to get this content, additional ads that users have to click off of to get to site content). [This post](https://theoutline.com/post/1165/the-web-looks-like-shit) certainly has more to say about that.
 
-<img class="blog-post" src="/assets/images/posts/2017/06/atlantic-overlay.png" alt="Image of subscription plea overlay from The Atlantic website"/><figcaption>Just a reminder that you should be paying for this (credit: theatlantic.com)</figcaption></figure>
+<figure><img class="blog-post" src="/assets/images/posts/2017/06/atlantic-overlay.png" alt="Image of subscription plea overlay from The Atlantic website"/><figcaption>Just a reminder that you should be paying for this (credit: theatlantic.com)</figcaption></figure>
 
 3) <b>PhantomJS is not totally stable (and it may never be)</b>: In many ways PhantomJS is great, but it still has a few issues. Namely that it fails or succeeds inconsistently depending where it is run from and what version you are using. I found that even though I had it running quite well and reliably on my laptop (with OS X 10.11), it was much less reliable when run on an Ubuntu server (16.04) running the exact same version of everything the script depended on. 
 
@@ -66,9 +66,13 @@ For the purposes of this experiment, the workaround was to just force the scrape
 With a good sampling of promoted content from different domains, sites with different political inclinations (or none at all), and over time, we might pursue some of the following courses of analysis:
 
 1) <b>Understand content on a site-per-site basis or across sites:</b> As mentioned above, it might be interesting to see what kind of content is more prevelent on different sites and to see if any of this correlates with the political agenda where it was originally displayed.
+
 2) <b>Image analysis:</b> Are these images in possession of some "clickbait-ability" factor? What happens if we incorporate a neural network to see how machines view the images used in native advertising?
+
 3) <b>Plumbing the evil depths:</b> What happens when you get robots to click on the links to these sites, and follow that rabbit hole down to the nauseating content hell it has created?
+
 4) <b>Develop an "ontology" of suggested content:</b> Or don't.
+
 5) <b>Analyze the language used in the headlines:</b> Look for patterns in language use and topics. Perhaps use the building corpus of native ad headlines as the basis for generating artificial image and headline pairs. A fairly amusing project for this using articles from well known clickbait sources like BuzzFeed can already be found [here](https://larseidnes.com/2015/10/13/auto-generating-clickbait-with-recurrent-neural-networks/).
 
 
