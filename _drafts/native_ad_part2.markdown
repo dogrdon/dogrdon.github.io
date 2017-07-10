@@ -22,6 +22,13 @@ tags: [native ad networks, suggested content, spam, data analysis, web archiving
 
 ### Conclusion
 
+- could have done more with timeseries, but collection was so inconsistent for many reasons
+    - for some reason main scraper could not reach revcontent ads, so had to supplement
+    - using proxies did not work
+    - changing servers did not work
+    - using headless chrome did not work
+
+
 
 
 ### Notes

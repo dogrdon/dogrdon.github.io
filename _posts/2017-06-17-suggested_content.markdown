@@ -3,7 +3,7 @@ layout: post
 title: "Introduction to Internet Marketing Content Studies Pt. 1: The Web is (still) not an API"
 description: "Suggested content on the web, often ignored or blocked, is both ubiquitous and invisible. It's everywhere, and yet goes largely unseen because many elect not to see it, or filter it out mentally when it is present. Information can take on a different value when aggregated and presented outside of its original context. This post details how I originally sought to take on the task of collecting, analyzing, and showcasing those clickbait, suggested content articles that accompany most commercial, high-traffic web sites. But it also explores what I found about how fragile, bloated, and unpredictable the web is and how it is not anything close to an API if you seek to handle its content like structured data."
 category: web
-tags: [native ad networks, suggested content, spam, data analysis, web archiving]
+tags: [native ad networks, suggested content, spam, data analysis, web archiving, web scraping]
 ---
 
 <figure>
