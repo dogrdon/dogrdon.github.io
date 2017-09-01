@@ -56,7 +56,7 @@ Other than this, I took a stab at seeing what were some common (and not so commo
 
 ### Conclusion
 
-So after some exploration, I'm calling it a wash. Overall, this has turned into a rat hole of a project. It was valuable to learn a little bit more about headless scrapers and native advertising in general, but getting any kind of signal out of this information has gone on a lot longer than I anticipated and in the end started to feel like squeezing blood from a turnip. Again this is for a number of reasons:
+So after some exploration, I'm calling it a wash. Overall, this has turned into a true rat hole of a project. It was valuable to learn a little bit more about headless scrapers and native advertising in general, but getting any kind of signal out of this information has gone on a lot longer than I anticipated and in the end started to feel like squeezing blood from a turnip. Again this is for a number of reasons:
 
 - Data collection here was so stop and go and evolving over time, that the results above are pretty unscientific
 - Data collection itself was stymied by a issues with sites potentially blocking the scraper, the scraper breaking down regularly, and sites changing their layout frequently enough to require multiple updates to the scraper
