@@ -56,13 +56,13 @@ Other than this, I took a stab at seeing what were some common (and not so commo
 
 ### Conclusion
 
-So after some exploration, I'm calling it a wash. Overall, this was turned into a rat hole of a project. It was valuable to learn a little bit more about headless scrapers and native advertising in general, but getting any kind of signal out of this information has gone on a lot longer than I anticipated and in the end started to feel like squeezing blood from a turnip. Again this is for a number of reasons:
+So after some exploration, I'm calling it a wash. Overall, this has turned into a rat hole of a project. It was valuable to learn a little bit more about headless scrapers and native advertising in general, but getting any kind of signal out of this information has gone on a lot longer than I anticipated and in the end started to feel like squeezing blood from a turnip. Again this is for a number of reasons:
 
 - Data collection here was so stop and go and evolving over time, that the results above are pretty unscientific
 - Data collection itself was stymied by a issues with sites potentially blocking the scraper, the scraper breaking down regularly, and sites changing their layout frequently enough to require multiple updates to the scraper
 - Since the data collection was so poor, any trends in the data are crowded out by inconsistent or overly redundant data collection
     
-If I had more time or energy for this project, I might dig deeper into things like exploring the image patterns by performing some neural network analysis. There might also be some interesting patterns in the text also. But as mentioned in the previous post on this, this is not new territory, and has probably already been done better.
+If I had more time or energy for this project, I might dig deeper into things like exploring the image patterns by performing some neural network analysis. There might also be some interesting patterns in the text. But as mentioned in the previous post on this, this is not new territory, and has probably already been done better.
 
 In any event, I am making the data available [here](https://github.com/dogrdon/native_ad_data/tree/master/data) for others to play around with if they would like.
 
