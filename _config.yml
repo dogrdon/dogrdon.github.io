@@ -15,7 +15,6 @@ description: > # this means to ignore newlines until "baseurl:"
   Personal website for drew gordon. Writings about technology in libraries and archives, culture, literature, language, and data
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://subtxt.in" # the base hostname & protocol for your site
-twitter_username: dogrdon
 github_username:  dogrdon
 
 future: true
