@@ -11,11 +11,11 @@ tags: [json, metadata, jq, streaming, DPLA, data]
 
 ### Working With Large JSON Files
 
-JSON is the preferred format for moving data around on the web. [jq](https://stedolan.github.io/jq/) is a great command line tool for parsing and querying JSON either from a web resource or a locally stored file. It allows you to query, filter, and transform JSON with very little overhead or setup. It's perfect for quickly exploring and analyzing data returned from a web service. 
+JSON is the preferred format for moving data around on the web. [jq](https://stedolan.github.io/jq/){:target="_blank"} is a great command line tool for parsing and querying JSON either from a web resource or a locally stored file. It allows you to query, filter, and transform JSON with very little overhead or setup. It's perfect for quickly exploring and analyzing data returned from a web service. 
 
 But what if the JSON you want to work with is in a very large file, maybe 500mb or more?
 
-There are a number of reasons why you might be working with a large JSON file rather than pulling it from an API. Perhaps a service provides a full data dump, such as the [Digital Public Library of America](http://dp.la), which provides a [5gb (and expanding) compressed JSON file](http://dp.la/info/developers/download/) of all of its metadata. 
+There are a number of reasons why you might be working with a large JSON file rather than pulling it from an API. Perhaps a service provides a full data dump, such as the [Digital Public Library of America](http://dp.la){:target="_blank"}, which provides a [5gb (and expanding) compressed JSON file](http://dp.la/info/developers/download/){:target="_blank"} of all of its metadata. 
 
 Serving up an entire data store over HTTP is not desirable for many reasons. The ability to provide a full export to JSON is a quick and easy way for a service to provide all of its open data to its consumers at once for analysis or building applications.
 
@@ -24,11 +24,11 @@ The default behavior for any utility or software that parses JSON generally is t
 <figure>
 <img class="blog-post" src="/assets/images/posts/2016/03/maccrash.jpg" alt="Image of macintosh crash screen"/><figcaption>5gb of JSON to load into RAM? I'll just be over here crashing.</figcaption></figure>
 
-Fortunately jq implemented [the capacity to stream your JSON file](https://stedolan.github.io/jq/manual/#Streaming) to the parser. Instead of loading the entire file up at once, streaming sends the contents of the file through the parser one item at a time in an "event driven" fashion. As the items pass through, you can filter and select as you go, without compromising your computer's memory. 
+Fortunately jq implemented [the capacity to stream your JSON file](https://stedolan.github.io/jq/manual/#Streaming){:target="_blank"} to the parser. Instead of loading the entire file up at once, streaming sends the contents of the file through the parser one item at a time in an "event driven" fashion. As the items pass through, you can filter and select as you go, without compromising your computer's memory. 
 
 ### Example Usage
 
-Below are examples for selecting a particular value from each record and for extracting only the items that meet a certain condition (say a specific item format). For these examples I'll refer to the [Digital Public Library of America's bulk download](http://dp.la/info/developers/download). 
+Below are examples for selecting a particular value from each record and for extracting only the items that meet a certain condition (say a specific item format). For these examples I'll refer to the [Digital Public Library of America's bulk download](http://dp.la/info/developers/download){:target="_blank"}. 
 
 #### Quick Introduction to jq
 
@@ -303,7 +303,7 @@ From this, I get in return:
 If I wanted to get only the titles from that request, I might use:
 
 {% highlight shell %}
-curl 'http://api.dp.la/v2/items?q=computers&api_key=[API KEY HERE]' | jq '.docs[].sourceResource.title'`
+curl 'http://api.dp.la/v2/items?q=computers&api_key=[API KEY HERE]' | jq '.docs[].sourceResource.title'
 {% endhighlight %}
 
 The result of which would be:
@@ -327,12 +327,12 @@ The result of which would be:
 
 Here I am using the command line utility `curl` to request the resource and then I'm using the `|` (or "pipe") to tell it that I want to send the results of that request to the jq utility for grabbing only the title. 
 
-The grabbing is acommplished by using `.docs[].sourceResource.title` to access the entire "docs" array where the results are provided and then specifying that I want only values for the `title` property of the `sourceResource` object for each item returned from the DPLA for this request. There is a [good tutorial](https://stedolan.github.io/jq/tutorial/) for getting started with jq if you are interested in knowing more.
+The grabbing is acommplished by using `.docs[].sourceResource.title` to access the entire "docs" array where the results are provided and then specifying that I want only values for the `title` property of the `sourceResource` object for each item returned from the DPLA for this request. There is a [good tutorial](https://stedolan.github.io/jq/tutorial/){:target="_blank"} for getting started with jq if you are interested in knowing more.
 
 #### Selecting Using a Stream
 
 <section id="back_1"/>
-This is great, but what if I wanted to pull every title for <b>every</b> item in the DPLA and perform some sort of text analysis on it? If I were to download the entire dataset (again, about 5gb compressed) and use jq to extract only the titles with something like: 
+This is great, but what if I wanted to pull every title for <b>every</b> item in the DPLA and perform some sort of text analysis on it? I can do this if I were to download the entire dataset in bulk from the [bulk downloads page](https://dp.la/info/developers/download/){:target="_blank"} (again, about 5gb compressed) and use jq to extract only the titles with something like: 
 
 {% highlight shell %}
 zcat < all.json.gz | jq '.[]._source.sourceResource.title' 
@@ -345,6 +345,8 @@ Instead, I can use the `--stream` argument. Though what jq sees when the data ar
 {% highlight shell %}
 zcat < all.json.gz | jq --stream 'select(.[0][1] == "_source" and .[0][2] == "sourceResource" and .[0][3] == "title") | .[1]'
 {% endhighlight %}
+
+*Note: Since we're now using the bulk downloads, the JSON in them is formatted a bit differently than the JSON returned by the DPLA API. For instance, the individual records are not nested inside of a `docs` array so we do not need to select that first before getting into the individual records.*
 
 <section id="back_2"/>
 There's a lot going on here that is different from the load-into-memory jq command <b><a href="#notes">[2]</a></b>.
@@ -395,10 +397,10 @@ Written out, it is not compelling as a set of instructions, but hopefully demons
 But say that, instead of picking out a particular value, we would rather return only the whole records that have a particular value for one of its properties. In this example, we only want to return the items in the DPLA that are sound recordings, ignoring anything else that is an image, text, moving image, or physical object. We could do that with: 
 
 {% highlight shell %}
-zcat < all.json.gz | jq --stream "fromstream(1|truncate_stream(inputs))" | jq "select(any(._source.sourceResource; .type=="sound"))"`
+zcat < all.json.gz | jq --stream "fromstream(1|truncate_stream(inputs))" | jq "select(any(._source.sourceResource; .type=="sound"))"
 {% endhighlight %}
 
-In this example, I am using one more pipe before selecting the items that I want. I am also using the `any(generator; condition)` [built-in function](https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions) in the second invocation of jq, which allows for quickly applying a specific condition (in this case the `type` of the item returned must be 'sound') to a specified input (in this case the `sourceResource` object in the item). 
+In this example, I am using one more pipe before selecting the items that I want. I am also using the `any(generator; condition)` [built-in function](https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions){:target="_blank"} in the second invocation of jq, which allows for quickly applying a specific condition (in this case the `type` of the item returned must be 'sound') to a specified input (in this case the `sourceResource` object in the item). 
 
 But before I do that, in the first jq invocation, I want to utilize the `fromstream()` and `truncate_stream()` functions in order to first turn the stream of paths and leaves back into a stream of JSON objects. 
 
@@ -667,12 +669,12 @@ It looks like JSON again. As this is now the input for the `select()` using `any
 
 ### Conclusion
 
-Streaming serialized data so it can be acted on dynamically, without stressing our RAM, is [nothing new](https://en.wikipedia.org/wiki/Simple_API_for_XML). And there are plenty of other tools that can be used to stream JSON data in particular. Libraries in [Python](https://pypi.python.org/pypi/ijson/) and [Ruby](https://github.com/brianmario/yajl-ruby), for example, implement the [YAJL streaming JSON parsing library](https://github.com/lloyd/yajl) from C. But jq is a great tool because it is easily and quickly accessible from the command line, making it perfect for exploring and shaping JSON data on the fly or in a pinch.
+Streaming serialized data so it can be acted on dynamically, without stressing our RAM, is [nothing new](https://en.wikipedia.org/wiki/Simple_API_for_XML){:target="_blank"}. And there are plenty of other tools that can be used to stream JSON data in particular. Libraries in [Python](https://pypi.python.org/pypi/ijson/){:target="_blank"} and [Ruby](https://github.com/brianmario/yajl-ruby){:target="_blank"}, for example, implement the [YAJL streaming JSON parsing library](https://github.com/lloyd/yajl){:target="_blank"} from C. But jq is a great tool because it is easily and quickly accessible from the command line, making it perfect for exploring and shaping JSON data on the fly or in a pinch.
 
-The above is only the tip of the iceberg. There is plenty more that can be done with jq and you can explore all of its capabilities at [the documentation](https://stedolan.github.io/jq/manual).
+The above is only the tip of the iceberg. There is plenty more that can be done with jq and you can explore all of its capabilities at [the documentation](https://stedolan.github.io/jq/manual){:target="_blank"}.
 
 ### Notes
 <section id="notes"/>
-<b>[1]</b> Here I am using the full data download and I am accessing it locally, so there's a few differences in the command syntax from the intro command. First, I am using a utility called `zcat` on the compressed json file because I just want to send the JSON content to jq, rather than uncompress it to a new file first. Also, the structure for the bulk data download is a little different from what is returned from the DPLA API in that the `sourceResource` object is nested within a `_source` object. More information about the format of the bulk downloads can be found [here](https://digitalpubliclibraryofamerica.atlassian.net/wiki/display/TECH/Database+export+files) [<a href="#back_1">back</a>]
+<b>[1]</b> Here I am using the full data download and I am accessing it locally, so there's a few differences in the command syntax from the intro command. First, I am using a utility called `zcat` on the compressed json file because I just want to send the JSON content to jq, rather than uncompress it to a new file first. Also, the structure for the bulk data download is a little different from what is returned from the DPLA API in that the `sourceResource` object is nested within a `_source` object. More information about the format of the bulk downloads can be found [here](https://digitalpubliclibraryofamerica.atlassian.net/wiki/display/TECH/Database+export+files){:target="_blank"} [<a href="#back_1">back</a>]
 
-<b>[2]</b> The developers of jq provide a bit of a more technical explanation of streaming in jq [here](https://stedolan.github.io/jq/manual/#Streaming), though I found this a little hard to grasp. I've attempted to describe it here in a bit more casually, but it admitedly lacks technical detail and rigor. [<a href="#back_2">back</a>]
+<b>[2]</b> The developers of jq provide a bit of a more technical explanation of streaming in jq [here](https://stedolan.github.io/jq/manual/#Streaming){:target="_blank"}, though I found this a little hard to grasp. I've attempted to describe it here in a bit more casually, but it admitedly lacks technical detail and rigor. [<a href="#back_2">back</a>]
