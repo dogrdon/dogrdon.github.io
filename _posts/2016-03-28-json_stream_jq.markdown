@@ -342,11 +342,12 @@ we would have the scenario as described above that our computer's memory would o
 
 Instead, I can use the `--stream` argument. Though what jq sees when the data are streamed is a little different. I will show the stream equivalent command and then try to explain a little bit of the differences.
 
+*Note: Since we're now using the bulk downloads, the JSON in them is formatted a bit differently than the JSON returned by the DPLA API. For instance, the individual records are not nested inside of a `docs` array so we do not need to select that first before getting into the individual records.*
+
 {% highlight shell %}
 zcat < all.json.gz | jq --stream 'select(.[0][1] == "_source" and .[0][2] == "sourceResource" and .[0][3] == "title") | .[1]'
 {% endhighlight %}
 
-*Note: Since we're now using the bulk downloads, the JSON in them is formatted a bit differently than the JSON returned by the DPLA API. For instance, the individual records are not nested inside of a `docs` array so we do not need to select that first before getting into the individual records.*
 
 <section id="back_2"/>
 There's a lot going on here that is different from the load-into-memory jq command <b><a href="#notes">[2]</a></b>.
